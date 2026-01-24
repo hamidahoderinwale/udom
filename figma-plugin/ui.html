@@ -1,0 +1,1799 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Permissions-Policy" content="local-network-access=*">
+  <link rel="preconnect" href="https://fonts.vercel.sh">
+  <link rel="stylesheet" href="https://fonts.vercel.sh/geist.css">
+  <style>
+    /* Design System - Matching Snapshot Viewer */
+    :root {
+      --font-display: 'Geist', -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+      --font-body: 'Geist', -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+      --font-mono: 'Geist Mono', 'SF Mono', 'Monaco', 'Courier New', monospace;
+      
+      --weight-light: 300;
+      --weight-normal: 400;
+      --weight-medium: 500;
+      --weight-semibold: 600;
+      --weight-bold: 700;
+      
+      --size-xs: 11px;
+      --size-sm: 13px;
+      --size-base: 15px;
+      --size-lg: 18px;
+      --size-xl: 24px;
+      --size-2xl: 36px;
+      
+      /* Light mode colors matching snapshot viewer */
+      --bg-primary: #ffffff;
+      --bg-secondary: #f2f1ed;
+      --bg-tertiary: #f0efeb;
+      --bg-elevated: #ffffff;
+      
+      --text-primary: #26251e;
+      --text-secondary: #26251e99;
+      --text-tertiary: #26251e66;
+      
+      --accent: #f54e00;
+      --accent-hover: #e04500;
+      --accent-subtle: rgba(245, 78, 0, 0.1);
+      
+      --error: #cf2d56;
+      --success: #1f8a65;
+      
+      --border: #26251e1a;
+      --border-subtle: #26251e06;
+      --border-hover: #26251e99;
+      
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-6: 24px;
+      --space-8: 32px;
+      
+      --radius-sm: 2px;
+      --radius-md: 4px;
+      --radius-lg: 6px;
+      
+      --transition-base: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+      
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Plugin-specific styles using design system */
+    body {
+      padding: var(--space-4);
+      background: var(--bg-primary);
+      font-family: var(--font-body);
+      font-size: var(--size-sm);
+      font-weight: var(--weight-normal);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      letter-spacing: -0.01em;
+    }
+
+    .widget {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: var(--space-3);
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      flex: 1;
+    }
+
+    .title-group {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .icon-btn {
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all var(--transition-base);
+      font-size: 14px;
+    }
+
+    .icon-btn:hover {
+      background: var(--bg-tertiary);
+      border-color: var(--border);
+      color: var(--text-primary);
+    }
+
+    .logo {
+      width: 24px;
+      height: 24px;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-primary);
+      font-weight: var(--weight-semibold);
+      font-size: var(--size-xs);
+      font-family: var(--font-body);
+    }
+
+    .title {
+      font-family: var(--font-display);
+      font-size: var(--size-base);
+      font-weight: var(--weight-semibold);
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+    }
+
+    .status {
+      font-family: var(--font-body);
+      font-size: var(--size-xs);
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--radius-sm);
+      font-weight: var(--weight-medium);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .status-badge {
+      font-family: var(--font-body);
+      font-size: var(--size-xs);
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
+      font-weight: var(--weight-medium);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .status-badge.connected {
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+    }
+
+    .status-badge.disconnected {
+      background: rgba(255, 68, 68, 0.1);
+      color: var(--error);
+      border: 1px solid var(--error);
+    }
+
+    .status.connected {
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+    }
+
+    .status.disconnected {
+      background: rgba(255, 68, 68, 0.1);
+      color: var(--error);
+      border: 1px solid var(--error);
+    }
+
+    /* Status Card - Consolidated */
+    .status-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4);
+      margin-bottom: var(--space-3);
+      transition: all var(--transition-base);
+      position: relative;
+    }
+
+    .status-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--border-subtle);
+      transition: background var(--transition-base);
+    }
+
+    .status-card:hover {
+      border-color: var(--border);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      background: var(--bg-primary);
+    }
+
+    .status-card:hover::before {
+      background: var(--accent);
+    }
+
+    .status-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-2);
+    }
+
+    .toggle-group {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .capture-stats {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--size-sm);
+    }
+
+    .stat-item {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+
+    .stat-value {
+      font-weight: var(--weight-bold);
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: var(--size-sm);
+    }
+
+    .stat-label {
+      color: var(--text-tertiary);
+      font-size: var(--size-xs);
+    }
+
+    .stat-divider {
+      color: var(--text-tertiary);
+      font-size: var(--size-xs);
+    }
+
+    .storage-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: var(--size-xs);
+      color: var(--text-tertiary);
+      padding-top: var(--space-2);
+      border-top: 1px solid var(--border-subtle);
+      font-family: var(--font-mono);
+    }
+
+    .storage-icon {
+      display: none; /* Remove emoji */
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-3);
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      transition: all var(--transition-base);
+    }
+
+    .controls:hover {
+      border-color: var(--border);
+    }
+
+    .auto-capture {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .toggle {
+      position: relative;
+      width: 40px;
+      height: 22px;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      cursor: pointer;
+      transition: all var(--transition-base);
+    }
+
+    .toggle.active {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .toggle:hover {
+      border-color: var(--border-hover);
+    }
+
+    .toggle.active:hover {
+      border-color: var(--text-primary);
+    }
+
+    .toggle-knob {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 18px;
+      height: 18px;
+      background: var(--text-secondary);
+      border-radius: 50%;
+      transition: all var(--transition-base);
+    }
+
+    .toggle.active .toggle-knob {
+      background: var(--bg-primary);
+    }
+
+    .toggle.active .toggle-knob {
+      left: 20px;
+    }
+
+    .toggle-label {
+      font-size: var(--size-xs);
+      font-weight: var(--weight-normal);
+      color: var(--text-secondary);
+    }
+
+    .count-badge {
+      font-size: var(--size-xs);
+      color: var(--text-secondary);
+      background: var(--bg-tertiary);
+      padding: var(--space-1) var(--space-3);
+      border-radius: 12px;
+      font-weight: var(--weight-medium);
+      border: 1px solid var(--border-subtle);
+      font-family: var(--font-body);
+      transition: all var(--transition-base);
+    }
+
+    .count-badge:hover {
+      border-color: var(--border);
+      color: var(--text-primary);
+    }
+
+    /* Selection Card */
+    .selection-card {
+      padding: var(--space-4);
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      font-size: var(--size-sm);
+      min-height: 70px;
+      border: 1px solid var(--border-subtle);
+      transition: all var(--transition-base);
+      margin-bottom: var(--space-3);
+      position: relative;
+    }
+
+    .selection-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--border-subtle);
+      transition: background var(--transition-base);
+    }
+
+    .selection-card:hover {
+      border-color: var(--border);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      background: var(--bg-primary);
+    }
+
+    .selection-card:hover::before {
+      background: var(--accent);
+    }
+
+    .selection-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .node-info {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+
+    .selection-info {
+      padding: var(--space-4);
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      font-size: var(--size-sm);
+      min-height: 70px;
+      border: 1px solid var(--border-subtle);
+      transition: all var(--transition-base);
+    }
+
+    .selection-info:hover {
+      border-color: var(--border);
+    }
+
+    .selection-info.empty {
+      color: var(--text-tertiary);
+      font-style: italic;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-tertiary);
+    }
+
+    .node-name {
+      font-weight: var(--weight-bold);
+      color: var(--text-primary);
+      margin-bottom: var(--space-1);
+      font-size: var(--size-sm);
+      letter-spacing: -0.01em;
+    }
+
+    .node-type {
+      color: var(--text-secondary);
+      font-size: var(--size-xs);
+      font-family: var(--font-mono);
+    }
+
+    .capture-status {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      margin-top: var(--space-2);
+      font-size: var(--size-xs);
+    }
+
+    .capture-status.capturing {
+      color: var(--text-primary);
+    }
+
+    .capture-status.success {
+      color: var(--text-primary);
+    }
+
+    .pulse {
+      width: 6px;
+      height: 6px;
+      background: currentColor;
+      border-radius: 50%;
+      animation: pulse 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.2); }
+    }
+
+    /* Action Footer */
+    .action-footer {
+      display: flex;
+      gap: var(--space-2);
+      margin-top: var(--space-2);
+    }
+
+    .footer-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-3) var(--space-4);
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      font-size: var(--size-sm);
+      font-weight: var(--weight-semibold);
+      font-family: var(--font-display);
+      cursor: pointer;
+      transition: all var(--transition-base);
+      letter-spacing: -0.01em;
+    }
+
+    .footer-btn:hover {
+      background: var(--bg-elevated);
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .footer-btn.secondary {
+      background: var(--bg-tertiary);
+    }
+
+    .last-capture {
+      font-size: var(--size-xs);
+      color: var(--text-secondary);
+      padding: var(--space-2) var(--space-3);
+      background: transparent;
+      border-radius: 0;
+      border: none;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      text-align: center;
+      font-family: var(--font-mono);
+    }
+
+    .storage-info {
+      font-size: var(--size-xs);
+      color: var(--text-tertiary);
+      text-align: center;
+      padding: var(--space-1) 0;
+      font-family: var(--font-mono);
+    }
+
+    .button-group {
+      display: flex;
+      gap: var(--space-2);
+    }
+
+    .button {
+      flex: 1;
+      padding: var(--space-3) var(--space-4);
+      background: var(--text-primary);
+      color: var(--bg-primary);
+      border: 1px solid var(--text-primary);
+      border-radius: var(--radius-md);
+      font-size: var(--size-sm);
+      font-weight: var(--weight-medium);
+      font-family: var(--font-display);
+      cursor: pointer;
+      transition: all var(--transition-base);
+      letter-spacing: -0.01em;
+    }
+
+    .button:hover {
+      background: var(--text-secondary);
+      border-color: var(--text-secondary);
+      transform: translateY(-1px);
+    }
+
+    .button:active {
+      transform: translateY(0);
+    }
+
+    .button:disabled {
+      background: var(--bg-tertiary);
+      color: var(--text-tertiary);
+      border-color: var(--border-subtle);
+      cursor: not-allowed;
+      transform: none;
+      opacity: 0.5;
+    }
+
+    .button.secondary {
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+    }
+
+    .button.secondary:hover {
+      background: var(--bg-elevated);
+      border-color: var(--border);
+    }
+
+    .error {
+      padding: var(--space-2);
+      background: rgba(255, 68, 68, 0.1);
+      color: var(--error);
+      border-radius: var(--radius-md);
+      font-size: var(--size-xs);
+      margin-top: var(--space-2);
+      border: 1px solid var(--error);
+    }
+
+    /* Suggestions Card - Unified */
+    .suggestions-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-3);
+      margin-bottom: var(--space-3);
+      transition: all var(--transition-base);
+    }
+
+    .suggestions-card:hover {
+      border-color: var(--border);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-3);
+    }
+
+    .card-header h3 {
+      font-size: var(--size-xs);
+      font-weight: var(--weight-bold);
+      margin: 0;
+      color: var(--text-secondary);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+    }
+
+    .refresh-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: var(--accent);
+      color: var(--bg-primary);
+      border: 1px solid var(--accent);
+      border-radius: var(--radius-md);
+      font-size: var(--size-sm);
+      font-weight: var(--weight-semibold);
+      cursor: pointer;
+      transition: all var(--transition-base);
+      font-family: var(--font-display);
+      letter-spacing: -0.01em;
+    }
+
+    .refresh-btn:hover:not(:disabled) {
+      background: var(--accent-hover);
+      border-color: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .refresh-btn:disabled {
+      background: var(--bg-tertiary);
+      color: var(--text-tertiary);
+      border-color: var(--border-subtle);
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .btn-text {
+      font-size: var(--size-sm);
+    }
+
+    .suggestions-content {
+      min-height: 60px;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .suggestions-content::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .suggestions-content::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .suggestions-content::-webkit-scrollbar-thumb {
+      background: var(--border-subtle);
+      border-radius: 2px;
+    }
+
+    .suggestions-content::-webkit-scrollbar-thumb:hover {
+      background: var(--border);
+    }
+
+    .suggestions-empty {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-6);
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: var(--size-sm);
+    }
+
+    .empty-text {
+      font-size: var(--size-sm);
+      color: var(--text-secondary);
+    }
+
+    .suggestions-section {
+      margin-top: var(--space-4);
+      padding: var(--space-4);
+      background: transparent;
+      border-radius: 0;
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      max-height: 300px;
+      overflow-y: auto;
+      display: none;
+    }
+
+    .suggestions-section.visible {
+      display: block;
+    }
+
+    .suggestions-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-3);
+    }
+
+    .suggestions-title {
+      font-size: var(--size-xs);
+      font-weight: var(--weight-bold);
+      color: var(--text-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-family: var(--font-mono);
+    }
+
+    .suggestions-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .suggestion-item {
+      padding: var(--space-3);
+      background: transparent;
+      border-bottom: 1px solid var(--border-subtle);
+      border-radius: 0;
+      transition: all var(--transition-base);
+      cursor: pointer;
+      position: relative;
+    }
+
+    .suggestion-item:last-child {
+      border-bottom: none;
+    }
+
+    .suggestion-item:hover {
+      background: var(--bg-secondary);
+      padding-left: var(--space-4);
+    }
+
+    .suggestion-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--space-2);
+      margin-bottom: var(--space-1);
+    }
+
+    .suggestion-description {
+      font-size: var(--size-sm);
+      color: var(--text-primary);
+      line-height: 1.5;
+      flex: 1;
+      font-weight: var(--weight-normal);
+    }
+
+    .suggestion-actions-inline {
+      display: flex;
+      gap: var(--space-1);
+      opacity: 0;
+      transition: opacity var(--transition-fast);
+    }
+
+    .suggestion-item:hover .suggestion-actions-inline {
+      opacity: 1;
+    }
+
+    .suggestion-action-btn {
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      background: var(--bg-tertiary);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      font-size: var(--size-xs);
+      color: var(--text-secondary);
+      flex-shrink: 0;
+      font-weight: var(--weight-bold);
+    }
+
+    .suggestion-action-btn:hover {
+      background: var(--bg-elevated);
+      border-color: var(--border);
+      color: var(--text-primary);
+    }
+
+    .suggestion-action-btn.accept:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--bg-primary);
+    }
+
+    .suggestion-action-btn.reject:hover {
+      background: var(--bg-elevated);
+      border-color: var(--error);
+      color: var(--error);
+    }
+
+    .suggestion-meta {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--size-xs);
+      color: var(--text-tertiary);
+      font-family: var(--font-mono);
+    }
+
+    .suggestion-dimension {
+      font-size: var(--size-xs);
+      color: var(--text-tertiary);
+      text-transform: capitalize;
+    }
+
+    .suggestion-confidence {
+      font-size: var(--size-xs);
+      color: var(--text-tertiary);
+    }
+
+    .component-id {
+      font-size: var(--size-xs);
+      color: var(--text-tertiary);
+      margin-top: var(--space-1);
+      font-family: var(--font-mono);
+    }
+
+    .auto-applied-message {
+      padding: var(--space-3);
+      background: var(--bg-elevated);
+      color: var(--text-primary);
+      border-radius: var(--radius-lg);
+      font-size: var(--size-xs);
+      margin-bottom: var(--space-3);
+      border: 1px solid var(--border);
+      line-height: 1.6;
+      animation: slideIn 0.3s ease-out;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Walkthrough Section */
+    .walkthrough-section {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      margin-top: var(--space-3);
+      overflow: hidden;
+      animation: slideIn 0.3s ease-out;
+    }
+
+    .walkthrough-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-3) var(--space-4);
+      border-bottom: 1px solid var(--border-subtle);
+      background: var(--bg-tertiary);
+    }
+
+    .walkthrough-title {
+      font-size: var(--size-xs);
+      font-weight: var(--weight-bold);
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-family: var(--font-mono);
+    }
+
+    .walkthrough-close {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      color: var(--text-tertiary);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      font-size: 16px;
+      font-weight: var(--weight-bold);
+      padding: 0;
+      line-height: 1;
+    }
+
+    .walkthrough-close:hover {
+      background: var(--bg-elevated);
+      border-color: var(--border);
+      color: var(--text-primary);
+    }
+
+    .walkthrough-content {
+      padding: var(--space-4);
+    }
+
+    .walkthrough-description {
+      font-size: var(--size-sm);
+      color: var(--text-primary);
+      font-weight: var(--weight-medium);
+      margin-bottom: var(--space-4);
+      line-height: 1.6;
+    }
+
+    .walkthrough-elements {
+      margin-bottom: var(--space-4);
+    }
+
+    .walkthrough-label {
+      font-size: var(--size-xs);
+      font-weight: var(--weight-bold);
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-family: var(--font-mono);
+      margin-bottom: var(--space-2);
+    }
+
+    .element-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .element-list li {
+      padding: var(--space-2) var(--space-3);
+      background: var(--bg-tertiary);
+      border-left: 2px solid var(--accent);
+      margin-bottom: var(--space-1);
+      font-size: var(--size-xs);
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+
+    .element-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .walkthrough-guidance {
+      margin-bottom: var(--space-4);
+    }
+
+    .guidance-text {
+      font-size: var(--size-xs);
+      color: var(--text-primary);
+      line-height: 1.7;
+      background: var(--bg-tertiary);
+      padding: var(--space-3);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .guidance-text strong {
+      color: var(--text-primary);
+      font-weight: var(--weight-semibold);
+      display: block;
+      margin-bottom: var(--space-2);
+    }
+
+    .guidance-text br {
+      margin-bottom: var(--space-1);
+    }
+
+    .walkthrough-status {
+      padding: var(--space-3);
+      border-radius: var(--radius-md);
+      font-size: var(--size-xs);
+      line-height: 1.6;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .walkthrough-status.success {
+      background: rgba(31, 138, 101, 0.08);
+      color: var(--success);
+      border-color: rgba(31, 138, 101, 0.2);
+    }
+
+    .walkthrough-status:not(.success) {
+      background: var(--bg-tertiary);
+      color: var(--text-secondary);
+    }
+
+    /* Auto-Apply Preview Modal */
+    .preview-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      animation: fadeIn 0.2s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .preview-content {
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4);
+      max-width: 320px;
+      width: calc(100% - 32px);
+      max-height: 80vh;
+      overflow-y: auto;
+      box-shadow: var(--shadow-md);
+      animation: slideUp 0.3s ease-out;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .preview-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-3);
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .preview-title {
+      font-size: var(--size-sm);
+      font-weight: var(--weight-bold);
+      color: var(--text-primary);
+    }
+
+    .preview-close {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      color: var(--text-tertiary);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      font-size: 16px;
+      font-weight: var(--weight-bold);
+      padding: 0;
+      line-height: 1;
+    }
+
+    .preview-close:hover {
+      background: var(--bg-tertiary);
+      border-color: var(--border);
+      color: var(--text-primary);
+    }
+
+    .preview-description {
+      font-size: var(--size-sm);
+      color: var(--text-primary);
+      margin-bottom: var(--space-3);
+      line-height: 1.6;
+    }
+
+    .preview-info {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: var(--space-3);
+      margin-bottom: var(--space-3);
+    }
+
+    .preview-info-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-2);
+      font-size: var(--size-xs);
+    }
+
+    .preview-info-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .preview-info-label {
+      color: var(--text-secondary);
+    }
+
+    .preview-info-value {
+      color: var(--text-primary);
+      font-weight: var(--weight-semibold);
+      font-family: var(--font-mono);
+    }
+
+    .preview-elements {
+      margin-bottom: var(--space-3);
+      max-height: 120px;
+      overflow-y: auto;
+    }
+
+    .preview-elements-title {
+      font-size: var(--size-xs);
+      font-weight: var(--weight-bold);
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-family: var(--font-mono);
+      margin-bottom: var(--space-2);
+    }
+
+    .preview-elements-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .preview-elements-list li {
+      padding: var(--space-1) var(--space-2);
+      font-size: var(--size-xs);
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+    }
+
+    .preview-actions {
+      display: flex;
+      gap: var(--space-2);
+    }
+
+    .preview-btn {
+      flex: 1;
+      padding: var(--space-3);
+      border-radius: var(--radius-md);
+      font-size: var(--size-sm);
+      font-weight: var(--weight-semibold);
+      cursor: pointer;
+      transition: all var(--transition-base);
+      font-family: var(--font-display);
+      border: 1px solid;
+    }
+
+    .preview-btn-primary {
+      background: var(--accent);
+      color: var(--bg-primary);
+      border-color: var(--accent);
+    }
+
+    .preview-btn-primary:hover {
+      background: var(--accent-hover);
+      border-color: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .preview-btn-secondary {
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+      border-color: var(--border);
+    }
+
+    .preview-btn-secondary:hover {
+      background: var(--bg-elevated);
+      border-color: var(--border-hover);
+    }
+  </style>
+</head>
+<body>
+  <div class="widget">
+    <!-- Consolidated Header with Status -->
+    <div class="header">
+      <div class="header-left">
+        <div class="logo">u</div>
+        <div class="title-group">
+          <div class="title">uDOM Capture</div>
+          <div class="status-badge disconnected" id="status">Disconnected</div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <!-- Settings button for future expansion -->
+      </div>
+    </div>
+
+    <!-- Capture Status Card (consolidated) -->
+    <div class="status-card">
+      <div class="status-row">
+        <div class="toggle-group">
+          <div class="toggle active" id="auto-toggle">
+            <div class="toggle-knob"></div>
+          </div>
+          <span class="toggle-label">Auto-capture</span>
+        </div>
+        <div class="capture-stats">
+          <div class="stat-item">
+            <span class="stat-value" id="count-value">0</span>
+            <span class="stat-label">saved</span>
+          </div>
+          <div class="stat-divider">•</div>
+          <div class="stat-item" id="last-capture-stat" style="display: none;">
+            <span class="stat-value" id="last-time">--</span>
+            <span class="stat-label">ago</span>
+          </div>
+        </div>
+      </div>
+      <div class="storage-badge" id="storage-info">
+        <span>localhost:3000</span>
+      </div>
+    </div>
+
+    <!-- Selection Card -->
+    <div class="selection-card" id="selection-card">
+      <div class="selection-header">
+        <div class="node-info" id="selection-info">
+          <div class="selection-info empty">Select a component or frame</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Suggestions Card (unified) -->
+    <div class="suggestions-card" id="suggestions-card">
+      <div class="card-header">
+        <h3>Suggestions</h3>
+        <button class="refresh-btn" id="suggest-btn" disabled>
+          <span class="btn-text">Get Suggestions</span>
+        </button>
+      </div>
+      
+      <div class="suggestions-content" id="suggestions-content">
+        <div class="suggestions-empty" id="suggestions-empty">
+          <span class="empty-text">Click to get AI-powered suggestions</span>
+        </div>
+        
+        <div class="suggestions-list" id="suggestions-list" style="display: none;">
+          <!-- Suggestions will be inserted here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Footer -->
+    <div class="action-footer">
+      <button class="footer-btn secondary" id="viewer-btn">
+        <span>View Snapshots</span>
+      </button>
+    </div>
+
+    <!-- Auto-Apply Preview Modal -->
+    <div class="preview-modal" id="preview-modal" style="display: none;">
+      <div class="preview-content">
+        <div class="preview-header">
+          <div class="preview-title">Apply Changes Automatically?</div>
+          <button class="preview-close" id="preview-close" aria-label="Close preview">×</button>
+        </div>
+        <div class="preview-description" id="preview-description"></div>
+        <div class="preview-info">
+          <div class="preview-info-item">
+            <span class="preview-info-label">Elements affected</span>
+            <span class="preview-info-value" id="preview-count">0</span>
+          </div>
+          <div class="preview-info-item">
+            <span class="preview-info-label">Dimension</span>
+            <span class="preview-info-value" id="preview-dimension">-</span>
+          </div>
+        </div>
+        <div class="preview-elements" id="preview-elements" style="display: none;">
+          <div class="preview-elements-title">Elements to change</div>
+          <ul class="preview-elements-list" id="preview-elements-list"></ul>
+        </div>
+        <div class="preview-actions">
+          <button class="preview-btn preview-btn-secondary" id="preview-cancel">Cancel</button>
+          <button class="preview-btn preview-btn-primary" id="preview-confirm">Apply</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Walkthrough Section -->
+    <div class="walkthrough-section" id="walkthrough-section" style="display: none;">
+      <div class="walkthrough-header">
+        <span class="walkthrough-title">Accepted Suggestion</span>
+        <button class="walkthrough-close" id="walkthrough-close" aria-label="Close walkthrough">×</button>
+      </div>
+      <div class="walkthrough-content">
+        <div class="walkthrough-description" id="walkthrough-description"></div>
+        <div class="walkthrough-elements" id="walkthrough-elements" style="display: none;">
+          <div class="walkthrough-label">Elements to change</div>
+          <ul class="element-list" id="element-list"></ul>
+        </div>
+        <div class="walkthrough-guidance" id="walkthrough-guidance" style="display: none;">
+          <div class="walkthrough-label">How to change</div>
+          <div class="guidance-text" id="guidance-text"></div>
+        </div>
+        <div class="walkthrough-status" id="walkthrough-status"></div>
+      </div>
+    </div>
+
+    <div id="error-container"></div>
+  </div>
+
+  <script>
+    const selectionCard = document.getElementById('selection-card');
+    const selectionInfo = document.getElementById('selection-info');
+    const viewerBtn = document.getElementById('viewer-btn');
+    const status = document.getElementById('status');
+    const errorContainer = document.getElementById('error-container');
+    const autoToggle = document.getElementById('auto-toggle');
+    const countValue = document.getElementById('count-value');
+    const lastCaptureStat = document.getElementById('last-capture-stat');
+    const lastTime = document.getElementById('last-time');
+    const suggestionsCard = document.getElementById('suggestions-card');
+    const suggestionsContent = document.getElementById('suggestions-content');
+    const suggestionsEmpty = document.getElementById('suggestions-empty');
+    const suggestionsList = document.getElementById('suggestions-list');
+
+    let currentSelection = null;
+    let captureCount = 0;
+    let currentSuggestions = [];
+    let currentComponentId = null;
+
+    // Check DB connection
+    async function checkConnection() {
+      try {
+        const response = await fetch('http://localhost:3000/health');
+        if (response.ok) {
+          status.textContent = 'Connected';
+          status.className = 'status-badge connected';
+          return true;
+        }
+      } catch (error) {
+        // Server not running
+      }
+      status.textContent = 'Disconnected';
+      status.className = 'status-badge disconnected';
+      return false;
+    }
+
+    // Format time ago
+    function timeAgo(timestamp) {
+      const seconds = Math.floor((Date.now() - timestamp) / 1000);
+      if (seconds < 60) return `${seconds}s ago`;
+      const minutes = Math.floor(seconds / 60);
+      if (minutes < 60) return `${minutes}m ago`;
+      const hours = Math.floor(minutes / 60);
+      return `${hours}h ago`;
+    }
+
+    // Listen for messages from plugin
+    window.onmessage = (event) => {
+      const msg = event.data.pluginMessage;
+
+      if (msg.type === 'selection-changed') {
+        currentSelection = msg;
+        currentComponentId = msg.component_id || msg.nodeId;
+        selectionInfo.className = 'node-info';
+        selectionInfo.innerHTML = `
+          <div class="node-name">${msg.nodeName}</div>
+          <div class="node-type">${msg.nodeType}</div>
+        `;
+      }
+
+      if (msg.type === 'selection-cleared') {
+        currentSelection = null;
+        currentComponentId = null;
+        selectionInfo.className = 'selection-info empty';
+        selectionInfo.innerHTML = '<div class="selection-info empty">Select a component or frame</div>';
+        currentSuggestions = [];
+        displaySuggestions([]);
+      }
+
+      if (msg.type === 'capture-started') {
+        const statusHtml = msg.auto 
+          ? '<div class="capture-status capturing"><span class="pulse"></span>Auto-capturing...</div>'
+          : '<div class="capture-status capturing"><span class="pulse"></span>Capturing...</div>';
+        
+        if (selectionInfo.querySelector('.capture-status')) {
+          selectionInfo.querySelector('.capture-status').remove();
+        }
+        selectionInfo.insertAdjacentHTML('beforeend', statusHtml);
+        errorContainer.innerHTML = '';
+      }
+
+      if (msg.type === 'capture-success') {
+        captureCount = msg.count || captureCount + 1;
+        countValue.textContent = captureCount;
+        
+        if (selectionInfo.querySelector('.capture-status')) {
+          const statusEl = selectionInfo.querySelector('.capture-status');
+          statusEl.className = 'capture-status success';
+          statusEl.innerHTML = '<span class="pulse"></span>Captured!';
+          setTimeout(() => statusEl.remove(), 2000);
+        }
+
+        lastCaptureStat.style.display = 'flex';
+        lastTime.textContent = 'just now';
+        
+        // Clear any existing interval to prevent memory leaks
+        if (window.lastTimeInterval) {
+          clearInterval(window.lastTimeInterval);
+        }
+        
+        // Update time every second
+        window.lastTimeInterval = setInterval(() => {
+          if (msg.timestamp) {
+            lastTime.textContent = timeAgo(msg.timestamp);
+          }
+        }, 1000);
+
+        errorContainer.innerHTML = '';
+      }
+
+      if (msg.type === 'generating-suggestions') {
+        // Show generating state in suggestions area
+        suggestionsEmpty.style.display = 'flex';
+        suggestionsEmpty.innerHTML = '<span class="empty-text">Generating suggestions...</span>';
+        suggestionsList.style.display = 'none';
+        errorContainer.innerHTML = '';
+      }
+
+      if (msg.type === 'error') {
+        if (selectionInfo.querySelector('.capture-status')) {
+          selectionInfo.querySelector('.capture-status').remove();
+        }
+        errorContainer.innerHTML = `<div class="error">${msg.message}</div>`;
+      }
+
+      if (msg.type === 'auto-capture-toggled') {
+        if (msg.enabled) {
+          autoToggle.classList.add('active');
+        } else {
+          autoToggle.classList.remove('active');
+        }
+      }
+
+      if (msg.type === 'rule-suggestions') {
+        currentSuggestions = (msg.suggestions || []).map(s => ({
+          ...s,
+          component_id: msg.component_id || currentComponentId
+        }));
+        displaySuggestions(currentSuggestions);
+      }
+
+      if (msg.type === 'auto-apply-preview') {
+        showAutoApplyPreview(msg);
+      }
+
+      if (msg.type === 'rule-accepted' || msg.type === 'rule-dismissed') {
+        if (msg.ruleId) {
+          removeSuggestion(msg.ruleId);
+        }
+        
+        if (msg.type === 'rule-accepted') {
+          displayWalkthrough(msg);
+        }
+      }
+    };
+
+    // Display rule suggestions
+    function displaySuggestions(suggestions) {
+      if (suggestions.length === 0) {
+        suggestionsEmpty.style.display = 'flex';
+        suggestionsEmpty.innerHTML = '<span class="empty-text">Click to get AI-powered suggestions</span>';
+        suggestionsList.style.display = 'none';
+        return;
+      }
+      
+      suggestionsEmpty.style.display = 'none';
+      suggestionsList.style.display = 'block';
+      suggestionsList.innerHTML = '';
+      
+      suggestions.forEach((suggestion) => {
+        const item = document.createElement('div');
+        item.className = 'suggestion-item';
+        item.setAttribute('data-rule-id', suggestion.rule_id);
+        
+        const confidence = Math.round((suggestion.confidence || 0.5) * 100);
+        const dimension = suggestion.dimension ? suggestion.dimension : '';
+        
+        item.innerHTML = `
+          <div class="suggestion-header">
+            <div class="suggestion-description">${escapeHtml(suggestion.description)}</div>
+            <div class="suggestion-actions-inline">
+              <button class="suggestion-action-btn accept" 
+                      data-rule-id="${suggestion.rule_id}" 
+                      data-component-id="${suggestion.component_id || currentComponentId || ''}"
+                      title="Accept suggestion">
+                +
+              </button>
+              <button class="suggestion-action-btn reject" 
+                      data-rule-id="${suggestion.rule_id}" 
+                      data-component-id="${suggestion.component_id || currentComponentId || ''}"
+                      title="Reject suggestion">
+                ×
+              </button>
+            </div>
+          </div>
+          <div class="suggestion-meta">
+            ${dimension ? `<span class="suggestion-dimension">${escapeHtml(dimension)}</span>` : ''}
+            <span class="suggestion-confidence">${confidence}%</span>
+          </div>
+        `;
+        suggestionsList.appendChild(item);
+      });
+
+      // Add event listeners to inline action buttons
+      suggestionsList.querySelectorAll('.suggestion-action-btn.accept').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const ruleId = e.target.getAttribute('data-rule-id');
+          const componentId = e.target.getAttribute('data-component-id');
+          handleAccept(ruleId, componentId);
+        });
+      });
+
+      suggestionsList.querySelectorAll('.suggestion-action-btn.reject').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const ruleId = e.target.getAttribute('data-rule-id');
+          const componentId = e.target.getAttribute('data-component-id');
+          handleReject(ruleId, componentId);
+        });
+      });
+    }
+
+    // Handle accept action
+    function handleAccept(ruleId, componentId) {
+      parent.postMessage({ 
+        pluginMessage: { 
+          type: 'accept-rule', 
+          ruleId: ruleId,
+          component_id: componentId || currentComponentId
+        } 
+      }, '*');
+      removeSuggestion(ruleId);
+    }
+
+    // Handle reject action
+    function handleReject(ruleId, componentId) {
+      parent.postMessage({ 
+        pluginMessage: { 
+          type: 'dismiss-rule', 
+          ruleId: ruleId,
+          component_id: componentId || currentComponentId
+        } 
+      }, '*');
+      removeSuggestion(ruleId);
+    }
+
+    // Remove suggestion from UI
+    function removeSuggestion(ruleId) {
+      currentSuggestions = currentSuggestions.filter(s => s.rule_id !== ruleId);
+      displaySuggestions(currentSuggestions);
+    }
+
+    // Escape HTML to prevent XSS
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // Display walkthrough for accepted suggestion
+    function displayWalkthrough(msg) {
+      const walkthroughSection = document.getElementById('walkthrough-section');
+      const walkthroughDescription = document.getElementById('walkthrough-description');
+      const walkthroughElements = document.getElementById('walkthrough-elements');
+      const elementList = document.getElementById('element-list');
+      const walkthroughGuidance = document.getElementById('walkthrough-guidance');
+      const guidanceText = document.getElementById('guidance-text');
+      const walkthroughStatus = document.getElementById('walkthrough-status');
+      
+      if (!walkthroughSection) return;
+      
+      // Show walkthrough section
+      walkthroughSection.style.display = 'block';
+      
+      // Set description
+      const suggestion = msg.suggestion || {};
+      walkthroughDescription.textContent = suggestion.description || 'Accepted suggestion';
+      
+      // Show elements if available
+      if (msg.elements && msg.elements.length > 0) {
+        walkthroughElements.style.display = 'block';
+        elementList.innerHTML = '';
+        msg.elements.forEach(element => {
+          const li = document.createElement('li');
+          li.textContent = `${element.name} (${element.type})`;
+          elementList.appendChild(li);
+        });
+      } else {
+        walkthroughElements.style.display = 'none';
+      }
+      
+      // Show guidance if available
+      if (msg.guidance) {
+        walkthroughGuidance.style.display = 'block';
+        guidanceText.innerHTML = msg.guidance;
+      } else {
+        walkthroughGuidance.style.display = 'none';
+      }
+      
+      // Show status
+      if (msg.autoApplied) {
+        walkthroughStatus.className = 'walkthrough-status success';
+        walkthroughStatus.textContent = `${msg.message || 'Changes applied automatically'} - You can undo in Figma (Cmd+Z)`;
+      } else {
+        walkthroughStatus.className = 'walkthrough-status';
+        walkthroughStatus.textContent = msg.message || 'Please apply changes manually';
+      }
+      
+      // Scroll to walkthrough
+      walkthroughSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    // Close walkthrough
+    const walkthroughClose = document.getElementById('walkthrough-close');
+    if (walkthroughClose) {
+      walkthroughClose.addEventListener('click', () => {
+        const walkthroughSection = document.getElementById('walkthrough-section');
+        if (walkthroughSection) {
+          walkthroughSection.style.display = 'none';
+        }
+      });
+    }
+
+    // Auto-Apply Preview
+    function showAutoApplyPreview(msg) {
+      const modal = document.getElementById('preview-modal');
+      const description = document.getElementById('preview-description');
+      const count = document.getElementById('preview-count');
+      const dimension = document.getElementById('preview-dimension');
+      const elementsList = document.getElementById('preview-elements-list');
+      const elementsContainer = document.getElementById('preview-elements');
+      const confirmBtn = document.getElementById('preview-confirm');
+      const cancelBtn = document.getElementById('preview-cancel');
+      const closeBtn = document.getElementById('preview-close');
+
+      if (!modal) return;
+
+      // Set content
+      description.textContent = msg.suggestion?.description || 'Apply this suggestion automatically?';
+      count.textContent = msg.affectedCount || 0;
+      dimension.textContent = (msg.suggestion?.dimension || 'general').toUpperCase();
+
+      // Show elements if available
+      if (msg.elements && msg.elements.length > 0) {
+        elementsContainer.style.display = 'block';
+        elementsList.innerHTML = '';
+        msg.elements.forEach(element => {
+          const li = document.createElement('li');
+          li.textContent = `${element.name} (${element.type})`;
+          elementsList.appendChild(li);
+        });
+      } else {
+        elementsContainer.style.display = 'none';
+      }
+
+      // Show modal
+      modal.style.display = 'flex';
+
+      // Handle confirm
+      const handleConfirm = () => {
+        parent.postMessage({
+          pluginMessage: {
+            type: 'confirm-auto-apply'
+          }
+        }, '*');
+        modal.style.display = 'none';
+        // Remove listeners
+        confirmBtn.removeEventListener('click', handleConfirm);
+        cancelBtn.removeEventListener('click', handleCancel);
+        closeBtn.removeEventListener('click', handleCancel);
+      };
+
+      // Handle cancel
+      const handleCancel = () => {
+        parent.postMessage({
+          pluginMessage: {
+            type: 'cancel-auto-apply'
+          }
+        }, '*');
+        modal.style.display = 'none';
+        // Remove listeners
+        confirmBtn.removeEventListener('click', handleConfirm);
+        cancelBtn.removeEventListener('click', handleCancel);
+        closeBtn.removeEventListener('click', handleCancel);
+      };
+
+      confirmBtn.addEventListener('click', handleConfirm);
+      cancelBtn.addEventListener('click', handleCancel);
+      closeBtn.addEventListener('click', handleCancel);
+    }
+
+    // Auto-capture toggle
+    autoToggle.addEventListener('click', () => {
+      const enabled = !autoToggle.classList.contains('active');
+      parent.postMessage({ pluginMessage: { type: 'toggle-auto-capture', enabled } }, '*');
+    });
+
+    // View snapshots button
+    viewerBtn.addEventListener('click', () => {
+      parent.postMessage({ pluginMessage: { type: 'open-viewer' } }, '*');
+    });
+
+    // Suggestion button
+    const suggestBtn = document.getElementById('suggest-btn');
+
+    function updateSuggestButton() {
+      const hasSelection = currentSelection !== null;
+      suggestBtn.disabled = !hasSelection;
+    }
+
+    suggestBtn.addEventListener('click', () => {
+      if (currentSelection && currentComponentId) {
+        parent.postMessage({ 
+          pluginMessage: { 
+            type: 'request-suggestions',
+            component_id: currentComponentId
+          } 
+        }, '*');
+        suggestBtn.disabled = true;
+        const btnText = suggestBtn.querySelector('.btn-text');
+        if (btnText) {
+          btnText.textContent = 'Loading...';
+        } else {
+          suggestBtn.textContent = 'Loading...';
+        }
+      }
+    });
+
+    // Update suggest button state when selection changes
+    const originalOnMessage = window.onmessage;
+    window.onmessage = (event) => {
+      originalOnMessage(event);
+      const msg = event.data.pluginMessage;
+      
+      if (msg.type === 'selection-changed' || msg.type === 'selection-cleared') {
+        updateSuggestButton();
+      }
+
+      if (msg.type === 'rule-suggestions') {
+        updateSuggestButton();
+        const btnText = suggestBtn.querySelector('.btn-text');
+        if (btnText) {
+          btnText.textContent = 'Get Suggestions';
+        } else {
+          suggestBtn.textContent = 'Get Suggestions';
+        }
+      }
+    };
+
+    // Check connection on load
+    checkConnection();
+    setInterval(checkConnection, 5000);
+    updateSuggestButton();
+  </script>
+</body>
+</html>

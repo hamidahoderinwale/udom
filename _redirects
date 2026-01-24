@@ -1,0 +1,3 @@
+/rl-docs /rl/docs/index.html 200
+/rl-docs/* /rl/docs/:splat 200
+

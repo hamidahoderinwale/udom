@@ -1,0 +1,14 @@
+{
+  "name": "uDOM Capture",
+  "id": "udom-capture",
+  "api": "1.0.0",
+  "main": "code.js",
+  "ui": "ui.html",
+  "editorType": ["figma"],
+  "permissions": ["currentuser"],
+  "networkAccess": {
+    "allowedDomains": ["http://localhost:3000", "ws://localhost:8080"],
+    "reasoning": "Local development server for storing uDOM snapshots and streaming procedural events"
+  }
+}
+

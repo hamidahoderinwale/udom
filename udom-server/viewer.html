@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>uDOM Snapshot Viewer</title>
+  <link rel="preconnect" href="https://fonts.vercel.sh">
+  <link rel="stylesheet" href="https://fonts.vercel.sh/geist.css">
+  <link rel="stylesheet" href="/design-system.css">
+  <link rel="stylesheet" href="/public/viewer.css">
+</head>
+<body>
+  <div class="header">
+    <h1>uDOM Snapshot Viewer</h1>
+    <p>Browse and inspect captured design snapshots with intent and preference data</p>
+  </div>
+
+  <div class="container">
+    <div class="stats-bar" id="stats-bar">
+      <div class="stat-card">
+        <div class="stat-label">Total Snapshots</div>
+        <div class="stat-value" id="total-snapshots">-</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Artifacts</div>
+        <div class="stat-value" id="total-artifacts">-</div>
+      </div>
+      <div class="stat-card" style="border-left: 3px solid var(--accent);">
+        <div class="stat-label">With Intent</div>
+        <div class="stat-value" id="total-intent" style="color: var(--accent);">-</div>
+        <div class="stat-value-small" id="intent-breakdown">-</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Preferences</div>
+        <div class="stat-value" id="total-preferences">-</div>
+        <div class="stat-value-small" id="preference-breakdown">-</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Last Updated</div>
+        <div class="stat-value" id="last-updated" style="font-size: 20px;">-</div>
+      </div>
+    </div>
+
+    <div class="filters">
+      <div class="filter-group">
+        <label class="filter-label">Artifact ID</label>
+        <input type="text" class="filter-input" id="filter-artifact-id" placeholder="Filter by artifact ID...">
+      </div>
+      <div class="filter-group">
+        <label class="filter-label">Artifact Type</label>
+        <input type="text" class="filter-input" id="filter-artifact-type" placeholder="e.g., figma_component">
+      </div>
+      <div class="filter-group">
+        <label class="filter-label">Has Intent</label>
+        <select class="filter-input" id="filter-has-intent">
+          <option value="">All</option>
+          <option value="true">Yes</option>
+          <option value="false">No</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label class="filter-label">Has Preferences</label>
+        <select class="filter-input" id="filter-has-preferences">
+          <option value="">All</option>
+          <option value="true">Yes</option>
+          <option value="false">No</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label class="filter-label">Limit</label>
+        <input type="number" class="filter-input" id="filter-limit" value="50" min="1" max="500">
+      </div>
+      <div class="filter-group filter-group-action">
+        <button class="btn btn-primary" onclick="loadData()">Refresh</button>
+      </div>
+    </div>
+
+    <div id="error-container"></div>
+    
+
+    <div id="snapshots-container" class="snapshots-grid">
+      <div class="loading">Loading snapshots...</div>
+    </div>
+
+    <!-- Modal for snapshot details -->
+    <div id="snapshot-modal" class="modal" style="display: none;">
+      <div class="modal-overlay" onclick="closeSnapshotModal()"></div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Snapshot Details</h2>
+          <button class="modal-close" onclick="closeSnapshotModal()">&times;</button>
+        </div>
+        <div class="modal-body" id="snapshot-modal-body">
+          <!-- Content will be inserted here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/public/viewer.js"></script>
+</body>
+</html>

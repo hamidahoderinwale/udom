@@ -1,0 +1,969 @@
+{
+  "snapshots": {
+    "2c034ac8-fbed-49f4-b2a5-d9daac060e55": {
+      "snapshot_id": "2c034ac8-fbed-49f4-b2a5-d9daac060e55",
+      "artifact_id": "figma://file/undefined/node/1:45",
+      "artifact_type": "figma_component",
+      "timestamp": 1769130144603,
+      "filepath": "2026/01/22/2c034ac8-fbed-49f4-b2a5-d9daac060e55.json",
+      "created_at": "2026-01-23T01:02:24.692Z"
+    },
+    "b71f068d-e4f3-452c-926b-1fc2f3e8eedd": {
+      "snapshot_id": "b71f068d-e4f3-452c-926b-1fc2f3e8eedd",
+      "artifact_id": "figma://file/undefined/node/1:45",
+      "artifact_type": "figma_component",
+      "timestamp": 1769130145348,
+      "filepath": "2026/01/22/b71f068d-e4f3-452c-926b-1fc2f3e8eedd.json",
+      "created_at": "2026-01-23T01:02:25.365Z"
+    },
+    "ce150007-9a37-4220-8f9d-c71ca79ba56f": {
+      "snapshot_id": "ce150007-9a37-4220-8f9d-c71ca79ba56f",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769130208640,
+      "filepath": "2026/01/22/ce150007-9a37-4220-8f9d-c71ca79ba56f.json",
+      "created_at": "2026-01-23T01:03:28.653Z"
+    },
+    "15495515-e6b9-42d8-93e8-1752b7193411": {
+      "snapshot_id": "15495515-e6b9-42d8-93e8-1752b7193411",
+      "artifact_id": "figma://file/undefined/node/1:45",
+      "artifact_type": "figma_component",
+      "timestamp": 1769130210028,
+      "filepath": "2026/01/22/15495515-e6b9-42d8-93e8-1752b7193411.json",
+      "created_at": "2026-01-23T01:03:30.036Z"
+    },
+    "d2ad7d5f-b172-46bb-8689-b66d358e0960": {
+      "snapshot_id": "d2ad7d5f-b172-46bb-8689-b66d358e0960",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769132118533,
+      "filepath": "2026/01/22/d2ad7d5f-b172-46bb-8689-b66d358e0960.json",
+      "created_at": "2026-01-23T01:35:18.665Z"
+    },
+    "360cdbc9-826e-44ed-b355-97d26ccd6376": {
+      "snapshot_id": "360cdbc9-826e-44ed-b355-97d26ccd6376",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769132122075,
+      "filepath": "2026/01/22/360cdbc9-826e-44ed-b355-97d26ccd6376.json",
+      "created_at": "2026-01-23T01:35:22.087Z"
+    },
+    "ff2dbe81-8a1d-49d0-9404-91b36b0b3375": {
+      "snapshot_id": "ff2dbe81-8a1d-49d0-9404-91b36b0b3375",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769132571003,
+      "filepath": "2026/01/22/ff2dbe81-8a1d-49d0-9404-91b36b0b3375.json",
+      "created_at": "2026-01-23T01:42:51.054Z"
+    },
+    "a54f5f04-f8e3-4aa3-8126-68fd6b989e21": {
+      "snapshot_id": "a54f5f04-f8e3-4aa3-8126-68fd6b989e21",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769132576245,
+      "filepath": "2026/01/22/a54f5f04-f8e3-4aa3-8126-68fd6b989e21.json",
+      "created_at": "2026-01-23T01:42:56.255Z"
+    },
+    "f9498ef1-6d0a-4053-9896-14ab4d49f811": {
+      "snapshot_id": "f9498ef1-6d0a-4053-9896-14ab4d49f811",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769132577663,
+      "filepath": "2026/01/22/f9498ef1-6d0a-4053-9896-14ab4d49f811.json",
+      "created_at": "2026-01-23T01:42:57.674Z"
+    },
+    "075b9496-286b-459d-8f05-cd1dcd4e7bf6": {
+      "snapshot_id": "075b9496-286b-459d-8f05-cd1dcd4e7bf6",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769132579485,
+      "filepath": "2026/01/22/075b9496-286b-459d-8f05-cd1dcd4e7bf6.json",
+      "created_at": "2026-01-23T01:42:59.496Z"
+    },
+    "944f479e-f406-4485-baa5-d0d1d25a910f": {
+      "snapshot_id": "944f479e-f406-4485-baa5-d0d1d25a910f",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769132583460,
+      "filepath": "2026/01/22/944f479e-f406-4485-baa5-d0d1d25a910f.json",
+      "created_at": "2026-01-23T01:43:03.466Z"
+    },
+    "9e0b6ca8-bfd9-49ce-b698-2db2b80d5b09": {
+      "snapshot_id": "9e0b6ca8-bfd9-49ce-b698-2db2b80d5b09",
+      "artifact_id": "figma://file/undefined/node/1:45",
+      "artifact_type": "figma_component",
+      "timestamp": 1769132584355,
+      "filepath": "2026/01/22/9e0b6ca8-bfd9-49ce-b698-2db2b80d5b09.json",
+      "created_at": "2026-01-23T01:43:04.362Z"
+    },
+    "72004c44-706b-4a89-87f6-92738d0b68f9": {
+      "snapshot_id": "72004c44-706b-4a89-87f6-92738d0b68f9",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769132645998,
+      "filepath": "2026/01/22/72004c44-706b-4a89-87f6-92738d0b68f9.json",
+      "created_at": "2026-01-23T01:44:06.004Z"
+    },
+    "f8dbde6c-c6f2-47ef-ba45-d6ff0bbd6d9d": {
+      "snapshot_id": "f8dbde6c-c6f2-47ef-ba45-d6ff0bbd6d9d",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769141973251,
+      "filepath": "2026/01/22/f8dbde6c-c6f2-47ef-ba45-d6ff0bbd6d9d.json",
+      "created_at": "2026-01-23T04:19:33.351Z"
+    },
+    "58b35bd2-d343-4385-b423-18bed12ced78": {
+      "snapshot_id": "58b35bd2-d343-4385-b423-18bed12ced78",
+      "artifact_id": "figma://file/undefined/node/1:45",
+      "artifact_type": "figma_component",
+      "timestamp": 1769142093221,
+      "filepath": "2026/01/22/58b35bd2-d343-4385-b423-18bed12ced78.json",
+      "created_at": "2026-01-23T04:21:33.239Z"
+    },
+    "92b99a26-0269-4916-9f8e-a12cb52ce34d": {
+      "snapshot_id": "92b99a26-0269-4916-9f8e-a12cb52ce34d",
+      "artifact_id": "figma://file/undefined/node/1:45",
+      "artifact_type": "figma_component",
+      "timestamp": 1769142094289,
+      "filepath": "2026/01/22/92b99a26-0269-4916-9f8e-a12cb52ce34d.json",
+      "created_at": "2026-01-23T04:21:34.335Z"
+    },
+    "93485d87-2f3d-4279-8520-4512a6405ef2": {
+      "snapshot_id": "93485d87-2f3d-4279-8520-4512a6405ef2",
+      "artifact_id": "figma://file/undefined/node/1:45",
+      "artifact_type": "figma_component",
+      "timestamp": 1769142095397,
+      "filepath": "2026/01/22/93485d87-2f3d-4279-8520-4512a6405ef2.json",
+      "created_at": "2026-01-23T04:21:35.403Z"
+    },
+    "9791853b-8e5d-48ba-b941-7a13c6f13282": {
+      "snapshot_id": "9791853b-8e5d-48ba-b941-7a13c6f13282",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769142721471,
+      "filepath": "2026/01/22/9791853b-8e5d-48ba-b941-7a13c6f13282.json",
+      "created_at": "2026-01-23T04:32:01.594Z"
+    },
+    "9d422def-4f93-432c-9ee3-e81ec82dfa27": {
+      "snapshot_id": "9d422def-4f93-432c-9ee3-e81ec82dfa27",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769142724869,
+      "filepath": "2026/01/22/9d422def-4f93-432c-9ee3-e81ec82dfa27.json",
+      "created_at": "2026-01-23T04:32:04.877Z"
+    },
+    "4aed60f5-9cd1-4137-9c94-681135b4b08a": {
+      "snapshot_id": "4aed60f5-9cd1-4137-9c94-681135b4b08a",
+      "artifact_id": "figma://file/undefined/node/1:45",
+      "artifact_type": "figma_component",
+      "timestamp": 1769142725908,
+      "filepath": "2026/01/22/4aed60f5-9cd1-4137-9c94-681135b4b08a.json",
+      "created_at": "2026-01-23T04:32:05.927Z"
+    },
+    "957ac80b-008e-4f5b-831b-16bbf90acead": {
+      "snapshot_id": "957ac80b-008e-4f5b-831b-16bbf90acead",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769142830700,
+      "filepath": "2026/01/22/957ac80b-008e-4f5b-831b-16bbf90acead.json",
+      "created_at": "2026-01-23T04:33:50.783Z"
+    },
+    "ca7ede5f-7572-4dcf-aa6d-3c1953c3eb22": {
+      "snapshot_id": "ca7ede5f-7572-4dcf-aa6d-3c1953c3eb22",
+      "artifact_id": "figma://file/undefined/node/30:2",
+      "artifact_type": "figma_component",
+      "timestamp": 1769142832251,
+      "filepath": "2026/01/22/ca7ede5f-7572-4dcf-aa6d-3c1953c3eb22.json",
+      "created_at": "2026-01-23T04:33:52.260Z"
+    },
+    "da649109-428e-4c23-bc5d-8d917e6202ed": {
+      "snapshot_id": "da649109-428e-4c23-bc5d-8d917e6202ed",
+      "artifact_id": "figma://file/undefined/node/30:3",
+      "artifact_type": "figma_component",
+      "timestamp": 1769142833351,
+      "filepath": "2026/01/22/da649109-428e-4c23-bc5d-8d917e6202ed.json",
+      "created_at": "2026-01-23T04:33:53.360Z"
+    },
+    "2df6ba7c-e22c-4ab7-88b9-4ff63cb527b4": {
+      "snapshot_id": "2df6ba7c-e22c-4ab7-88b9-4ff63cb527b4",
+      "artifact_id": "figma://file/undefined/node/1:45",
+      "artifact_type": "figma_component",
+      "timestamp": 1769142835512,
+      "filepath": "2026/01/22/2df6ba7c-e22c-4ab7-88b9-4ff63cb527b4.json",
+      "created_at": "2026-01-23T04:33:55.519Z"
+    },
+    "870d8155-4cb0-40f6-879f-5ae3db0e279e": {
+      "snapshot_id": "870d8155-4cb0-40f6-879f-5ae3db0e279e",
+      "artifact_id": "figma://file/undefined/node/1:45",
+      "artifact_type": "figma_component",
+      "timestamp": 1769143204144,
+      "filepath": "2026/01/22/870d8155-4cb0-40f6-879f-5ae3db0e279e.json",
+      "created_at": "2026-01-23T04:40:04.166Z"
+    },
+    "8f1c9f84-02cd-4b23-9906-51bc9f7d0775": {
+      "snapshot_id": "8f1c9f84-02cd-4b23-9906-51bc9f7d0775",
+      "artifact_id": "figma://file/undefined/node/1:45",
+      "artifact_type": "figma_component",
+      "timestamp": 1769143205143,
+      "filepath": "2026/01/22/8f1c9f84-02cd-4b23-9906-51bc9f7d0775.json",
+      "created_at": "2026-01-23T04:40:05.155Z"
+    },
+    "61ab7c81-5150-484e-892e-5bfc871662a0": {
+      "snapshot_id": "61ab7c81-5150-484e-892e-5bfc871662a0",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769143206943,
+      "filepath": "2026/01/22/61ab7c81-5150-484e-892e-5bfc871662a0.json",
+      "created_at": "2026-01-23T04:40:06.969Z"
+    },
+    "105950de-9815-464e-9b32-e98647706138": {
+      "snapshot_id": "105950de-9815-464e-9b32-e98647706138",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769143395736,
+      "filepath": "2026/01/22/105950de-9815-464e-9b32-e98647706138.json",
+      "created_at": "2026-01-23T04:43:15.772Z"
+    },
+    "9dc3af59-7e7b-4531-8443-694993d7317a": {
+      "snapshot_id": "9dc3af59-7e7b-4531-8443-694993d7317a",
+      "artifact_id": "figma://file/undefined/node/1:45",
+      "artifact_type": "figma_component",
+      "timestamp": 1769143396352,
+      "filepath": "2026/01/22/9dc3af59-7e7b-4531-8443-694993d7317a.json",
+      "created_at": "2026-01-23T04:43:16.410Z"
+    },
+    "89f1f36e-2773-4795-aec9-60c6b742049f": {
+      "snapshot_id": "89f1f36e-2773-4795-aec9-60c6b742049f",
+      "artifact_id": "figma://file/undefined/node/1:45",
+      "artifact_type": "figma_component",
+      "timestamp": 1769143397055,
+      "filepath": "2026/01/22/89f1f36e-2773-4795-aec9-60c6b742049f.json",
+      "created_at": "2026-01-23T04:43:17.062Z"
+    },
+    "cc08d4a3-6207-4452-b763-7ee331222db4": {
+      "snapshot_id": "cc08d4a3-6207-4452-b763-7ee331222db4",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769143397625,
+      "filepath": "2026/01/22/cc08d4a3-6207-4452-b763-7ee331222db4.json",
+      "created_at": "2026-01-23T04:43:17.630Z"
+    },
+    "ec140175-b3d5-4818-98b5-746ca02e5a77": {
+      "snapshot_id": "ec140175-b3d5-4818-98b5-746ca02e5a77",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769148582869,
+      "filepath": "2026/01/22/ec140175-b3d5-4818-98b5-746ca02e5a77.json",
+      "created_at": "2026-01-23T06:09:42.892Z"
+    },
+    "58003dc6-0e50-4744-87e2-ecd5a17244d1": {
+      "snapshot_id": "58003dc6-0e50-4744-87e2-ecd5a17244d1",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769148584644,
+      "filepath": "2026/01/22/58003dc6-0e50-4744-87e2-ecd5a17244d1.json",
+      "created_at": "2026-01-23T06:09:44.656Z"
+    },
+    "5d176bdb-a91b-4603-80b3-2909b70c4768": {
+      "snapshot_id": "5d176bdb-a91b-4603-80b3-2909b70c4768",
+      "artifact_id": "figma://file/undefined/node/1:45",
+      "artifact_type": "figma_component",
+      "timestamp": 1769148585691,
+      "filepath": "2026/01/22/5d176bdb-a91b-4603-80b3-2909b70c4768.json",
+      "created_at": "2026-01-23T06:09:45.710Z"
+    },
+    "ef5fa8da-1d0f-4955-b871-611497893132": {
+      "snapshot_id": "ef5fa8da-1d0f-4955-b871-611497893132",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769148602519,
+      "filepath": "2026/01/22/ef5fa8da-1d0f-4955-b871-611497893132.json",
+      "created_at": "2026-01-23T06:10:02.533Z"
+    },
+    "1a33110b-053b-4943-8f4b-7788540adb2c": {
+      "snapshot_id": "1a33110b-053b-4943-8f4b-7788540adb2c",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769148603695,
+      "filepath": "2026/01/22/1a33110b-053b-4943-8f4b-7788540adb2c.json",
+      "created_at": "2026-01-23T06:10:03.704Z"
+    },
+    "3030ff04-9fbe-4469-b2d5-f354d6b8f567": {
+      "snapshot_id": "3030ff04-9fbe-4469-b2d5-f354d6b8f567",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769148691020,
+      "filepath": "2026/01/22/3030ff04-9fbe-4469-b2d5-f354d6b8f567.json",
+      "created_at": "2026-01-23T06:11:31.027Z"
+    },
+    "1a8b5ae6-0dd9-40df-ab72-474bf5386e95": {
+      "snapshot_id": "1a8b5ae6-0dd9-40df-ab72-474bf5386e95",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769149128637,
+      "filepath": "2026/01/22/1a8b5ae6-0dd9-40df-ab72-474bf5386e95.json",
+      "created_at": "2026-01-23T06:18:48.645Z"
+    },
+    "01f5c740-9829-4832-90fe-daeb09a88461": {
+      "snapshot_id": "01f5c740-9829-4832-90fe-daeb09a88461",
+      "artifact_id": "figma://file/undefined/node/1:45",
+      "artifact_type": "figma_component",
+      "timestamp": 1769191375715,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/01f5c740-9829-4832-90fe-daeb09a88461.json",
+      "date_path": "2026/01/23"
+    },
+    "17719271-3ae0-4a89-a5ea-33e3907ff25d": {
+      "snapshot_id": "17719271-3ae0-4a89-a5ea-33e3907ff25d",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769191376546,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/17719271-3ae0-4a89-a5ea-33e3907ff25d.json",
+      "date_path": "2026/01/23"
+    },
+    "f71c3889-a283-4a6f-abaa-3b139b5bc3a6": {
+      "snapshot_id": "f71c3889-a283-4a6f-abaa-3b139b5bc3a6",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769192327930,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/f71c3889-a283-4a6f-abaa-3b139b5bc3a6.json",
+      "date_path": "2026/01/23"
+    },
+    "80d4599a-4458-4856-8a51-949d1304d518": {
+      "snapshot_id": "80d4599a-4458-4856-8a51-949d1304d518",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769192328724,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/80d4599a-4458-4856-8a51-949d1304d518.json",
+      "date_path": "2026/01/23"
+    },
+    "0f8a09a3-f178-4cb7-a211-df781995a4da": {
+      "snapshot_id": "0f8a09a3-f178-4cb7-a211-df781995a4da",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769192334791,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/0f8a09a3-f178-4cb7-a211-df781995a4da.json",
+      "date_path": "2026/01/23"
+    },
+    "b22153ab-64d2-45f3-a459-ef8f555d6d8b": {
+      "snapshot_id": "b22153ab-64d2-45f3-a459-ef8f555d6d8b",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769192705289,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/b22153ab-64d2-45f3-a459-ef8f555d6d8b.json",
+      "date_path": "2026/01/23"
+    },
+    "b6471613-7803-4bae-8bb5-9ccfa8539f06": {
+      "snapshot_id": "b6471613-7803-4bae-8bb5-9ccfa8539f06",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769192710383,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/b6471613-7803-4bae-8bb5-9ccfa8539f06.json",
+      "date_path": "2026/01/23"
+    },
+    "6ca623b0-dc40-4143-8892-b110444589d3": {
+      "snapshot_id": "6ca623b0-dc40-4143-8892-b110444589d3",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769192722746,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/6ca623b0-dc40-4143-8892-b110444589d3.json",
+      "date_path": "2026/01/23"
+    },
+    "e02ad861-c279-4f5e-ad55-8902ef109955": {
+      "snapshot_id": "e02ad861-c279-4f5e-ad55-8902ef109955",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769192727658,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/e02ad861-c279-4f5e-ad55-8902ef109955.json",
+      "date_path": "2026/01/23"
+    },
+    "e198dfd0-fa27-4533-ae69-e4ed15b4dc0b": {
+      "snapshot_id": "e198dfd0-fa27-4533-ae69-e4ed15b4dc0b",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769197164483,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/e198dfd0-fa27-4533-ae69-e4ed15b4dc0b.json",
+      "date_path": "2026/01/23"
+    },
+    "d30b0f89-b9ac-41db-9f0c-dc8f2a1ef96b": {
+      "snapshot_id": "d30b0f89-b9ac-41db-9f0c-dc8f2a1ef96b",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769197165342,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/d30b0f89-b9ac-41db-9f0c-dc8f2a1ef96b.json",
+      "date_path": "2026/01/23"
+    },
+    "a744a3f2-0b90-4931-9f02-5c9a708686d7": {
+      "snapshot_id": "a744a3f2-0b90-4931-9f02-5c9a708686d7",
+      "artifact_id": "figma://file/undefined/node/1:45",
+      "artifact_type": "figma_component",
+      "timestamp": 1769197166005,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/a744a3f2-0b90-4931-9f02-5c9a708686d7.json",
+      "date_path": "2026/01/23"
+    },
+    "927e788a-e22a-4c41-adc5-3acced6d320a": {
+      "snapshot_id": "927e788a-e22a-4c41-adc5-3acced6d320a",
+      "artifact_id": "figma://file/undefined/node/1:45",
+      "artifact_type": "figma_component",
+      "timestamp": 1769197167273,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/927e788a-e22a-4c41-adc5-3acced6d320a.json",
+      "date_path": "2026/01/23"
+    },
+    "1f313895-fc58-4529-b875-a727ba864e87": {
+      "snapshot_id": "1f313895-fc58-4529-b875-a727ba864e87",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769197203198,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/1f313895-fc58-4529-b875-a727ba864e87.json",
+      "date_path": "2026/01/23"
+    },
+    "1d1a61d6-6900-4e14-970f-a6d47c7a767a": {
+      "snapshot_id": "1d1a61d6-6900-4e14-970f-a6d47c7a767a",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769197208334,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/1d1a61d6-6900-4e14-970f-a6d47c7a767a.json",
+      "date_path": "2026/01/23"
+    },
+    "ab0dd04f-a1d8-4c75-a357-39d83c4cb31c": {
+      "snapshot_id": "ab0dd04f-a1d8-4c75-a357-39d83c4cb31c",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769197848538,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/ab0dd04f-a1d8-4c75-a357-39d83c4cb31c.json",
+      "date_path": "2026/01/23"
+    },
+    "bb837610-1232-4a97-9eb7-1c1388164037": {
+      "snapshot_id": "bb837610-1232-4a97-9eb7-1c1388164037",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769198036965,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/bb837610-1232-4a97-9eb7-1c1388164037.json",
+      "date_path": "2026/01/23"
+    },
+    "3a061e6c-cc27-4cb3-b200-31def143011e": {
+      "snapshot_id": "3a061e6c-cc27-4cb3-b200-31def143011e",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769198053611,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/3a061e6c-cc27-4cb3-b200-31def143011e.json",
+      "date_path": "2026/01/23"
+    },
+    "173cb3cb-bba3-43b6-a2eb-2388b44e403e": {
+      "snapshot_id": "173cb3cb-bba3-43b6-a2eb-2388b44e403e",
+      "artifact_id": "figma://file/undefined/node/41:5",
+      "artifact_type": "figma_component",
+      "timestamp": 1769198092434,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/173cb3cb-bba3-43b6-a2eb-2388b44e403e.json",
+      "date_path": "2026/01/23"
+    },
+    "912c480c-442e-47eb-9be0-4597e9b4b5ef": {
+      "snapshot_id": "912c480c-442e-47eb-9be0-4597e9b4b5ef",
+      "artifact_id": "figma://file/undefined/node/1:42",
+      "artifact_type": "figma_component",
+      "timestamp": 1769198094249,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/912c480c-442e-47eb-9be0-4597e9b4b5ef.json",
+      "date_path": "2026/01/23"
+    },
+    "25055a66-0adf-4f78-aec6-18a834ef2fb3": {
+      "snapshot_id": "25055a66-0adf-4f78-aec6-18a834ef2fb3",
+      "artifact_id": "figma://file/undefined/node/41:8",
+      "artifact_type": "figma_component",
+      "timestamp": 1769198108322,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/25055a66-0adf-4f78-aec6-18a834ef2fb3.json",
+      "date_path": "2026/01/23"
+    },
+    "384121e0-9029-446d-b3d8-78ce64d67caa": {
+      "snapshot_id": "384121e0-9029-446d-b3d8-78ce64d67caa",
+      "artifact_id": "figma://file/undefined/node/41:5",
+      "artifact_type": "figma_component",
+      "timestamp": 1769198136998,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/384121e0-9029-446d-b3d8-78ce64d67caa.json",
+      "date_path": "2026/01/23"
+    },
+    "1b13a5c6-fca6-4673-ad3e-233e9deb741a": {
+      "snapshot_id": "1b13a5c6-fca6-4673-ad3e-233e9deb741a",
+      "artifact_id": "figma://file/undefined/node/1:45",
+      "artifact_type": "figma_component",
+      "timestamp": 1769198185837,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/1b13a5c6-fca6-4673-ad3e-233e9deb741a.json",
+      "date_path": "2026/01/23"
+    },
+    "d0b84c4c-1e53-4b47-9354-4c08adf4a6df": {
+      "snapshot_id": "d0b84c4c-1e53-4b47-9354-4c08adf4a6df",
+      "artifact_id": "figma://file/undefined/node/1:45",
+      "artifact_type": "figma_component",
+      "timestamp": 1769198187282,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/d0b84c4c-1e53-4b47-9354-4c08adf4a6df.json",
+      "date_path": "2026/01/23"
+    },
+    "89783ec0-e874-46bb-b39c-04ffc0c16b8c": {
+      "snapshot_id": "89783ec0-e874-46bb-b39c-04ffc0c16b8c",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769198190016,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/89783ec0-e874-46bb-b39c-04ffc0c16b8c.json",
+      "date_path": "2026/01/23"
+    },
+    "80c33834-ddad-47a5-92f9-53da672cbdc3": {
+      "snapshot_id": "80c33834-ddad-47a5-92f9-53da672cbdc3",
+      "artifact_id": "figma://file/undefined/node/1:45",
+      "artifact_type": "figma_component",
+      "timestamp": 1769198193936,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/80c33834-ddad-47a5-92f9-53da672cbdc3.json",
+      "date_path": "2026/01/23"
+    },
+    "7adfce2b-6eef-47d8-b582-e70fccc9fd4f": {
+      "snapshot_id": "7adfce2b-6eef-47d8-b582-e70fccc9fd4f",
+      "artifact_id": "figma://file/undefined/node/1:45",
+      "artifact_type": "figma_component",
+      "timestamp": 1769198196061,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/7adfce2b-6eef-47d8-b582-e70fccc9fd4f.json",
+      "date_path": "2026/01/23"
+    },
+    "1c9a0ec9-cb4f-4465-bdd0-9db38550d295": {
+      "snapshot_id": "1c9a0ec9-cb4f-4465-bdd0-9db38550d295",
+      "artifact_id": "figma://file/undefined/node/1:45",
+      "artifact_type": "figma_component",
+      "timestamp": 1769198197153,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/1c9a0ec9-cb4f-4465-bdd0-9db38550d295.json",
+      "date_path": "2026/01/23"
+    },
+    "71760e27-2b24-4e8d-882c-31a603e8d4db": {
+      "snapshot_id": "71760e27-2b24-4e8d-882c-31a603e8d4db",
+      "artifact_id": "figma://file/undefined/node/1:45",
+      "artifact_type": "figma_component",
+      "timestamp": 1769198198209,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/71760e27-2b24-4e8d-882c-31a603e8d4db.json",
+      "date_path": "2026/01/23"
+    },
+    "55025554-43ea-4fa3-8aa0-689e4e78bdd5": {
+      "snapshot_id": "55025554-43ea-4fa3-8aa0-689e4e78bdd5",
+      "artifact_id": "figma://file/undefined/node/1:45",
+      "artifact_type": "figma_component",
+      "timestamp": 1769198245092,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/55025554-43ea-4fa3-8aa0-689e4e78bdd5.json",
+      "date_path": "2026/01/23"
+    },
+    "432784e9-19a9-43d1-b7f0-9309badf2bde": {
+      "snapshot_id": "432784e9-19a9-43d1-b7f0-9309badf2bde",
+      "artifact_id": "figma://file/undefined/node/1:45",
+      "artifact_type": "figma_component",
+      "timestamp": 1769198314883,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/432784e9-19a9-43d1-b7f0-9309badf2bde.json",
+      "date_path": "2026/01/23"
+    },
+    "b81b8036-fff1-4ea9-ba3f-c2ac26664b9a": {
+      "snapshot_id": "b81b8036-fff1-4ea9-ba3f-c2ac26664b9a",
+      "artifact_id": "figma://file/undefined/node/1:45",
+      "artifact_type": "figma_component",
+      "timestamp": 1769198547295,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/b81b8036-fff1-4ea9-ba3f-c2ac26664b9a.json",
+      "date_path": "2026/01/23"
+    },
+    "0a262a20-cdf2-4a17-bb77-c91cbdc6724d": {
+      "snapshot_id": "0a262a20-cdf2-4a17-bb77-c91cbdc6724d",
+      "artifact_id": "figma://file/undefined/node/1:45",
+      "artifact_type": "figma_component",
+      "timestamp": 1769199373782,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/0a262a20-cdf2-4a17-bb77-c91cbdc6724d.json",
+      "date_path": "2026/01/23"
+    },
+    "72fadb0c-62d4-4f85-abcd-b24e247ae1af": {
+      "snapshot_id": "72fadb0c-62d4-4f85-abcd-b24e247ae1af",
+      "artifact_id": "figma://file/undefined/node/1:45",
+      "artifact_type": "figma_component",
+      "timestamp": 1769199501786,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/72fadb0c-62d4-4f85-abcd-b24e247ae1af.json",
+      "date_path": "2026/01/23"
+    },
+    "3c26ea86-1f86-420f-980c-05460bfbb368": {
+      "snapshot_id": "3c26ea86-1f86-420f-980c-05460bfbb368",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769199502951,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/3c26ea86-1f86-420f-980c-05460bfbb368.json",
+      "date_path": "2026/01/23"
+    },
+    "f32bb470-8a24-4de9-aaf5-7767730bc923": {
+      "snapshot_id": "f32bb470-8a24-4de9-aaf5-7767730bc923",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769199506833,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/f32bb470-8a24-4de9-aaf5-7767730bc923.json",
+      "date_path": "2026/01/23"
+    },
+    "39df6a27-f3be-4f8a-8c17-0c1ba58d9907": {
+      "snapshot_id": "39df6a27-f3be-4f8a-8c17-0c1ba58d9907",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769200367473,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/39df6a27-f3be-4f8a-8c17-0c1ba58d9907.json",
+      "date_path": "2026/01/23"
+    },
+    "9b1c89b1-f854-4681-9a82-5f9454b04ba8": {
+      "snapshot_id": "9b1c89b1-f854-4681-9a82-5f9454b04ba8",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769200368146,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/9b1c89b1-f854-4681-9a82-5f9454b04ba8.json",
+      "date_path": "2026/01/23"
+    },
+    "5ea54990-ad10-48d5-9133-68868d24b6b8": {
+      "snapshot_id": "5ea54990-ad10-48d5-9133-68868d24b6b8",
+      "artifact_id": "figma://file/undefined/node/1:45",
+      "artifact_type": "figma_component",
+      "timestamp": 1769200369042,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/5ea54990-ad10-48d5-9133-68868d24b6b8.json",
+      "date_path": "2026/01/23"
+    },
+    "ffd27747-4f91-4a5b-aa2e-96e2df403239": {
+      "snapshot_id": "ffd27747-4f91-4a5b-aa2e-96e2df403239",
+      "artifact_id": "figma://file/undefined/node/1:45",
+      "artifact_type": "figma_component",
+      "timestamp": 1769200370083,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/ffd27747-4f91-4a5b-aa2e-96e2df403239.json",
+      "date_path": "2026/01/23"
+    },
+    "f5ba121d-b862-4580-a787-865113c53a68": {
+      "snapshot_id": "f5ba121d-b862-4580-a787-865113c53a68",
+      "artifact_id": "figma://file/undefined/node/1:44",
+      "artifact_type": "figma_component",
+      "timestamp": 1769200615122,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/f5ba121d-b862-4580-a787-865113c53a68.json",
+      "date_path": "2026/01/23"
+    },
+    "f4c39689-47eb-476f-9c6a-aca5a7d00477": {
+      "snapshot_id": "f4c39689-47eb-476f-9c6a-aca5a7d00477",
+      "artifact_id": "figma://file/undefined/node/41:5",
+      "artifact_type": "figma_component",
+      "timestamp": 1769200755473,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/f4c39689-47eb-476f-9c6a-aca5a7d00477.json",
+      "date_path": "2026/01/23"
+    },
+    "12d8ff60-b482-4762-95b4-e91f9e84f83c": {
+      "snapshot_id": "12d8ff60-b482-4762-95b4-e91f9e84f83c",
+      "artifact_id": "figma://file/undefined/node/41:5",
+      "artifact_type": "figma_component",
+      "timestamp": 1769202767568,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/12d8ff60-b482-4762-95b4-e91f9e84f83c.json",
+      "date_path": "2026/01/23"
+    },
+    "c1286362-b14f-4988-ad11-9ad7f735cc09": {
+      "snapshot_id": "c1286362-b14f-4988-ad11-9ad7f735cc09",
+      "artifact_id": "figma://file/undefined/node/41:5",
+      "artifact_type": "figma_component",
+      "timestamp": 1769202772035,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/c1286362-b14f-4988-ad11-9ad7f735cc09.json",
+      "date_path": "2026/01/23"
+    },
+    "5ff91380-27ff-4342-be3f-506d9d515575": {
+      "snapshot_id": "5ff91380-27ff-4342-be3f-506d9d515575",
+      "artifact_id": "figma://file/undefined/node/41:5",
+      "artifact_type": "figma_component",
+      "timestamp": 1769202773789,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/5ff91380-27ff-4342-be3f-506d9d515575.json",
+      "date_path": "2026/01/23"
+    },
+    "46f15f0f-e745-4175-8eef-1c9d30d23bea": {
+      "snapshot_id": "46f15f0f-e745-4175-8eef-1c9d30d23bea",
+      "artifact_id": "figma://file/undefined/node/1:45",
+      "artifact_type": "figma_component",
+      "timestamp": 1769202809015,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/46f15f0f-e745-4175-8eef-1c9d30d23bea.json",
+      "date_path": "2026/01/23"
+    },
+    "88929960-92a7-4b49-af74-348ac34e67aa": {
+      "snapshot_id": "88929960-92a7-4b49-af74-348ac34e67aa",
+      "artifact_id": "figma://file/undefined/node/41:5",
+      "artifact_type": "figma_component",
+      "timestamp": 1769202886987,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/88929960-92a7-4b49-af74-348ac34e67aa.json",
+      "date_path": "2026/01/23"
+    },
+    "51268acf-dd60-449b-ac3b-298f82e7ecc7": {
+      "snapshot_id": "51268acf-dd60-449b-ac3b-298f82e7ecc7",
+      "artifact_id": "figma://file/undefined/node/41:5",
+      "artifact_type": "figma_component",
+      "timestamp": 1769202892589,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/51268acf-dd60-449b-ac3b-298f82e7ecc7.json",
+      "date_path": "2026/01/23"
+    },
+    "ff101c06-58e1-4bbf-ae54-134ce5628b9c": {
+      "snapshot_id": "ff101c06-58e1-4bbf-ae54-134ce5628b9c",
+      "artifact_id": "figma://file/undefined/node/41:5",
+      "artifact_type": "figma_component",
+      "timestamp": 1769206419708,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/ff101c06-58e1-4bbf-ae54-134ce5628b9c.json",
+      "date_path": "2026/01/23"
+    },
+    "2cc61bc8-ef16-4378-94d7-20a9a76a7528": {
+      "snapshot_id": "2cc61bc8-ef16-4378-94d7-20a9a76a7528",
+      "artifact_id": "figma://file/undefined/node/41:5",
+      "artifact_type": "figma_component",
+      "timestamp": 1769206420768,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/2cc61bc8-ef16-4378-94d7-20a9a76a7528.json",
+      "date_path": "2026/01/23"
+    },
+    "fab67312-2a01-4e6c-831c-d64094111e84": {
+      "snapshot_id": "fab67312-2a01-4e6c-831c-d64094111e84",
+      "artifact_id": "figma://file/undefined/node/41:5",
+      "artifact_type": "figma_component",
+      "timestamp": 1769206452879,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/fab67312-2a01-4e6c-831c-d64094111e84.json",
+      "date_path": "2026/01/23"
+    },
+    "bb8277a9-3e75-472c-896b-95006281e227": {
+      "snapshot_id": "bb8277a9-3e75-472c-896b-95006281e227",
+      "artifact_id": "figma://file/undefined/node/41:5",
+      "artifact_type": "figma_component",
+      "timestamp": 1769207236477,
+      "filepath": "/Users/hamidaho/taste/udom-server/snapshots/2026/01/23/bb8277a9-3e75-472c-896b-95006281e227.json",
+      "date_path": "2026/01/23"
+    }
+  },
+  "by_artifact_id": {
+    "figma://file/undefined/node/1:45": [
+      "2c034ac8-fbed-49f4-b2a5-d9daac060e55",
+      "b71f068d-e4f3-452c-926b-1fc2f3e8eedd",
+      "15495515-e6b9-42d8-93e8-1752b7193411",
+      "9e0b6ca8-bfd9-49ce-b698-2db2b80d5b09",
+      "58b35bd2-d343-4385-b423-18bed12ced78",
+      "92b99a26-0269-4916-9f8e-a12cb52ce34d",
+      "93485d87-2f3d-4279-8520-4512a6405ef2",
+      "4aed60f5-9cd1-4137-9c94-681135b4b08a",
+      "2df6ba7c-e22c-4ab7-88b9-4ff63cb527b4",
+      "870d8155-4cb0-40f6-879f-5ae3db0e279e",
+      "8f1c9f84-02cd-4b23-9906-51bc9f7d0775",
+      "9dc3af59-7e7b-4531-8443-694993d7317a",
+      "89f1f36e-2773-4795-aec9-60c6b742049f",
+      "5d176bdb-a91b-4603-80b3-2909b70c4768"
+    ],
+    "figma://file/undefined/node/1:44": [
+      "ce150007-9a37-4220-8f9d-c71ca79ba56f",
+      "d2ad7d5f-b172-46bb-8689-b66d358e0960",
+      "360cdbc9-826e-44ed-b355-97d26ccd6376",
+      "ff2dbe81-8a1d-49d0-9404-91b36b0b3375",
+      "a54f5f04-f8e3-4aa3-8126-68fd6b989e21",
+      "f9498ef1-6d0a-4053-9896-14ab4d49f811",
+      "075b9496-286b-459d-8f05-cd1dcd4e7bf6",
+      "944f479e-f406-4485-baa5-d0d1d25a910f",
+      "72004c44-706b-4a89-87f6-92738d0b68f9",
+      "f8dbde6c-c6f2-47ef-ba45-d6ff0bbd6d9d",
+      "9791853b-8e5d-48ba-b941-7a13c6f13282",
+      "9d422def-4f93-432c-9ee3-e81ec82dfa27",
+      "957ac80b-008e-4f5b-831b-16bbf90acead",
+      "61ab7c81-5150-484e-892e-5bfc871662a0",
+      "105950de-9815-464e-9b32-e98647706138",
+      "cc08d4a3-6207-4452-b763-7ee331222db4",
+      "ec140175-b3d5-4818-98b5-746ca02e5a77",
+      "58003dc6-0e50-4744-87e2-ecd5a17244d1",
+      "ef5fa8da-1d0f-4955-b871-611497893132",
+      "1a33110b-053b-4943-8f4b-7788540adb2c",
+      "3030ff04-9fbe-4469-b2d5-f354d6b8f567",
+      "1a8b5ae6-0dd9-40df-ab72-474bf5386e95"
+    ],
+    "figma://file/undefined/node/30:2": [
+      "ca7ede5f-7572-4dcf-aa6d-3c1953c3eb22"
+    ],
+    "figma://file/undefined/node/30:3": [
+      "da649109-428e-4c23-bc5d-8d917e6202ed"
+    ]
+  },
+  "by_artifact_type": {
+    "figma_component": [
+      "2c034ac8-fbed-49f4-b2a5-d9daac060e55",
+      "b71f068d-e4f3-452c-926b-1fc2f3e8eedd",
+      "ce150007-9a37-4220-8f9d-c71ca79ba56f",
+      "15495515-e6b9-42d8-93e8-1752b7193411",
+      "d2ad7d5f-b172-46bb-8689-b66d358e0960",
+      "360cdbc9-826e-44ed-b355-97d26ccd6376",
+      "ff2dbe81-8a1d-49d0-9404-91b36b0b3375",
+      "a54f5f04-f8e3-4aa3-8126-68fd6b989e21",
+      "f9498ef1-6d0a-4053-9896-14ab4d49f811",
+      "075b9496-286b-459d-8f05-cd1dcd4e7bf6",
+      "944f479e-f406-4485-baa5-d0d1d25a910f",
+      "9e0b6ca8-bfd9-49ce-b698-2db2b80d5b09",
+      "72004c44-706b-4a89-87f6-92738d0b68f9",
+      "f8dbde6c-c6f2-47ef-ba45-d6ff0bbd6d9d",
+      "58b35bd2-d343-4385-b423-18bed12ced78",
+      "92b99a26-0269-4916-9f8e-a12cb52ce34d",
+      "93485d87-2f3d-4279-8520-4512a6405ef2",
+      "9791853b-8e5d-48ba-b941-7a13c6f13282",
+      "9d422def-4f93-432c-9ee3-e81ec82dfa27",
+      "4aed60f5-9cd1-4137-9c94-681135b4b08a",
+      "957ac80b-008e-4f5b-831b-16bbf90acead",
+      "ca7ede5f-7572-4dcf-aa6d-3c1953c3eb22",
+      "da649109-428e-4c23-bc5d-8d917e6202ed",
+      "2df6ba7c-e22c-4ab7-88b9-4ff63cb527b4",
+      "870d8155-4cb0-40f6-879f-5ae3db0e279e",
+      "8f1c9f84-02cd-4b23-9906-51bc9f7d0775",
+      "61ab7c81-5150-484e-892e-5bfc871662a0",
+      "105950de-9815-464e-9b32-e98647706138",
+      "9dc3af59-7e7b-4531-8443-694993d7317a",
+      "89f1f36e-2773-4795-aec9-60c6b742049f",
+      "cc08d4a3-6207-4452-b763-7ee331222db4",
+      "ec140175-b3d5-4818-98b5-746ca02e5a77",
+      "58003dc6-0e50-4744-87e2-ecd5a17244d1",
+      "5d176bdb-a91b-4603-80b3-2909b70c4768",
+      "ef5fa8da-1d0f-4955-b871-611497893132",
+      "1a33110b-053b-4943-8f4b-7788540adb2c",
+      "3030ff04-9fbe-4469-b2d5-f354d6b8f567",
+      "1a8b5ae6-0dd9-40df-ab72-474bf5386e95"
+    ]
+  },
+  "by_timestamp": [
+    {
+      "snapshot_id": "1a8b5ae6-0dd9-40df-ab72-474bf5386e95",
+      "timestamp": 1769149128637
+    },
+    {
+      "snapshot_id": "3030ff04-9fbe-4469-b2d5-f354d6b8f567",
+      "timestamp": 1769148691020
+    },
+    {
+      "snapshot_id": "1a33110b-053b-4943-8f4b-7788540adb2c",
+      "timestamp": 1769148603695
+    },
+    {
+      "snapshot_id": "ef5fa8da-1d0f-4955-b871-611497893132",
+      "timestamp": 1769148602519
+    },
+    {
+      "snapshot_id": "5d176bdb-a91b-4603-80b3-2909b70c4768",
+      "timestamp": 1769148585691
+    },
+    {
+      "snapshot_id": "58003dc6-0e50-4744-87e2-ecd5a17244d1",
+      "timestamp": 1769148584644
+    },
+    {
+      "snapshot_id": "ec140175-b3d5-4818-98b5-746ca02e5a77",
+      "timestamp": 1769148582869
+    },
+    {
+      "snapshot_id": "cc08d4a3-6207-4452-b763-7ee331222db4",
+      "timestamp": 1769143397625
+    },
+    {
+      "snapshot_id": "89f1f36e-2773-4795-aec9-60c6b742049f",
+      "timestamp": 1769143397055
+    },
+    {
+      "snapshot_id": "9dc3af59-7e7b-4531-8443-694993d7317a",
+      "timestamp": 1769143396352
+    },
+    {
+      "snapshot_id": "105950de-9815-464e-9b32-e98647706138",
+      "timestamp": 1769143395736
+    },
+    {
+      "snapshot_id": "61ab7c81-5150-484e-892e-5bfc871662a0",
+      "timestamp": 1769143206943
+    },
+    {
+      "snapshot_id": "8f1c9f84-02cd-4b23-9906-51bc9f7d0775",
+      "timestamp": 1769143205143
+    },
+    {
+      "snapshot_id": "870d8155-4cb0-40f6-879f-5ae3db0e279e",
+      "timestamp": 1769143204144
+    },
+    {
+      "snapshot_id": "2df6ba7c-e22c-4ab7-88b9-4ff63cb527b4",
+      "timestamp": 1769142835512
+    },
+    {
+      "snapshot_id": "da649109-428e-4c23-bc5d-8d917e6202ed",
+      "timestamp": 1769142833351
+    },
+    {
+      "snapshot_id": "ca7ede5f-7572-4dcf-aa6d-3c1953c3eb22",
+      "timestamp": 1769142832251
+    },
+    {
+      "snapshot_id": "957ac80b-008e-4f5b-831b-16bbf90acead",
+      "timestamp": 1769142830700
+    },
+    {
+      "snapshot_id": "4aed60f5-9cd1-4137-9c94-681135b4b08a",
+      "timestamp": 1769142725908
+    },
+    {
+      "snapshot_id": "9d422def-4f93-432c-9ee3-e81ec82dfa27",
+      "timestamp": 1769142724869
+    },
+    {
+      "snapshot_id": "9791853b-8e5d-48ba-b941-7a13c6f13282",
+      "timestamp": 1769142721471
+    },
+    {
+      "snapshot_id": "93485d87-2f3d-4279-8520-4512a6405ef2",
+      "timestamp": 1769142095397
+    },
+    {
+      "snapshot_id": "92b99a26-0269-4916-9f8e-a12cb52ce34d",
+      "timestamp": 1769142094289
+    },
+    {
+      "snapshot_id": "58b35bd2-d343-4385-b423-18bed12ced78",
+      "timestamp": 1769142093221
+    },
+    {
+      "snapshot_id": "f8dbde6c-c6f2-47ef-ba45-d6ff0bbd6d9d",
+      "timestamp": 1769141973251
+    },
+    {
+      "snapshot_id": "72004c44-706b-4a89-87f6-92738d0b68f9",
+      "timestamp": 1769132645998
+    },
+    {
+      "snapshot_id": "9e0b6ca8-bfd9-49ce-b698-2db2b80d5b09",
+      "timestamp": 1769132584355
+    },
+    {
+      "snapshot_id": "944f479e-f406-4485-baa5-d0d1d25a910f",
+      "timestamp": 1769132583460
+    },
+    {
+      "snapshot_id": "075b9496-286b-459d-8f05-cd1dcd4e7bf6",
+      "timestamp": 1769132579485
+    },
+    {
+      "snapshot_id": "f9498ef1-6d0a-4053-9896-14ab4d49f811",
+      "timestamp": 1769132577663
+    },
+    {
+      "snapshot_id": "a54f5f04-f8e3-4aa3-8126-68fd6b989e21",
+      "timestamp": 1769132576245
+    },
+    {
+      "snapshot_id": "ff2dbe81-8a1d-49d0-9404-91b36b0b3375",
+      "timestamp": 1769132571003
+    },
+    {
+      "snapshot_id": "360cdbc9-826e-44ed-b355-97d26ccd6376",
+      "timestamp": 1769132122075
+    },
+    {
+      "snapshot_id": "d2ad7d5f-b172-46bb-8689-b66d358e0960",
+      "timestamp": 1769132118533
+    },
+    {
+      "snapshot_id": "15495515-e6b9-42d8-93e8-1752b7193411",
+      "timestamp": 1769130210028
+    },
+    {
+      "snapshot_id": "ce150007-9a37-4220-8f9d-c71ca79ba56f",
+      "timestamp": 1769130208640
+    },
+    {
+      "snapshot_id": "b71f068d-e4f3-452c-926b-1fc2f3e8eedd",
+      "timestamp": 1769130145348
+    },
+    {
+      "snapshot_id": "2c034ac8-fbed-49f4-b2a5-d9daac060e55",
+      "timestamp": 1769130144603
+    }
+  ],
+  "last_updated": 1769207236486
+}

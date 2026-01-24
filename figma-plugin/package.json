@@ -1,0 +1,18 @@
+{
+  "name": "udom-figma-plugin",
+  "version": "1.0.0",
+  "description": "uDOM Capture plugin for Figma",
+  "scripts": {
+    "build": "tsc && npm run bundle",
+    "bundle": "esbuild src/code.ts --bundle --outfile=code.js --format=iife --target=es2017",
+    "watch": "npm run build -- --watch"
+  },
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.88.0",
+    "@types/node": "^20.0.0",
+    "esbuild": "^0.19.0",
+    "typescript": "^5.0.0"
+  }
+}
+
+

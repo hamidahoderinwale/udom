@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taste RL - Intent Rule Learning System</title>
+    <meta name="description" content="Train design agents through preferences. Intent rules, preference learning, and DPO training for design suggestion systems.">
+    <meta name="keywords" content="Taste RL, reinforcement learning, design agents, intent rules, preference learning, DPO, constitutional AI">
+    <meta property="og:title" content="Taste RL - Intent Rule Learning System">
+    <meta property="og:description" content="Train design agents through preferences. Rules go in, user feedback comes out, suggestions get better.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Taste RL - Intent Rule Learning System">
+    <meta name="twitter:description" content="Train design agents through preferences">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <style>
+        /* Critical CSS Variables - Embedded for file:// protocol support */
+        :root {
+            --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            --font-mono: 'SF Mono', 'Monaco', 'Cascadia Code', 'Courier New', monospace;
+            --weight-light: 300;
+            --weight-normal: 400;
+            --weight-medium: 500;
+            --weight-semibold: 600;
+            --weight-bold: 700;
+            --size-xs: 11px;
+            --size-sm: 13px;
+            --size-base: 15px;
+            --size-lg: 18px;
+            --size-xl: 24px;
+            --size-2xl: 36px;
+            --size-3xl: 56px;
+            --size-4xl: 72px;
+            --color-theme-fg: #26251e;
+            --color-theme-card-hex: #f2f1ed;
+            --color-theme-border-02: #26251e1a;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f2f1ed;
+            --text-primary: #26251e;
+            --text-secondary: #26251e99;
+            --text-tertiary: #26251e66;
+            --border: #26251e1a;
+            --border-subtle: #26251e06;
+            --accent: #f54e00;
+            --space-0: 0;
+            --space-1: 4px;
+            --space-2: 8px;
+            --space-3: 12px;
+            --space-4: 16px;
+            --space-5: 20px;
+            --space-6: 24px;
+            --space-8: 32px;
+            --space-10: 40px;
+            --space-12: 48px;
+            --space-16: 64px;
+            --radius-sm: 4px;
+            --radius-md: 6px;
+            --radius-lg: 8px;
+            --transition-base: 0.2s ease;
+        }
+        /* Ensure proper layout when CSS files don't load */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+    </style>
+    <link rel="stylesheet" href="/design-system.css">
+    <link rel="stylesheet" href="/rl/docs/styles.css">
+</head>
+<body>
+    <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-title">Taste RL</div>
+            <div class="sidebar-subtitle">Intent Rule Learning</div>
+            <a href="https://earnest-lebkuchen-7c5a3e.netlify.app/" class="back-link">Back to uDOM</a>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-section-title">Overview</div>
+            <a href="#overview" class="nav-item active">Introduction</a>
+            <a href="#pipeline" class="nav-item">Pipeline</a>
+            <a href="#architecture" class="nav-item">System Architecture</a>
+            <a href="#loop" class="nav-item">Training Loop</a>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-section-title">Components</div>
+            <a href="#rules" class="nav-item">Intent Rules</a>
+            <a href="#matching" class="nav-item">Rule Matching</a>
+            <a href="#preferences" class="nav-item">Preferences</a>
+            <a href="#confidence" class="nav-item">Confidence Scoring</a>
+            <a href="#intent" class="nav-item">Intent & Summaries</a>
+            <a href="#constitutional" class="nav-item">Constitutional AI</a>
+            <a href="constitution.html" class="nav-item highlight">Constitution</a>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-section-title">Training</div>
+            <a href="#synthetic" class="nav-item">Synthetic Data</a>
+            <a href="#dpo" class="nav-item">DPO Training</a>
+            <a href="#utilities" class="nav-item">Core Utilities</a>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-section-title">Getting Started</div>
+            <a href="#quickstart" class="nav-item">Quick Start</a>
+            <a href="#notebooks" class="nav-item">Notebooks</a>
+            <a href="#roadmap" class="nav-item">Roadmap</a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <!-- Overview -->
+        <section id="overview" class="content-section active">
+            <h1>Taste RL</h1>
+            <p class="lead">Train design agents through preferences. Rules go in, user feedback comes out, suggestions get better.</p>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Intent Rules</h3>
+                    <p>Design suggestions generated from uDOM snapshots. Describe improvements like "increase spacing" or "add shadow".</p>
+                    <ul>
+                        <li>Generated from user action traces</li>
+                        <li>Quality-checked via constitutional principles</li>
+                        <li>Ranked by acceptance rate</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Preferences</h3>
+                    <p>User feedback (accept/reject) that trains the system. Each click improves future suggestions.</p>
+                    <ul>
+                        <li>One-click collection in Figma</li>
+                        <li>Tracks decision time</li>
+                        <li>Groups by dimension/platform</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>How It Works</h2>
+            <div class="flow-diagram">
+                <div class="flow-step">uDOM Snapshots</div>
+                <div class="flow-arrow"></div>
+                <div class="flow-step">Rule Generation</div>
+                <div class="flow-arrow"></div>
+                <div class="flow-step">Preference Collection</div>
+                <div class="flow-arrow"></div>
+                <div class="flow-step">DPO Training</div>
+                <div class="flow-arrow"></div>
+                <div class="flow-step">Better Suggestions</div>
+            </div>
+        </section>
+
+        <!-- Pipeline -->
+        <section id="pipeline" class="content-section">
+            <h2>General Pipeline</h2>
+            <p>The Taste RL system follows a multi-stage pipeline from telemetry extraction to model deployment.</p>
+            
+            <pre class="code-block">
+[ Telemetry / Extraction ]     ← Snapshots + platform metadata
+          ↓
+[ Rule Generation ]            ← Descriptive, LLM-based (slow)
+          ↓
+[ Rule Matching ]              ← Scalable labeling against library
+          ↓
+[ Preference Collection ]      ← Human judgment (accept/reject)
+          ↓
+[ DPO / RLHF ]                 ← Optimization from preferences
+          ↓
+[ Intent-aware Evaluation ]    ← Quality metrics
+          ↓
+[ Iterate ]                    ← Deploy → collect → retrain
+            </pre>
+
+            <h3>Pipeline Stages</h3>
+            <table class="info-table">
+                <tr><th>Stage</th><th>Description</th><th>Speed</th></tr>
+                <tr><td>Extraction</td><td>Capture uDOM snapshots with platform metadata</td><td>Fast (real-time)</td></tr>
+                <tr><td>Rule Generation</td><td>LLM generates descriptive intent rules</td><td>Slow (API call)</td></tr>
+                <tr><td>Rule Matching</td><td>Match rules to snapshots for suggestions</td><td>Fast (cached)</td></tr>
+                <tr><td>Preference Collection</td><td>User accepts/rejects suggestions</td><td>Real-time</td></tr>
+                <tr><td>DPO Training</td><td>Fine-tune model on preference pairs</td><td>Offline batch</td></tr>
+            </table>
+        </section>
+
+        <!-- Architecture -->
+        <section id="architecture" class="content-section">
+            <h2>System Architecture</h2>
+            <p>Three-layer architecture: Figma Plugin → uDOM Server → Rule Learning System</p>
+            
+            <pre class="code-block">
+┌─────────────────────────────────────────────────────────────────┐
+│                    FIGMA PLUGIN                                 │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐          │
+│  │   Capture    │  │   Rule       │  │  Preference   │          │
+│  │   Adapter    │→ │   Matcher    │← │   Tracker     │          │
+│  └──────┬───────┘  └──────┬───────┘  └──────┬────────┘          │
+│         │                  │                  │                  │
+│         └──────────────────┴──────────────────┘                  │
+│                            │                                     │
+└────────────────────────────┼─────────────────────────────────────┘
+                             │
+                             ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    uDOM SERVER                                  │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐          │
+│  │  Snapshots   │  │  Preference   │  │  Rule        │          │
+│  │  (with       │  │  Feedback     │  │  Matches     │          │
+│  │   traces)    │  │  Events       │  │  Logs        │          │
+│  └──────┬───────┘  └──────┬───────┘  └──────┬────────┘          │
+└─────────┼──────────────────┼──────────────────┼──────────────────┘
+          │                  │                  │
+          ▼                  ▼                  ▼
+┌─────────────────────────────────────────────────────────────────┐
+│              RULE LEARNING SYSTEM (rl/)                         │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐          │
+│  │  Data        │  │  Rule        │  │  Preference   │          │
+│  │  Collector   │→ │  Generator   │← │  Learner      │          │
+│  └──────┬───────┘  └──────┬───────┘  └──────┬────────┘          │
+│         │                  │                  │                  │
+│         └──────────────────┴──────────────────┘                  │
+│                            │                                     │
+│                            ▼                                     │
+│                  ┌──────────────────┐                            │
+│                  │  Fine-tuned      │                            │
+│                  │  Model           │                            │
+│                  └────────┬─────────┘                            │
+└───────────────────────────┼──────────────────────────────────────┘
+                            │
+                            │ (deploy updated model)
+                            ▼
+                  ┌──────────────────┐
+                  │  Plugin uses     │
+                  │  improved rules  │
+                  └──────────────────┘
+            </pre>
+
+            <h3>Components</h3>
+            <table class="info-table">
+                <tr><th>Component</th><th>Location</th><th>Purpose</th></tr>
+                <tr><td>Figma Plugin</td><td><code>figma-plugin/</code></td><td>Capture snapshots, show suggestions, collect preferences</td></tr>
+                <tr><td>uDOM Server</td><td><code>udom-server/</code></td><td>Store snapshots, serve API, generate recommendations</td></tr>
+                <tr><td>RL Core</td><td><code>rl/core/</code></td><td>Synthetic preference generation, environment</td></tr>
+                <tr><td>Training</td><td><code>rl/training/</code></td><td>DPO trainer, evaluation metrics</td></tr>
+                <tr><td>Constitution</td><td><code>rl/data/constitution/</code></td><td>Quality principles for rule generation</td></tr>
+            </table>
+
+            <h3>Data Flow</h3>
+            <pre class="code-block">
+uDOM Snapshot
+  ↓
+[SnapshotToMatcherInputTransformer]
+  ├─→ Extract last 5 selections → trace[]
+  ├─→ Scan elements → action_types, property_types, element_types
+  └─→ Extract provenance → platform metadata
+  ↓
+MatcherInput {
+  trace: [...],
+  artifacts: { before: snapshot, after: snapshot },
+  platform_semantics: {...},
+  platform_metadata: {...},
+  matching_config: { max_rules: 3, min_confidence: 0.5 }
+}
+  ↓
+[OpenRouterRuleMatcher]
+  ├─→ Load matcher prompt (cached)
+  ├─→ Serialize MatcherInput → JSON string
+  └─→ POST to OpenRouter API
+      ↓
+      [LLM Inference]
+      ├─→ System prompt: "You are an intent rule matcher..."
+      ├─→ User message: JSON with snapshot + trace
+      └─→ LLM analyzes patterns, generates rules, scores matches
+      ↓
+      JSON response: { matched_rules: [...], metadata: {...} }
+  ↓
+Transform matches → RuleMatch[]
+  ↓
+[Filter & Sort]
+  ├─→ Filter: match_score >= 0.5 AND rule.confidence >= 0.5
+  ├─→ Sort: highest match_score first
+  └─→ Slice: top 3
+  ↓
+IntentRule[] (returned to plugin)
+            </pre>
+        </section>
+
+        <!-- Training Loop -->
+        <section id="loop" class="content-section">
+            <h2>Training Loop</h2>
+            <ol class="numbered-list">
+                <li><strong>Capture:</strong> User selects component in Figma → uDOM snapshot created</li>
+                <li><strong>Generate:</strong> LLM generates intent rules from snapshot + constitutional principles</li>
+                <li><strong>Suggest:</strong> Plugin shows top-ranked rules to user</li>
+                <li><strong>Collect:</strong> User accepts/rejects → preference recorded</li>
+                <li><strong>Train:</strong> DPO fine-tuning on preference pairs</li>
+                <li><strong>Improve:</strong> Better rules surface in future sessions</li>
+            </ol>
+        </section>
+
+        <!-- Rules -->
+        <section id="rules" class="content-section">
+            <h2>Intent Rules</h2>
+            <p>Rules describe design intent at a semantic level, not pixel-level changes.</p>
+
+            <div class="example-box">
+                <h4>Example Rule</h4>
+                <pre class="code-block">{
+  "description": "Increase visual hierarchy through spacing",
+  "dimension": "spacing",
+  "confidence": 0.85,
+  "context": {
+    "artifact_type": "figma_component",
+    "trigger": "iteration on header section"
+  }
+}</pre>
+            </div>
+
+            <h3>Rule Quality Signals</h3>
+            <ul>
+                <li><strong>Semantic depth:</strong> Abstract intent vs. literal property change</li>
+                <li><strong>Iteration awareness:</strong> Detects refinement patterns</li>
+                <li><strong>Platform grounding:</strong> Anchored to specific design context</li>
+                <li><strong>Completeness:</strong> All required fields present</li>
+            </ul>
+            
+            <h3>Sample Intent Descriptions</h3>
+            <ul>
+                <li>"Increase visual emphasis"</li>
+                <li>"Create heading hierarchy"</li>
+                <li>"Improve readability"</li>
+                <li>"Establish visual hierarchy"</li>
+                <li>"Standardize spacing"</li>
+            </ul>
+        </section>
+
+        <!-- Rule Matching -->
+        <section id="matching" class="content-section">
+            <h2>Rule Matching</h2>
+            <p>Rule matching identifies which intent rules from a library apply to a given action trace and artifact snapshot.</p>
+
+            <h3>Matching Process</h3>
+            <ol class="numbered-list">
+                <li><strong>Input:</strong> Current snapshot + action trace + rule library</li>
+                <li><strong>Evaluate:</strong> Score each rule against current context</li>
+                <li><strong>Evidence:</strong> Identify matched actions, properties, and coverage</li>
+                <li><strong>Filter:</strong> Return rules with match_score ≥ 0.5</li>
+                <li><strong>Rank:</strong> Sort by match strength and return top matches</li>
+            </ol>
+
+            <h3>Match Strengths</h3>
+            <table class="info-table">
+                <tr><th>Strength</th><th>Coverage</th><th>Description</th></tr>
+                <tr><td>Strong</td><td>≥ 0.8</td><td>All rule conditions satisfied</td></tr>
+                <tr><td>Partial</td><td>0.5 - 0.8</td><td>Most conditions satisfied</td></tr>
+                <tr><td>Weak</td><td>&lt; 0.5</td><td>Some conditions satisfied</td></tr>
+            </table>
+
+            <div class="example-box">
+                <h4>Match Output</h4>
+                <pre class="code-block">{
+  "rule_id": "text_emphasis_increase",
+  "match_strength": "strong",
+  "evidence": {
+    "matched_actions": ["modify_property"],
+    "matched_properties": ["font_size", "font_weight"],
+    "match_coverage": 1.0
+  },
+  "explanation": "Font size and weight increased together"
+}</pre>
+            </div>
+        </section>
+
+        <!-- Preferences -->
+        <section id="preferences" class="content-section">
+            <h2>Preferences</h2>
+            <p>Preferences are user feedback that trains the system to generate better rules.</p>
+
+            <h3>Collection</h3>
+            <p>In the Figma plugin, users see suggestions and can:</p>
+            <ul>
+                <li><strong>Accept:</strong> Rule was helpful → positive signal</li>
+                <li><strong>Reject:</strong> Rule was not helpful → negative signal</li>
+            </ul>
+
+            <h3>Synthetic Bootstrapping</h3>
+            <p>Before collecting real preferences, we generate synthetic pairs using 6 strategies:</p>
+            <table class="info-table">
+                <tr><th>Strategy</th><th>Prefers</th></tr>
+                <tr><td>Confidence</td><td>Higher confidence rules</td></tr>
+                <tr><td>Completeness</td><td>Rules with all fields</td></tr>
+                <tr><td>Abstraction</td><td>Semantic over literal</td></tr>
+                <tr><td>Novelty</td><td>Non-redundant rules</td></tr>
+                <tr><td>Constitutional</td><td>Rules following principles</td></tr>
+                <tr><td>Length</td><td>Concise over verbose</td></tr>
+            </table>
+        </section>
+
+        <!-- Confidence Scoring -->
+        <section id="confidence" class="content-section">
+            <h2>Confidence Scoring</h2>
+            <p>Confidence scores indicate how reliable a rule suggestion is. The system uses a multi-stage pipeline to calculate and adjust confidence.</p>
+
+            <h3>Confidence Sources</h3>
+            <div class="card-grid">
+                <div class="card">
+                    <h4>Rule Confidence (Base)</h4>
+                    <ul>
+                        <li><strong>LLM-generated:</strong> Confidence from model (0.0-1.0)</li>
+                        <li><strong>Synthetic:</strong> Hardcoded based on pattern strength
+                            <ul>
+                                <li>High (0.75-0.85): Clear patterns</li>
+                                <li>Medium (0.7-0.75): Moderate patterns</li>
+                                <li>Lower (0.65-0.7): Weak patterns</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>Match Score (Contextual)</h4>
+                    <ul>
+                        <li>How well rule matches current snapshot</li>
+                        <li>LLM matcher: Semantic similarity</li>
+                        <li>Synthetic: Pattern matching strength</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Confidence Adjustment Pipeline</h3>
+            <div class="flow-diagram" style="flex-direction: column; gap: 8px;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <div class="flow-step" style="flex: 1;">Base Confidence (0.5-0.85)</div>
+                    <div class="flow-arrow">↓</div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <div class="flow-step" style="flex: 1;">Preference Ranking (0.5x - 1.5x multiplier)</div>
+                    <div class="flow-arrow">↓</div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <div class="flow-step" style="flex: 1;">Type Boost (+0.02 to +0.1)</div>
+                    <div class="flow-arrow">↓</div>
+                </div>
+                <div class="flow-step" style="flex: 1;">Final Confidence (capped at 1.0)</div>
+            </div>
+
+            <h3>Preference-Based Ranking</h3>
+            <p>The system adjusts confidence based on historical user preferences:</p>
+            <ul>
+                <li><strong>High acceptance rate:</strong> Up to 1.5x boost (rules users consistently accept)</li>
+                <li><strong>Low acceptance rate:</strong> Down to 0.5x demote (rules users reject)</li>
+                <li><strong>Dimension-level boost:</strong> +10% if dimension acceptance > 60%</li>
+            </ul>
+
+            <h3>Type Boosts</h3>
+            <table class="info-table">
+                <tr><th>Improvement Type</th><th>Boost</th></tr>
+                <tr><td>Accessibility / Readability</td><td>+0.1</td></tr>
+                <tr><td>Consistency / Standardization</td><td>+0.05</td></tr>
+                <tr><td>Enhancement / Simplification</td><td>+0.03</td></tr>
+                <tr><td>Organization / Complexity Management</td><td>+0.02</td></tr>
+            </table>
+
+            <h3>Filtering</h3>
+            <ul>
+                <li><strong>Minimum threshold:</strong> 0.5 (configurable)</li>
+                <li><strong>Auto-apply requires:</strong> confidence ≥ 0.5 AND specific action keywords</li>
+                <li><strong>Display:</strong> Shown as percentage in UI (e.g., "75%")</li>
+            </ul>
+        </section>
+
+        <!-- Intent & Summaries -->
+        <section id="intent" class="content-section">
+            <h2>Intent & Action Summaries</h2>
+            <p>The system captures and displays user intent and action summaries to provide context for rule generation and preference learning.</p>
+
+            <h3>Intent Capture</h3>
+            <div class="card-grid">
+                <div class="card">
+                    <h4>User Intent (Explicit)</h4>
+                    <ul>
+                        <li><strong>When:</strong> User provides intent text (e.g., "make this more premium")</li>
+                        <li><strong>Stored in:</strong> <code>snapshot.observations.intent.user_intent</code></li>
+                        <li><strong>Example:</strong> "make this more premium", "improve spacing"</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>Inferred Intent (Automatic)</h4>
+                    <ul>
+                        <li><strong>When:</strong> Comparing with previous snapshot</li>
+                        <li><strong>Structure:</strong> Action type, focus area, confidence</li>
+                        <li><strong>Example:</strong> {"action_type": "modify", "focus_area": "spacing", "confidence": 0.75}</li>
+                        <li><strong>Implementation:</strong> Heuristic-based diff analysis (client-side in plugin)</li>
+                        <li><strong>Optional:</strong> Server-side OpenRouter enhancement via <code>POST /snapshots/enhance-intent</code></li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>Change Summary (Automatic)</h4>
+                    <ul>
+                        <li><strong>When:</strong> Diff computation succeeds</li>
+                        <li><strong>Generated from:</strong> Snapshot differences</li>
+                        <li><strong>Format:</strong> "Changes: X added, Y removed, Z modified, N property changes"</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Display in Dashboard</h3>
+            <p>The uDOM Snapshot Viewer displays all captured intent data:</p>
+            <ul>
+                <li><strong>Snapshot Cards:</strong> Intent preview (user intent text or inferred action summary)</li>
+                <li><strong>Details Modal:</strong> Full intent section with:
+                    <ul>
+                        <li>User Intent: Full text if provided</li>
+                        <li>Inferred Intent: Action type, focus area, confidence</li>
+                        <li>Change Summary: Text summary of changes</li>
+                    </ul>
+                </li>
+                <li><strong>Statistics:</strong> "With Intent" count and breakdown (user vs. inferred)</li>
+            </ul>
+
+            <div class="example-box">
+                <h4>Example Intent Data</h4>
+                <pre class="code-block">{
+  "intent": {
+    "user_intent": "make this more premium",
+    "inferred_intent": {
+      "action_type": "modify",
+      "focus_area": "spacing",
+      "confidence": 0.75
+    },
+    "change_summary": "Changes: 1 modified, 2 property changes"
+  }
+}</pre>
+            </div>
+
+            <h3>Current Status</h3>
+            <table class="info-table">
+                <tr><th>Feature</th><th>Status</th></tr>
+                <tr><td>User Intent Capture</td><td>Fully implemented</td></tr>
+                <tr><td>Change Summaries</td><td>Fully implemented</td></tr>
+                <tr><td>Inferred Intent</td><td>Implemented (heuristic-based + optional OpenRouter enhancement)</td></tr>
+                <tr><td>Dashboard Display</td><td>All captured data displayed</td></tr>
+            </table>
+        </section>
+
+        <!-- Constitutional -->
+        <section id="constitutional" class="content-section">
+            <h2>Constitutional AI</h2>
+            <p>Inspired by <a href="https://arxiv.org/pdf/2212.08073" target="_blank">Constitutional AI</a>, we use explicit principles to guide rule generation without extensive human labeling.</p>
+
+            <h3>Key Principles</h3>
+            <div class="card-grid">
+                <div class="card">
+                    <h4>Action Rules</h4>
+                    <ul>
+                        <li>Iteration Signal: Returning to a component indicates refinement</li>
+                        <li>Temporal Batching: Group rapid actions as single intent</li>
+                        <li>Proximity Clustering: Nearby changes often share intent</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>Quality Signals</h4>
+                    <ul>
+                        <li>Novelty over redundancy</li>
+                        <li>Completeness requirement</li>
+                        <li>Confidence calibration</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p><a href="constitution.html" class="btn">View Full Constitution</a></p>
+        </section>
+
+        <!-- Synthetic Data -->
+        <section id="synthetic" class="content-section">
+            <h2>Synthetic Data Generation</h2>
+            <p>Synthetic preferences bootstrap training before collecting real user feedback.</p>
+
+            <h3>Implementation Phases</h3>
+            <table class="info-table">
+                <tr><th>Phase</th><th>Synthetic %</th><th>Real %</th><th>Description</th></tr>
+                <tr><td>Phase 1: Bootstrap</td><td>100%</td><td>0%</td><td>5,000-10,000 synthetic pairs</td></tr>
+                <tr><td>Phase 2: Hybrid</td><td>70%</td><td>30%</td><td>Mix as real data collected</td></tr>
+                <tr><td>Phase 3: Production</td><td>20%</td><td>80%</td><td>Synthetic for edge cases only</td></tr>
+            </table>
+
+            <h3>Preference Generation Strategies</h3>
+            <div class="card-grid">
+                <div class="card">
+                    <h4>Heuristic-Based</h4>
+                    <ul>
+                        <li>Confidence: High > Low</li>
+                        <li>Completeness: Schema-compliant > Non-compliant</li>
+                        <li>Novelty: Novel patterns > Duplicates</li>
+                        <li>Length: Concise > Verbose</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>Constitutional</h4>
+                    <ul>
+                        <li>Quality signals from constitution</li>
+                        <li>Iteration-aware patterns</li>
+                        <li>Semantic depth preference</li>
+                        <li>Platform grounding</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Quality Control</h3>
+            <ul>
+                <li><strong>Weight:</strong> Synthetic preferences weighted 0.3x in DPO loss</li>
+                <li><strong>Validation:</strong> Constitutional principles validate pairs</li>
+                <li><strong>Tracking:</strong> Monitor which heuristics produce best results</li>
+                <li><strong>Replacement:</strong> Replace synthetic pairs with real ones as data accumulates</li>
+            </ul>
+        </section>
+
+        <!-- DPO Training -->
+        <section id="dpo" class="content-section">
+            <h2>DPO Training</h2>
+            <p>Direct Preference Optimization (DPO) fine-tunes the model on preference pairs without explicit reward modeling.</p>
+
+            <h3>Training Goals</h3>
+            <div class="card-grid">
+                <div class="card">
+                    <h4>1. Rule Library Expansion</h4>
+                    <p>Add emergent rules discovered from user interactions to the rule library.</p>
+                </div>
+                <div class="card">
+                    <h4>2. Preference Learning</h4>
+                    <p>Understand human preferences and keep feedback data for future inference.</p>
+                </div>
+            </div>
+
+            <h3>Training Data Format</h3>
+            <div class="example-box">
+                <pre class="code-block">{
+  "input": {"trace": [...], "artifacts": {...}},
+  "preferred": {"rule_id": "...", "description": "...", ...},
+  "rejected": {"rule_id": "...", "description": "...", ...},
+  "source": "constitutional",
+  "synthetic": true,
+  "weight": 0.36,
+  "dimension_group": "spacing",
+  "platform_group": "figma"
+}</pre>
+            </div>
+
+            <h3>Feedback Loop</h3>
+            <pre class="code-block">
+1. Agent observes → suggests next step (DPO-trained model)
+2. User accepts/rejects → preference event created
+3. Events collected → preference pairs generated
+4. DPO training → improved model
+5. Deploy → better suggestions
+6. Loop continues
+            </pre>
+
+            <h3>Type-Aware Preferences</h3>
+            <p>Preferences are grouped by type for targeted training:</p>
+            <ul>
+                <li><strong>Dimension:</strong> layout, spacing, typography, color, etc.</li>
+                <li><strong>Platform:</strong> figma, canva, sketch, etc.</li>
+                <li><strong>Artifact:</strong> component, frame, text, etc.</li>
+            </ul>
+        </section>
+
+        <!-- Core Utilities -->
+        <section id="utilities" class="content-section">
+            <h2>Core Utilities</h2>
+            <p>Two key utilities power intent rule generation and preference learning.</p>
+
+            <h3>PlatformKeywordClassifier</h3>
+            <p>Single source of truth for platform-aware dimension classification.</p>
+            <ul>
+                <li><strong>Classifies:</strong> Rules into design dimensions (layout, typography, etc.)</li>
+                <li><strong>Learns:</strong> Platform-specific keywords from ground truth rules</li>
+                <li><strong>Tracks:</strong> Keyword performance and rewards accurate keywords</li>
+                <li><strong>Persists:</strong> Learned keywords for future sessions</li>
+            </ul>
+            <div class="example-box">
+                <pre class="code-block">
+# Keyword learning flow
+1. Start with base keywords (curated domain knowledge)
+   → "layout": ['layout', 'grid', 'alignment', ...]
+   → "typography": ['font', 'type', 'text style', ...]
+
+2. Learn from rules with explicit dimensions
+   → Extract keywords from rule descriptions
+   → Track: keyword → correct/total classifications
+
+3. Reward accurate keywords
+   → Keep keywords with accuracy > 60%
+   → Remove low-performing keywords
+
+4. Classify new rules using base + learned keywords
+                </pre>
+            </div>
+
+            <h3>SyntheticPreferenceGenerator</h3>
+            <p>Generates preference pairs from intent rules for DPO training.</p>
+            <ul>
+                <li><strong>Groups:</strong> Rules by dimension/platform/artifact</li>
+                <li><strong>Compares:</strong> Rules using 5 heuristic strategies</li>
+                <li><strong>Creates:</strong> PreferencePair(preferred, rejected)</li>
+                <li><strong>Formats:</strong> Output for DPO training</li>
+            </ul>
+
+            <h3>How They Work Together</h3>
+            <pre class="code-block">
+┌─────────────────────────────────────────────────────────┐
+│  Intent Rule Generation                                 │
+│  └─→ Rules with explicit dimensions (ground truth)      │
+│      └─→ PlatformKeywordClassifier.learn_from_rules()   │
+│          └─→ Learns platform-specific keywords          │
+└─────────────────────────────────────────────────────────┘
+                        ↓
+┌─────────────────────────────────────────────────────────┐
+│  PlatformKeywordClassifier (Shared Singleton)           │
+│  • Base keywords (curated)                              │
+│  • Learned keywords (from rules)                        │
+│  • Performance tracking                                 │
+└─────────────────────────────────────────────────────────┘
+                        ↓
+┌─────────────────────────────────────────────────────────┐
+│  Preference Generation                                  │
+│  └─→ Rules without explicit dimensions                  │
+│      └─→ PlatformKeywordClassifier.classify_dimension() │
+│          └─→ Uses base + learned keywords               │
+│              └─→ Groups rules by dimension              │
+│                  └─→ SyntheticPreferenceGenerator       │
+│                      └─→ Creates preference pairs       │
+└─────────────────────────────────────────────────────────┘
+            </pre>
+        </section>
+
+        <!-- Quick Start -->
+        <section id="quickstart" class="content-section">
+            <h2>Quick Start</h2>
+
+            <h3>Prerequisites</h3>
+            <pre class="code-block">cd rl
+pip install -r requirements.txt
+export OPENROUTER_APIKEY="your_key_here"</pre>
+
+            <h3>Generate Rules</h3>
+            <pre class="code-block">python scripts/generate_training_data.py</pre>
+
+            <h3>Or Run Notebooks</h3>
+            <pre class="code-block">jupyter notebook notebooks/</pre>
+
+            <h3>Project Structure</h3>
+            <pre class="code-block">rl/
+├── core/               # Synthetic preference generator, environment
+├── training/           # DPO trainer
+├── evaluation/         # Quality metrics
+├── data/
+│   ├── constitution/   # Constitutional principles (JSON)
+│   ├── prompts/        # Generator and matcher prompts
+│   └── schemas/        # Validation schemas
+├── notebooks/          # Analysis notebooks (01-06)
+├── scripts/            # Executable scripts
+└── docs/               # This documentation</pre>
+        </section>
+
+        <!-- Notebooks -->
+        <section id="notebooks" class="content-section">
+            <h2>Notebooks</h2>
+            <table class="info-table">
+                <tr><th>Notebook</th><th>Purpose</th></tr>
+                <tr><td><code>01_prompt_exploration.ipynb</code></td><td>Explore and validate prompts</td></tr>
+                <tr><td><code>02_synthetic_preferences.ipynb</code></td><td>Generate synthetic preference pairs</td></tr>
+                <tr><td><code>03_rule_generation.ipynb</code></td><td>Generate rules from snapshots</td></tr>
+                <tr><td><code>04_dataset_building.ipynb</code></td><td>Build training dataset</td></tr>
+                <tr><td><code>05_dataset_analysis.ipynb</code></td><td>Analyze dataset distribution</td></tr>
+                <tr><td><code>06_pre_training_validation.ipynb</code></td><td>Validate before training</td></tr>
+            </table>
+        </section>
+
+        <!-- Roadmap -->
+        <section id="roadmap" class="content-section">
+            <h2>Roadmap & Open Problems</h2>
+            
+            <h3>Open Questions</h3>
+            <ul>
+                <li>How to weight real data vs synthetic data over time?</li>
+                <li>How to build snapshot systems for many platforms sustainably?</li>
+                <li>How to handle changing UIs and components across platforms?</li>
+                <li>How to make intent system learn continually (individual + collective)?</li>
+            </ul>
+
+            <h3>Future Work</h3>
+            <div class="card-grid">
+                <div class="card">
+                    <h4>Infrastructure</h4>
+                    <ul>
+                        <li>Auth/persistent snapshot storage</li>
+                        <li>Temporal data and sessions</li>
+                        <li>File/workspace awareness</li>
+                        <li>Version control for structured data</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>Training Enhancements</h4>
+                    <ul>
+                        <li>Multi-dimensional synthetic data</li>
+                        <li>Online RL re-ranking for personalization</li>
+                        <li>Federated preference learning</li>
+                        <li>Decision time as preference signal</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>Automation</h4>
+                    <ul>
+                        <li>Computer use agent integration</li>
+                        <li>Automated suggestion implementation</li>
+                        <li>Prompt construction from annotations</li>
+                        <li>Batch change application</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>Perception Feedback</h4>
+                    <ul>
+                        <li>Perception measurement annotations</li>
+                        <li>Gap tracking (intended vs actual)</li>
+                        <li>Corrective recommendation engine</li>
+                        <li>Iterative loop support</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Iteration Feedback Loop (Planned)</h3>
+            <p>Design iteration follows a perception-driven feedback loop:</p>
+            <pre class="code-block">
+desire: check perception → identify gap → correct → check again
+
+1. Identify reasons for changes (content and motivation-based intent)
+2. After applying changes, measure content perception
+3. Compare intended vs. actual perception to identify gaps
+4. Use corrective inference to predict gap-closing changes
+5. Apply changes, measure again, repeat until gap is closed
+            </pre>
+            <p><strong>Current status:</strong> We compare before/after snapshots structurally. Perception gap analysis and corrective recommendations are planned features.</p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>Taste RL - Intent Rule Learning System</p>
+        <p><a href="https://earnest-lebkuchen-7c5a3e.netlify.app/">uDOM Documentation</a> | <a href="https://github.com/hamidahoderinwale/udom" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+    </footer>
+
+    <script src="/rl/docs/script.js"></script>
+</body>
+</html>

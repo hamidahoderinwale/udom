@@ -1,0 +1,18 @@
+{
+  "name": "mcp-server",
+  "version": "1.0.0",
+  "description": "MCP server for procedural events",
+  "main": "mcp-server.js",
+  "scripts": {
+    "start": "node mcp-server.js",
+    "dev": "nodemon mcp-server.js"
+  },
+  "dependencies": {
+    "ws": "^8.14.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
+
+

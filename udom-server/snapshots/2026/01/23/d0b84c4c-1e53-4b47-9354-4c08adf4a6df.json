@@ -1,0 +1,216 @@
+{
+  "metadata": {
+    "snapshot_id": "d0b84c4c-1e53-4b47-9354-4c08adf4a6df",
+    "artifact_id": "figma://file/undefined/node/1:45",
+    "artifact_type": "figma_component",
+    "timestamp": 1769198187282,
+    "content_hash": "content-hash:008nrolf",
+    "schema_version": "1.0.0"
+  },
+  "elements": [
+    {
+      "id": "1:45",
+      "stable_id": "content-hash:008nrolf",
+      "type": "TEXT",
+      "semantic_type": "text",
+      "properties": {
+        "name": "H1",
+        "width": 1200,
+        "height": 50,
+        "fills": [
+          {
+            "type": "SOLID",
+            "visible": true,
+            "opacity": 1,
+            "blendMode": "NORMAL",
+            "color": {
+              "r": 0,
+              "g": 0,
+              "b": 0
+            },
+            "boundVariables": {
+              "color": {
+                "type": "VARIABLE_ALIAS",
+                "id": "VariableID:1:74"
+              }
+            }
+          }
+        ]
+      },
+      "spatial": {
+        "absolute": {
+          "coordinate_system": "canvas",
+          "bounds": {
+            "x": 216,
+            "y": 490,
+            "width": 1200,
+            "height": 50
+          }
+        }
+      },
+      "visual": {
+        "background": {
+          "type": "solid",
+          "color": "#000000"
+        }
+      },
+      "text": {
+        "content": "This is just the beginning of somethi  ng big. ",
+        "font_family": "Inter",
+        "font_size": 36,
+        "font_weight": "Regular",
+        "line_height": 139.9999976158142
+      }
+    }
+  ],
+  "relations": [],
+  "observations": {
+    "provenance": {
+      "user_id": "943301272123231421",
+      "user_name": "Hamidah Oderinwale",
+      "session_id": "session_1769197161965_x2e8bwbbj",
+      "tool": "figma",
+      "tool_version": "latest",
+      "extraction_method": "figma_plugin_api",
+      "extracted_at": 1769198187282,
+      "extractor_version": "figma-adapter-v1.1.0",
+      "extraction_quality": "complete"
+    },
+    "context": {
+      "file_name": "Untitled",
+      "page_name": "Page 1",
+      "workspace_id": "unknown",
+      "viewport": {
+        "zoom": 0.27795863151550293,
+        "center": {
+          "x": 1201.6176968119712,
+          "y": 1135.0610279765779
+        },
+        "bounds": {
+          "x": -618.7971372804165,
+          "y": 183.48054651919324,
+          "width": 3640.8296681847755,
+          "height": 1903.160962914769
+        }
+      },
+      "nearby_elements": [
+        "1:46",
+        "1:44",
+        "30:2",
+        "30:3",
+        "30:4"
+      ],
+      "tags": [],
+      "interaction_history": {
+        "recent_selections": [
+          {
+            "node_id": "1:44",
+            "node_name": "H1",
+            "timestamp": 1769197848029,
+            "duration": 188425
+          },
+          {
+            "node_id": "1:44",
+            "node_name": "H1",
+            "timestamp": 1769198036454,
+            "duration": 16648
+          },
+          {
+            "node_id": "1:44",
+            "node_name": "H1",
+            "timestamp": 1769198053102,
+            "duration": 38794
+          },
+          {
+            "node_id": "41:5",
+            "node_name": "Shape with text",
+            "timestamp": 1769198091896,
+            "duration": 1158
+          },
+          {
+            "node_id": "1:42",
+            "node_name": "1",
+            "timestamp": 1769198093054,
+            "duration": 14713
+          },
+          {
+            "node_id": "41:8",
+            "node_name": "Frame 4",
+            "timestamp": 1769198107767,
+            "duration": 28708
+          },
+          {
+            "node_id": "41:5",
+            "node_name": "Shape with text",
+            "timestamp": 1769198136475,
+            "duration": 48856
+          },
+          {
+            "node_id": "1:45",
+            "node_name": "H1",
+            "timestamp": 1769198185331,
+            "duration": 946
+          },
+          {
+            "node_id": "1:44",
+            "node_name": "H1",
+            "timestamp": 1769198186277,
+            "duration": 501
+          },
+          {
+            "node_id": "1:45",
+            "node_name": "H1",
+            "timestamp": 1769198186778
+          }
+        ],
+        "selection_frequency": {
+          "1:44": 12,
+          "1:45": 3,
+          "41:5": 2,
+          "1:42": 1,
+          "41:8": 1
+        },
+        "average_time_between_selections": 56822,
+        "total_selections": 19,
+        "viewport_changes": 0,
+        "capture_count": 15,
+        "most_frequent_nodes": [
+          {
+            "node_id": "1:44",
+            "count": 12
+          },
+          {
+            "node_id": "1:45",
+            "count": 3
+          },
+          {
+            "node_id": "41:5",
+            "count": 2
+          },
+          {
+            "node_id": "1:42",
+            "count": 1
+          },
+          {
+            "node_id": "41:8",
+            "count": 1
+          }
+        ],
+        "session_stats": {
+          "duration": 1023303,
+          "total_interactions": 34,
+          "captures_per_minute": 0.8795048973764368
+        }
+      }
+    },
+    "intent": {
+      "source": "figma_plugin",
+      "change_type": "capture",
+      "scope": "component",
+      "motivation": "automated_tracking",
+      "trigger": "auto_capture",
+      "capture_number": 15,
+      "previous_snapshot_id": "1b13a5c6-fca6-4673-ad3e-233e9deb741a"
+    }
+  }
+}

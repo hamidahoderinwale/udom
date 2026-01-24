@@ -1,0 +1,19 @@
+# Netlify Configuration for Taste Platform
+# Repository: https://github.com/hamidahoderinwale/udom
+# Site: https://earnest-lebkuchen-7c5a3e.netlify.app
+
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/rl-docs"
+  to = "/rl/docs/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/rl-docs/*"
+  to = "/rl/docs/:splat"
+  status = 200
+  force = true
+

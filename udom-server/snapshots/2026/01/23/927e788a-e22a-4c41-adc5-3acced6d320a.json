@@ -1,0 +1,171 @@
+{
+  "metadata": {
+    "snapshot_id": "927e788a-e22a-4c41-adc5-3acced6d320a",
+    "artifact_id": "figma://file/undefined/node/1:45",
+    "artifact_type": "figma_component",
+    "timestamp": 1769197167273,
+    "content_hash": "content-hash:008nrolf",
+    "schema_version": "1.0.0"
+  },
+  "elements": [
+    {
+      "id": "1:45",
+      "stable_id": "content-hash:008nrolf",
+      "type": "TEXT",
+      "semantic_type": "text",
+      "properties": {
+        "name": "H1",
+        "width": 1200,
+        "height": 50,
+        "fills": [
+          {
+            "type": "SOLID",
+            "visible": true,
+            "opacity": 1,
+            "blendMode": "NORMAL",
+            "color": {
+              "r": 0,
+              "g": 0,
+              "b": 0
+            },
+            "boundVariables": {
+              "color": {
+                "type": "VARIABLE_ALIAS",
+                "id": "VariableID:1:74"
+              }
+            }
+          }
+        ]
+      },
+      "spatial": {
+        "absolute": {
+          "coordinate_system": "canvas",
+          "bounds": {
+            "x": 216,
+            "y": 490,
+            "width": 1200,
+            "height": 50
+          }
+        }
+      },
+      "visual": {
+        "background": {
+          "type": "solid",
+          "color": "#000000"
+        }
+      },
+      "text": {
+        "content": "This is just the beginning of somethi  ng big. ",
+        "font_family": "Inter",
+        "font_size": 36,
+        "font_weight": "Regular",
+        "line_height": 139.9999976158142
+      }
+    }
+  ],
+  "relations": [],
+  "observations": {
+    "provenance": {
+      "user_id": "943301272123231421",
+      "user_name": "Hamidah Oderinwale",
+      "session_id": "session_1769197161965_x2e8bwbbj",
+      "tool": "figma",
+      "tool_version": "latest",
+      "extraction_method": "figma_plugin_api",
+      "extracted_at": 1769197167273,
+      "extractor_version": "figma-adapter-v1.1.0",
+      "extraction_quality": "complete"
+    },
+    "context": {
+      "file_name": "Untitled",
+      "page_name": "Page 1",
+      "workspace_id": "unknown",
+      "viewport": {
+        "zoom": 0.27795863151550293,
+        "center": {
+          "x": 1201.6176968119712,
+          "y": 1135.0610279765779
+        },
+        "bounds": {
+          "x": -618.7971372804165,
+          "y": 183.48054651919324,
+          "width": 3640.8296681847755,
+          "height": 1903.160962914769
+        }
+      },
+      "nearby_elements": [
+        "1:46",
+        "1:44",
+        "30:2",
+        "30:3",
+        "30:4"
+      ],
+      "tags": [],
+      "interaction_history": {
+        "recent_selections": [
+          {
+            "node_id": "1:44",
+            "node_name": "H1",
+            "timestamp": 1769197163977,
+            "duration": 652
+          },
+          {
+            "node_id": "1:44",
+            "node_name": "H1",
+            "timestamp": 1769197164629,
+            "duration": 162
+          },
+          {
+            "node_id": "1:44",
+            "node_name": "H1",
+            "timestamp": 1769197164791,
+            "duration": 47
+          },
+          {
+            "node_id": "1:44",
+            "node_name": "H1",
+            "timestamp": 1769197164838,
+            "duration": 664
+          },
+          {
+            "node_id": "1:45",
+            "node_name": "H1",
+            "timestamp": 1769197165502
+          }
+        ],
+        "selection_frequency": {
+          "1:44": 4,
+          "1:45": 1
+        },
+        "average_time_between_selections": 381,
+        "total_selections": 5,
+        "viewport_changes": 0,
+        "capture_count": 4,
+        "most_frequent_nodes": [
+          {
+            "node_id": "1:44",
+            "count": 4
+          },
+          {
+            "node_id": "1:45",
+            "count": 1
+          }
+        ],
+        "session_stats": {
+          "duration": 3294,
+          "total_interactions": 9,
+          "captures_per_minute": 72.85974499089254
+        }
+      }
+    },
+    "intent": {
+      "source": "figma_plugin",
+      "change_type": "capture",
+      "scope": "component",
+      "motivation": "explicit_capture",
+      "trigger": "manual_capture",
+      "capture_number": 4,
+      "previous_snapshot_id": "a744a3f2-0b90-4931-9f02-5c9a708686d7"
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "source_id": "quality_signals",
+  "source_name": "Training Quality Signals",
+  "version": "1.0.0",
+  "description": "Principles defining what makes a rule high-quality for training",
+  
+  "principles": [
+    {
+      "id": "novelty_over_redundancy",
+      "name": "Novelty Over Redundancy",
+      "category": "quality",
+      "description": "Novel patterns are more valuable than variations of common patterns",
+      "implications": [
+        "Redundant rules waste training capacity",
+        "Novelty score reflects contribution to pattern coverage",
+        "Rare but valid patterns are valuable (not noise)"
+      ],
+      "scoring": {
+        "metric": "novelty_score",
+        "min_threshold": 0.3,
+        "high_value_threshold": 0.7
+      },
+      "training_weight": 1.2
+    },
+    {
+      "id": "completeness_requirement",
+      "name": "Completeness Requirement",
+      "category": "quality",
+      "description": "Rules must have complete platform context for reproducibility",
+      "required_fields": [
+        "platform",
+        "extraction_method", 
+        "data_source"
+      ],
+      "implications": [
+        "Incomplete context undermines traceability",
+        "Rules without context deprioritized in training"
+      ],
+      "training_weight": 1.1
+    },
+    {
+      "id": "confidence_calibration",
+      "name": "Confidence Calibration",
+      "category": "quality",
+      "description": "Confidence scores must reflect genuine pattern clarity",
+      "calibration": {
+        "high": {"min": 0.8, "description": "Clear, unambiguous pattern"},
+        "medium": {"min": 0.5, "max": 0.8, "description": "Plausible pattern with some ambiguity"},
+        "low": {"max": 0.5, "description": "Speculative or weakly supported"}
+      },
+      "implications": [
+        "Over-confident rules are harmful to training"
+      ],
+      "training_weight": 1.0
+    }
+  ]
+}
+
+

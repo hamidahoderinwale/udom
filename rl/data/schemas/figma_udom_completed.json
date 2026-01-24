@@ -1,0 +1,747 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Completed Figma uDOM Snapshot with Preference Capture",
+  "description": "Schema for a completed Figma uDOM snapshot that includes both the structural snapshot and associated preference events captured by the plugin",
+  "type": "object",
+  "required": ["snapshot", "preferences", "completion_status"],
+  "properties": {
+    "snapshot": {
+      "type": "object",
+      "description": "The uDOM snapshot captured from Figma",
+      "required": ["metadata", "elements", "relations", "observations"],
+      "properties": {
+        "metadata": {
+          "type": "object",
+          "required": ["snapshot_id", "artifact_id", "artifact_type", "timestamp", "content_hash", "schema_version"],
+          "properties": {
+            "snapshot_id": {
+              "type": "string",
+              "description": "Unique identifier for this snapshot"
+            },
+            "artifact_id": {
+              "type": "string",
+              "description": "Figma artifact identifier (e.g., figma://file/{fileKey}/node/{nodeId})",
+              "pattern": "^figma://file/[^/]+/node/[^/]+$"
+            },
+            "artifact_type": {
+              "type": "string",
+              "description": "Type of artifact captured",
+              "enum": ["figma_component", "figma_frame", "figma_group", "figma_instance", "figma_vector", "figma_text", "figma_rectangle", "figma_ellipse", "figma_line", "figma_polygon", "figma_star", "figma_boolean_operation", "figma_slice", "figma_sticky", "figma_shape_with_text", "figma_connector", "figma_code_block", "figma_stamp", "figma_widget", "figma_embed", "figma_link_unfurl", "figma_media", "figma_section", "figma_table", "figma_table_cell", "figma_highlight", "figma_washi_tape"]
+            },
+            "timestamp": {
+              "type": "integer",
+              "description": "Unix timestamp in milliseconds when snapshot was captured"
+            },
+            "content_hash": {
+              "type": "string",
+              "description": "Stable hash of the snapshot content for deduplication"
+            },
+            "schema_version": {
+              "type": "string",
+              "description": "Version of the uDOM schema used",
+              "pattern": "^\\d+\\.\\d+\\.\\d+$"
+            }
+          }
+        },
+        "elements": {
+          "type": "array",
+          "description": "Array of uDOM elements in the snapshot",
+          "items": {
+            "type": "object",
+            "required": ["id", "stable_id", "type", "semantic_type", "properties"],
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "Unique element identifier"
+              },
+              "stable_id": {
+                "type": "string",
+                "description": "Stable identifier for content-addressable referencing"
+              },
+              "type": {
+                "type": "string",
+                "description": "Element type"
+              },
+              "semantic_type": {
+                "type": "string",
+                "description": "Semantic classification of the element"
+              },
+              "properties": {
+                "type": "object",
+                "description": "Extensible properties map",
+                "additionalProperties": true
+              },
+              "spatial": {
+                "type": "object",
+                "properties": {
+                  "absolute": {
+                    "type": "object",
+                    "properties": {
+                      "coordinate_system": {"type": "string"},
+                      "bounds": {
+                        "type": "object",
+                        "required": ["x", "y", "width", "height"],
+                        "properties": {
+                          "x": {"type": "number"},
+                          "y": {"type": "number"},
+                          "width": {"type": "number"},
+                          "height": {"type": "number"}
+                        }
+                      }
+                    }
+                  },
+                  "relative": {
+                    "type": "object",
+                    "properties": {
+                      "layout_mode": {"type": "string"},
+                      "flex": {
+                        "type": "object",
+                        "properties": {
+                          "direction": {"type": "string"},
+                          "align": {"type": "string"},
+                          "justify": {"type": "string"}
+                        }
+                      }
+                    }
+                  },
+                  "semantic": {
+                    "type": "object",
+                    "properties": {
+                      "depth": {"type": "number"},
+                      "path": {"type": "string"},
+                      "document_order": {"type": "number"}
+                    }
+                  },
+                  "visual": {
+                    "type": "object",
+                    "properties": {
+                      "bounds": {
+                        "type": "object",
+                        "required": ["x", "y", "width", "height"],
+                        "properties": {
+                          "x": {"type": "number"},
+                          "y": {"type": "number"},
+                          "width": {"type": "number"},
+                          "height": {"type": "number"}
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "visual": {
+                "type": "object",
+                "properties": {
+                  "background": {
+                    "type": "object",
+                    "properties": {
+                      "type": {"type": "string"},
+                      "color": {"type": "string"}
+                    }
+                  },
+                  "border_radius": {
+                    "type": "object",
+                    "properties": {
+                      "tl": {"type": "number"},
+                      "tr": {"type": "number"},
+                      "br": {"type": "number"},
+                      "bl": {"type": "number"}
+                    }
+                  },
+                  "shadow": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "x": {"type": "number"},
+                        "y": {"type": "number"},
+                        "blur": {"type": "number"},
+                        "color": {"type": "string"}
+                      }
+                    }
+                  }
+                }
+              },
+              "text": {
+                "type": "object",
+                "properties": {
+                  "content": {"type": "string"},
+                  "font_family": {"type": "string"},
+                  "font_size": {"type": "number"},
+                  "font_weight": {"type": "string"},
+                  "line_height": {"type": "number"}
+                }
+              },
+              "vector": {
+                "type": "object",
+                "properties": {
+                  "path_data": {"type": "string"},
+                  "svg_data": {"type": "string"},
+                  "viewBox": {"type": "string"}
+                }
+              },
+              "composition": {
+                "type": "object",
+                "properties": {
+                  "children": {
+                    "type": "array",
+                    "items": {"type": "string"}
+                  },
+                  "layout_mode": {"type": "string"}
+                }
+              },
+              "states": {
+                "type": "object",
+                "properties": {
+                  "default": {"type": "object", "additionalProperties": true},
+                  "hover": {"type": "object", "additionalProperties": true},
+                  "active": {"type": "object", "additionalProperties": true},
+                  "disabled": {"type": "object", "additionalProperties": true}
+                }
+              }
+            }
+          }
+        },
+        "relations": {
+          "type": "array",
+          "description": "Relationships between elements",
+          "items": {
+            "type": "object",
+            "required": ["type", "from", "to"],
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "Type of relation"
+              },
+              "from": {
+                "type": "string",
+                "description": "Source element ID"
+              },
+              "to": {
+                "type": "string",
+                "description": "Target element ID"
+              },
+              "properties": {
+                "type": "object",
+                "description": "Additional relation properties",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "observations": {
+          "type": "object",
+          "required": ["provenance"],
+          "properties": {
+            "provenance": {
+              "type": "object",
+              "required": ["session_id", "tool", "tool_version", "extraction_method", "extracted_at", "extractor_version", "extraction_quality"],
+              "properties": {
+                "user_id": {
+                  "type": "string",
+                  "description": "Figma user ID"
+                },
+                "user_name": {
+                  "type": "string",
+                  "description": "Figma user name"
+                },
+                "session_id": {
+                  "type": "string",
+                  "description": "Session identifier"
+                },
+                "tool": {
+                  "type": "string",
+                  "description": "Tool name (e.g., 'figma')",
+                  "enum": ["figma"]
+                },
+                "tool_version": {
+                  "type": "string",
+                  "description": "Tool version"
+                },
+                "extraction_method": {
+                  "type": "string",
+                  "description": "Method used for extraction",
+                  "enum": ["plugin_api"]
+                },
+                "extracted_at": {
+                  "type": "integer",
+                  "description": "Unix timestamp in milliseconds"
+                },
+                "extractor_version": {
+                  "type": "string",
+                  "description": "Version of the extractor"
+                },
+                "extraction_quality": {
+                  "type": "string",
+                  "description": "Quality assessment of extraction",
+                  "enum": ["high", "medium", "low"]
+                }
+              }
+            },
+            "intent": {
+              "type": "object",
+              "properties": {
+                "source": {"type": "string"},
+                "change_type": {"type": "string"},
+                "scope": {"type": "string"},
+                "motivation": {"type": "string"},
+                "trigger": {
+                  "type": "string",
+                  "enum": ["auto_capture", "manual_capture", "selection_change", "user_request"]
+                },
+                "capture_number": {"type": "integer"}
+              }
+            },
+            "context": {
+              "type": "object",
+              "properties": {
+                "file_name": {"type": "string"},
+                "file_path": {"type": "string"},
+                "page_name": {"type": "string"},
+                "nearby_elements": {
+                  "type": "array",
+                  "items": {"type": "string"}
+                },
+                "tags": {
+                  "type": "array",
+                  "items": {"type": "string"}
+                },
+                "workspace_id": {"type": "string"},
+                "viewport": {
+                  "type": "object",
+                  "properties": {
+                    "zoom": {"type": "number"},
+                    "center": {
+                      "type": "object",
+                      "properties": {
+                        "x": {"type": "number"},
+                        "y": {"type": "number"}
+                      }
+                    },
+                    "bounds": {
+                      "type": "object",
+                      "properties": {
+                        "x": {"type": "number"},
+                        "y": {"type": "number"},
+                        "width": {"type": "number"},
+                        "height": {"type": "number"}
+                      }
+                    }
+                  }
+                },
+                "interaction_history": {
+                  "type": "object",
+                  "properties": {
+                    "recent_selections": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "node_id": {"type": "string"},
+                          "node_name": {"type": "string"},
+                          "timestamp": {"type": "integer"},
+                          "duration": {"type": "number"}
+                        }
+                      }
+                    },
+                    "selection_frequency": {
+                      "type": "object",
+                      "additionalProperties": {"type": "number"}
+                    },
+                    "average_time_between_selections": {"type": "number"},
+                    "total_selections": {"type": "integer"},
+                    "most_frequent_nodes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "node_id": {"type": "string"},
+                          "count": {"type": "integer"}
+                        }
+                      }
+                    },
+                    "session_stats": {
+                      "type": "object",
+                      "properties": {
+                        "duration": {"type": "number"},
+                        "total_interactions": {"type": "integer"},
+                        "captures_per_minute": {"type": "number"}
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "composition_rules": {
+          "type": "object",
+          "description": "Composition rules extracted from the artifact",
+          "properties": {
+            "hierarchy": {
+              "type": "object",
+              "properties": {
+                "max_nesting_depth": {"type": "integer"},
+                "nesting_strategy": {"type": "string"},
+                "indent_increment": {"type": "number"},
+                "parent_child_rules": {
+                  "type": "object",
+                  "properties": {
+                    "containment": {"type": "string"},
+                    "z_ordering": {"type": "string"}
+                  }
+                }
+              }
+            },
+            "spacing": {
+              "type": "object",
+              "properties": {
+                "vertical_rhythm": {
+                  "type": "object",
+                  "properties": {
+                    "base_unit": {"type": "number"},
+                    "scale": {
+                      "type": "array",
+                      "items": {"type": "number"}
+                    },
+                    "apply_to": {
+                      "type": "array",
+                      "items": {"type": "string"}
+                    }
+                  }
+                },
+                "horizontal_rhythm": {
+                  "type": "object",
+                  "properties": {
+                    "base_unit": {"type": "number"},
+                    "grid_columns": {"type": "integer"},
+                    "gutter": {"type": "number"}
+                  }
+                }
+              }
+            },
+            "visual_hierarchy": {
+              "type": "object",
+              "properties": {
+                "emphasis_levels": {"type": "integer"},
+                "primary_axis": {"type": "string"},
+                "rules": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "level": {"type": "integer"},
+                      "size_range": {
+                        "type": "object",
+                        "properties": {
+                          "min": {"type": "number"},
+                          "max": {"type": "number"}
+                        }
+                      },
+                      "weight_range": {
+                        "type": "object",
+                        "properties": {
+                          "min": {"type": "number"},
+                          "max": {"type": "number"}
+                        }
+                      },
+                      "color_prominence": {"type": "number"}
+                    }
+                  }
+                }
+              }
+            },
+            "constraints": {
+              "type": "object",
+              "properties": {
+                "min_touch_target": {"type": "number"},
+                "max_line_length": {"type": "number"},
+                "aspect_ratio_lock": {"type": "boolean"},
+                "snap_to_grid": {"type": "boolean"},
+                "responsive_breakpoints": {
+                  "type": "array",
+                  "items": {"type": "number"}
+                }
+              }
+            }
+          }
+        },
+        "rendering_manifest": {
+          "type": "object",
+          "description": "Rendering information for the snapshot",
+          "properties": {
+            "viewport": {
+              "type": "object",
+              "properties": {
+                "width": {"type": "number"},
+                "height": {"type": "number"},
+                "dpr": {"type": "number"},
+                "scale": {"type": "number"},
+                "coordinate_system": {"type": "string"}
+              }
+            },
+            "render_layers": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {"type": "string"},
+                  "type": {"type": "string"},
+                  "z_index": {"type": "integer"},
+                  "blend_mode": {"type": "string"},
+                  "opacity": {"type": "number"},
+                  "elements": {
+                    "type": "array",
+                    "items": {"type": "string"}
+                  }
+                }
+              }
+            },
+            "assets": {
+              "type": "object",
+              "properties": {
+                "images": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {"type": "string"},
+                      "url": {"type": "string"},
+                      "hash": {"type": "string"},
+                      "dimensions": {
+                        "type": "object",
+                        "properties": {
+                          "width": {"type": "number"},
+                          "height": {"type": "number"}
+                        }
+                      },
+                      "format": {"type": "string"}
+                    }
+                  }
+                },
+                "vectors": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {"type": "string"},
+                      "svg_data": {"type": "string"},
+                      "viewBox": {"type": "string"},
+                      "hash": {"type": "string"}
+                    }
+                  }
+                },
+                "fonts": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "family": {"type": "string"},
+                      "weights": {
+                        "type": "array",
+                        "items": {"type": "integer"}
+                      },
+                      "source": {"type": "string"},
+                      "url": {"type": "string"}
+                    }
+                  }
+                }
+              }
+            },
+            "quality": {
+              "type": "object",
+              "properties": {
+                "include_interactions": {"type": "boolean"},
+                "include_animations": {"type": "boolean"},
+                "text_rendering": {"type": "string"}
+              }
+            }
+          }
+        }
+      }
+    },
+    "preferences": {
+      "type": "array",
+      "description": "Array of preference events associated with this snapshot",
+      "items": {
+        "type": "object",
+        "required": ["event_id", "timestamp", "session_id", "snapshot_id", "artifact_id", "source", "suggested_rules", "user_action", "trace_context"],
+        "properties": {
+          "event_id": {
+            "type": "string",
+            "description": "Unique identifier for this preference event"
+          },
+          "timestamp": {
+            "type": "integer",
+            "description": "Unix timestamp in milliseconds when event was created"
+          },
+          "session_id": {
+            "type": "string",
+            "description": "Session identifier (should match snapshot.observations.provenance.session_id)"
+          },
+          "snapshot_id": {
+            "type": "string",
+            "description": "Reference to the snapshot this preference relates to (should match snapshot.metadata.snapshot_id)"
+          },
+          "artifact_id": {
+            "type": "string",
+            "description": "Reference to the artifact (should match snapshot.metadata.artifact_id)"
+          },
+          "source": {
+            "type": "string",
+            "description": "Source of the preference: 'synthetic' (generated), 'user_feedback' (from plugin), 'production' (from real usage), 'manual' (manually entered)",
+            "enum": ["synthetic", "user_feedback", "production", "manual"]
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of preference event: 'auto_suggestion' (auto-generated), 'user_request' (user asked for suggestions), 'manual_entry' (manually created), 'batch_import' (imported from batch)",
+            "enum": ["auto_suggestion", "user_request", "manual_entry", "batch_import"]
+          },
+          "suggested_rules": {
+            "type": "array",
+            "description": "Rules that were suggested to the user",
+            "items": {
+              "type": "object",
+              "required": ["rule_id", "match_score", "shown_at"],
+              "properties": {
+                "rule_id": {
+                  "type": "string",
+                  "description": "Identifier of the suggested rule"
+                },
+                "match_score": {
+                  "type": "number",
+                  "description": "Match score between 0.0 and 1.0",
+                  "minimum": 0.0,
+                  "maximum": 1.0
+                },
+                "shown_at": {
+                  "type": "integer",
+                  "description": "Unix timestamp in milliseconds when rule was shown"
+                }
+              }
+            }
+          },
+          "user_action": {
+            "type": "object",
+            "required": ["type", "timestamp"],
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "Type of user action taken",
+                "enum": ["accepted", "dismissed", "modified", "ignored"]
+              },
+              "rule_id": {
+                "type": "string",
+                "description": "Identifier of the rule that was acted upon (required if type is not 'ignored')"
+              },
+              "action_taken": {
+                "type": "string",
+                "description": "Description of the action taken (optional, may include modifications)"
+              },
+              "timestamp": {
+                "type": "integer",
+                "description": "Unix timestamp in milliseconds when action was taken"
+              }
+            }
+          },
+          "trace_context": {
+            "type": "object",
+            "description": "Context from the interaction trace when preference was captured",
+            "required": ["recent_actions"],
+            "properties": {
+              "recent_actions": {
+                "type": "array",
+                "description": "Recent actions in the trace",
+                "items": {"type": "string"}
+              },
+              "current_state": {
+                "type": "object",
+                "description": "Current state snapshot",
+                "additionalProperties": true
+              }
+            }
+          },
+          "extensions": {
+            "type": "object",
+            "description": "Extension point for custom data (component-specific, platform-specific, etc.)",
+            "additionalProperties": true
+          },
+          "metadata": {
+            "type": "object",
+            "description": "Additional metadata (suggestion strategy, model version, etc.)",
+            "additionalProperties": true
+          }
+        }
+      }
+    },
+    "completion_status": {
+      "type": "object",
+      "description": "Status indicating whether the snapshot capture and preference collection cycle is complete",
+      "required": ["is_completed", "completed_at", "completion_reason"],
+      "properties": {
+        "is_completed": {
+          "type": "boolean",
+          "description": "Whether the snapshot and preference capture cycle is complete"
+        },
+        "completed_at": {
+          "type": "integer",
+          "description": "Unix timestamp in milliseconds when completion occurred (null if not completed)"
+        },
+        "completion_reason": {
+          "type": "string",
+          "description": "Reason for completion status",
+          "enum": [
+            "snapshot_captured",
+            "preferences_recorded",
+            "user_closed_plugin",
+            "session_ended",
+            "timeout",
+            "error",
+            "manual_completion"
+          ]
+        },
+        "has_preferences": {
+          "type": "boolean",
+          "description": "Whether any preference events were recorded for this snapshot"
+        },
+        "preference_count": {
+          "type": "integer",
+          "description": "Number of preference events recorded",
+          "minimum": 0
+        },
+        "last_preference_at": {
+          "type": "integer",
+          "description": "Unix timestamp in milliseconds of the most recent preference event (null if no preferences)"
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata about the completed snapshot",
+      "properties": {
+        "created_at": {
+          "type": "integer",
+          "description": "Unix timestamp in milliseconds when this completed snapshot record was created"
+        },
+        "updated_at": {
+          "type": "integer",
+          "description": "Unix timestamp in milliseconds when this record was last updated"
+        },
+        "version": {
+          "type": "string",
+          "description": "Version of this schema",
+          "default": "1.0.0"
+        },
+        "plugin_version": {
+          "type": "string",
+          "description": "Version of the Figma plugin that captured this snapshot"
+        },
+        "extractor_version": {
+          "type": "string",
+          "description": "Version of the extractor used (should match snapshot.observations.provenance.extractor_version)"
+        }
+      }
+    }
+  }
+}
+

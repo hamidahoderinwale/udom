@@ -1,0 +1,214 @@
+{
+  "metadata": {
+    "snapshot_id": "25055a66-0adf-4f78-aec6-18a834ef2fb3",
+    "artifact_id": "figma://file/undefined/node/41:8",
+    "artifact_type": "figma_component",
+    "timestamp": 1769198108322,
+    "content_hash": "content-hash:00147o15",
+    "schema_version": "1.0.0"
+  },
+  "elements": [
+    {
+      "id": "41:8",
+      "stable_id": "content-hash:00147o15",
+      "type": "FRAME",
+      "semantic_type": "container",
+      "properties": {
+        "name": "Frame 4",
+        "width": 100,
+        "height": 100,
+        "cornerRadius": 0,
+        "fills": []
+      },
+      "spatial": {
+        "absolute": {
+          "coordinate_system": "canvas",
+          "bounds": {
+            "x": 1145,
+            "y": 699,
+            "width": 100,
+            "height": 100
+          }
+        }
+      },
+      "visual": {
+        "border_radius": {
+          "tl": 0,
+          "tr": 0,
+          "br": 0,
+          "bl": 0
+        }
+      }
+    }
+  ],
+  "relations": [],
+  "observations": {
+    "provenance": {
+      "user_id": "943301272123231421",
+      "user_name": "Hamidah Oderinwale",
+      "session_id": "session_1769197161965_x2e8bwbbj",
+      "tool": "figma",
+      "tool_version": "latest",
+      "extraction_method": "figma_plugin_api",
+      "extracted_at": 1769198108322,
+      "extractor_version": "figma-adapter-v1.1.0",
+      "extraction_quality": "complete"
+    },
+    "context": {
+      "file_name": "Untitled",
+      "page_name": "Page 1",
+      "workspace_id": "unknown",
+      "viewport": {
+        "zoom": 0.27795863151550293,
+        "center": {
+          "x": 1201.6176968119712,
+          "y": 1135.0610279765779
+        },
+        "bounds": {
+          "x": -618.7971372804165,
+          "y": 183.48054651919324,
+          "width": 3640.8296681847755,
+          "height": 1903.160962914769
+        }
+      },
+      "nearby_elements": [
+        "41:5"
+      ],
+      "tags": [
+        "frame"
+      ],
+      "interaction_history": {
+        "recent_selections": [
+          {
+            "node_id": "1:44",
+            "node_name": "H1",
+            "timestamp": 1769197202693,
+            "duration": 5078
+          },
+          {
+            "node_id": "1:44",
+            "node_name": "H1",
+            "timestamp": 1769197207771,
+            "duration": 24
+          },
+          {
+            "node_id": "1:44",
+            "node_name": "H1",
+            "timestamp": 1769197207795,
+            "duration": 33
+          },
+          {
+            "node_id": "1:44",
+            "node_name": "H1",
+            "timestamp": 1769197207828,
+            "duration": 640201
+          },
+          {
+            "node_id": "1:44",
+            "node_name": "H1",
+            "timestamp": 1769197848029,
+            "duration": 188425
+          },
+          {
+            "node_id": "1:44",
+            "node_name": "H1",
+            "timestamp": 1769198036454,
+            "duration": 16648
+          },
+          {
+            "node_id": "1:44",
+            "node_name": "H1",
+            "timestamp": 1769198053102,
+            "duration": 38794
+          },
+          {
+            "node_id": "41:5",
+            "node_name": "Shape with text",
+            "timestamp": 1769198091896,
+            "duration": 1158
+          },
+          {
+            "node_id": "1:42",
+            "node_name": "1",
+            "timestamp": 1769198093054,
+            "duration": 14713
+          },
+          {
+            "node_id": "41:8",
+            "node_name": "Frame 4",
+            "timestamp": 1769198107767
+          }
+        ],
+        "selection_frequency": {
+          "1:44": 11,
+          "1:45": 1,
+          "41:5": 1,
+          "1:42": 1,
+          "41:8": 1
+        },
+        "average_time_between_selections": 67414,
+        "total_selections": 15,
+        "viewport_changes": 0,
+        "capture_count": 12,
+        "most_frequent_nodes": [
+          {
+            "node_id": "1:44",
+            "count": 11
+          },
+          {
+            "node_id": "1:45",
+            "count": 1
+          },
+          {
+            "node_id": "41:5",
+            "count": 1
+          },
+          {
+            "node_id": "1:42",
+            "count": 1
+          },
+          {
+            "node_id": "41:8",
+            "count": 1
+          }
+        ],
+        "session_stats": {
+          "duration": 944342,
+          "total_interactions": 27,
+          "captures_per_minute": 0.7624356430191604
+        }
+      }
+    },
+    "intent": {
+      "source": "figma_plugin",
+      "change_type": "capture",
+      "scope": "component",
+      "motivation": "automated_tracking",
+      "trigger": "auto_capture",
+      "capture_number": 12
+    }
+  },
+  "rendering_manifest": {
+    "viewport": {
+      "width": 100,
+      "height": 100,
+      "dpr": 2,
+      "scale": 1,
+      "coordinate_system": "canvas"
+    },
+    "assets": {
+      "images": [
+        {
+          "id": "screenshot_25055a66-0adf-4f78-aec6-18a834ef2fb3",
+          "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACxSURBVHgB7cABAQAAAIIg/69uSFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAF8GceYAATcTxP0AAAAASUVORK5CYII=",
+          "hash": "0000000000m43gf7",
+          "dimensions": {
+            "width": 200,
+            "height": 200
+          },
+          "format": "png"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "source_id": "action_rules",
+  "source_name": "Action Interpretation Rules",
+  "version": "1.0.0",
+  "description": "Principles governing how user action sequences are interpreted into intent",
+  
+  "principles": [
+    {
+      "id": "iteration_signal",
+      "name": "Iteration Signal",
+      "category": "action",
+      "description": "When a component is returned to in a subsequent action, this indicates iterative refinement",
+      "detection": {
+        "signals": ["component_revisit", "property_repeated", "sequence_return"],
+        "keywords": ["iterative", "refine", "revisit", "return", "again", "adjust", "further"],
+        "pattern": "same_component_edited_multiple_times"
+      },
+      "implications": [
+        "Return visits signal dissatisfaction with prior state",
+        "Sequence represents goal-directed iteration, not isolated edits",
+        "Higher confidence for rules derived from iteration sequences"
+      ],
+      "training_weight": 1.5,
+      "confidence_boost": 0.15,
+      "examples": {
+        "positive": {
+          "trace": "text_size:12→14 → spacing:8→12 → text_size:14→16",
+          "rule": "User iteratively refines text readability",
+          "why": "Recognizes return to text_size as iteration"
+        },
+        "negative": {
+          "trace": "text_size:12→14 → spacing:8→12 → text_size:14→16",
+          "rule": "User changes text size twice",
+          "why": "Treats actions as isolated, misses iteration pattern"
+        }
+      }
+    },
+    {
+      "id": "temporal_batching",
+      "name": "Temporal Batching",
+      "category": "action",
+      "description": "Rapid action sequences (within ~2 seconds) typically form a single intent unit",
+      "detection": {
+        "signals": ["rapid_sequence", "burst_edits", "time_gap"],
+        "time_threshold_ms": 2000
+      },
+      "implications": [
+        "Burst edits are cognitively unified—user is 'in flow'",
+        "Gaps in timeline indicate intent boundaries",
+        "Aggregate burst sequences into unified patterns"
+      ],
+      "training_weight": 1.2,
+      "examples": {
+        "positive": {
+          "trace": "[0ms] move_x → [100ms] move_y → [150ms] resize",
+          "rule": "User repositions and resizes element in single adjustment",
+          "why": "Recognizes rapid sequence as unified intent"
+        },
+        "negative": {
+          "trace": "[0ms] move_x → [100ms] move_y → [150ms] resize",
+          "rule": "User moves element horizontally, then vertically, then resizes",
+          "why": "Over-segments what is a single fluid action"
+        }
+      }
+    },
+    {
+      "id": "proximity_clustering",
+      "name": "Proximity Clustering",
+      "category": "action",
+      "description": "Actions on spatially adjacent elements often share intent",
+      "detection": {
+        "signals": ["spatial_proximity", "sibling_elements", "parent_child"],
+        "spatial_threshold_px": 50
+      },
+      "implications": [
+        "Users think in visual clusters, not individual nodes",
+        "Edits to nearby elements likely serve common goal",
+        "Parent-child or sibling relationships strengthen signal"
+      ],
+      "training_weight": 1.1
+    },
+    {
+      "id": "selection_scope",
+      "name": "Selection Scope Signal",
+      "category": "action",
+      "description": "Multi-selection operations indicate batch intent vs individual refinement",
+      "detection": {
+        "signals": ["multi_select", "single_select", "selection_count"]
+      },
+      "implications": [
+        "Single selection → focused, specific intent",
+        "Multi-selection → batch operation, systematic change",
+        "Batch intents often indicate style consistency goals"
+      ],
+      "training_weight": 1.1
+    },
+    {
+      "id": "undo_redo_signal",
+      "name": "Undo/Redo Signal",
+      "category": "action",
+      "description": "Undo operations signal dissatisfaction; post-redo state is preferred outcome",
+      "detection": {
+        "signals": ["undo_action", "redo_action", "undo_frequency"],
+        "keywords": ["undo", "revert", "redo"]
+      },
+      "implications": [
+        "Undos are negative feedback signals",
+        "Post-undo sequences represent revised approach",
+        "Frequent undos indicate uncertainty or exploration"
+      ],
+      "training_weight": 1.3,
+      "preference_signal": "rejected"
+    },
+    {
+      "id": "property_correlation",
+      "name": "Property Correlation",
+      "category": "action",
+      "description": "Simultaneous changes to related properties suggest unified intent",
+      "detection": {
+        "signals": ["property_bundle", "correlated_changes"],
+        "common_bundles": [
+          {"properties": ["width", "height"], "intent": "resize"},
+          {"properties": ["x", "y"], "intent": "reposition"},
+          {"properties": ["fontSize", "lineHeight"], "intent": "typography_tuning"},
+          {"properties": ["paddingTop", "paddingBottom", "paddingLeft", "paddingRight"], "intent": "spacing_adjustment"}
+        ]
+      },
+      "implications": [
+        "Width + Height → resize intent (not two separate dimension intents)",
+        "X + Y → repositioning intent",
+        "Font size + Line height → typography tuning intent"
+      ],
+      "training_weight": 1.2
+    },
+    {
+      "id": "hierarchical_propagation",
+      "name": "Hierarchical Propagation",
+      "category": "action",
+      "description": "Changes to parent elements that affect children indicate structural intent",
+      "detection": {
+        "signals": ["parent_change", "auto_layout", "container_resize"]
+      },
+      "implications": [
+        "Auto-layout changes propagate to children",
+        "Container resizing is often about content accommodation",
+        "Distinguish direct manipulation from inherited effects"
+      ],
+      "training_weight": 1.2
+    }
+  ]
+}
+
+

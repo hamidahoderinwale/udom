@@ -1,0 +1,540 @@
+{
+  "version": "1.0.0",
+  "name": "Design Taxonomy Constitution",
+  "description": "Constitutional principles derived from design taxonomy for intent rule generation and preference learning",
+  
+  "style_principles": [
+    {
+      "id": "modernism",
+      "category": "historical_movement",
+      "name": "Modernism",
+      "detection": {
+        "keywords": ["clean", "simple", "minimal", "functional", "geometric"],
+        "elements": ["geometric_shapes", "sans_serif_fonts", "primary_colors", "clean_grids", "minimal_ornamentation"],
+        "fonts": ["Helvetica", "Futura"],
+        "colors": ["primary_colors", "black", "white"]
+      },
+      "psychological_effect": "Form follows function; radical simplification",
+      "training_weight": 1.0,
+      "period": "1920s-1960s"
+    },
+    {
+      "id": "bauhaus",
+      "category": "historical_movement",
+      "name": "Bauhaus",
+      "detection": {
+        "keywords": ["geometric", "bold", "colorful", "modern", "functional"],
+        "elements": ["circles", "squares", "triangles", "primary_colors", "bold_sans_serif", "asymmetric_layouts", "modular_grids"],
+        "colors": ["primary_colors", "neutrals"]
+      },
+      "psychological_effect": "Unity of art, craft, and technology; democratic design",
+      "training_weight": 1.0,
+      "period": "1919-1933"
+    },
+    {
+      "id": "swiss_style",
+      "category": "historical_movement",
+      "name": "Swiss Style / International Typographic Style",
+      "detection": {
+        "keywords": ["clean", "grid-based", "professional", "organized", "minimal"],
+        "elements": ["strict_grids", "flush_left_text", "generous_whitespace", "photography"],
+        "fonts": ["Helvetica", "Univers", "Akzidenz-Grotesk"]
+      },
+      "psychological_effect": "Objective communication through mathematical clarity",
+      "training_weight": 1.2,
+      "period": "1950s-1970s"
+    },
+    {
+      "id": "minimalism",
+      "category": "historical_movement",
+      "name": "Minimalism",
+      "detection": {
+        "keywords": ["minimal", "clean", "simple", "white space", "less is more"],
+        "elements": ["maximum_whitespace", "monochrome", "limited_fonts", "grid_layouts", "no_ornament"],
+        "constraints": {"max_fonts": 2, "max_colors": 3}
+      },
+      "psychological_effect": "Less is more — strip to essentials",
+      "training_weight": 1.3,
+      "period": "1960s-present"
+    },
+    {
+      "id": "brutalism",
+      "category": "historical_movement",
+      "name": "Brutalism",
+      "detection": {
+        "keywords": ["raw", "edgy", "unpolished", "stark", "anti-design"],
+        "elements": ["monochrome", "crude_typography", "broken_grids", "rough_textures", "asymmetric_layouts"]
+      },
+      "psychological_effect": "Raw, honest, unpolished; anti-establishment",
+      "training_weight": 1.0,
+      "period": "1950s-present"
+    },
+    {
+      "id": "art_deco",
+      "category": "historical_movement", 
+      "name": "Art Deco",
+      "detection": {
+        "keywords": ["luxurious", "glamorous", "geometric", "elegant", "vintage 1920s"],
+        "elements": ["geometric_streamlined_shapes", "symmetry", "zigzag_patterns", "chevrons", "metallic_colors", "jewel_tones", "stepped_forms"]
+      },
+      "psychological_effect": "Luxury, glamour, and optimism about modernity",
+      "training_weight": 1.0,
+      "period": "1920s-1930s"
+    },
+    {
+      "id": "pop_art",
+      "category": "historical_movement",
+      "name": "Pop Art",
+      "detection": {
+        "keywords": ["colorful", "comic book", "retro", "fun", "Andy Warhol"],
+        "elements": ["bright_saturated_colors", "ben_day_dots", "bold_outlines", "repetition", "flat_graphics"]
+      },
+      "psychological_effect": "Blur line between high art and commercial culture",
+      "training_weight": 1.0,
+      "period": "1950s-1960s"
+    },
+    {
+      "id": "flat_design",
+      "category": "digital_ui",
+      "name": "Flat Design",
+      "detection": {
+        "keywords": ["flat", "2D", "simple icons", "bright colors", "modern app"],
+        "elements": ["2d_shapes", "bright_solid_colors", "simple_line_icons", "sans_serif_fonts"],
+        "anti_elements": ["shadows", "gradients", "textures"]
+      },
+      "psychological_effect": "Digital-native clarity; reject skeuomorphic ornament",
+      "training_weight": 1.2,
+      "period": "2010s"
+    },
+    {
+      "id": "material_design",
+      "category": "digital_ui",
+      "name": "Material Design",
+      "detection": {
+        "keywords": ["Google style", "card-based", "clean", "modern", "shadowy"],
+        "elements": ["card_layouts", "subtle_shadows", "bold_accent_colors", "responsive_motion"],
+        "fonts": ["Roboto"]
+      },
+      "psychological_effect": "Tactile metaphor; digital paper and ink with physics",
+      "training_weight": 1.2,
+      "period": "2014-present"
+    },
+    {
+      "id": "glassmorphism",
+      "category": "digital_ui",
+      "name": "Glassmorphism",
+      "detection": {
+        "keywords": ["frosted glass", "blur", "transparent", "modern", "depth"],
+        "elements": ["frosted_glass_effect", "backdrop_blur", "transparency", "subtle_borders", "light_colors"],
+        "css_signals": ["backdrop-filter: blur"]
+      },
+      "psychological_effect": "Layered transparency with depth",
+      "training_weight": 1.0,
+      "period": "2020-present"
+    },
+    {
+      "id": "neumorphism",
+      "category": "digital_ui",
+      "name": "Neumorphism / Neomorphism",
+      "detection": {
+        "keywords": ["soft UI", "modern digital", "tactile"],
+        "elements": ["soft_shadows", "embossed_appearance", "monochromatic_backgrounds", "rounded_corners", "low_contrast"]
+      },
+      "psychological_effect": "Soft, tactile minimalism; new skeuomorphism",
+      "training_weight": 0.8,
+      "accessibility_concern": true,
+      "period": "2020"
+    },
+    {
+      "id": "cyberpunk",
+      "category": "contemporary_aesthetic",
+      "name": "Cyberpunk",
+      "detection": {
+        "keywords": ["cyberpunk", "neon", "futuristic", "dark tech", "Blade Runner"],
+        "elements": ["neon_colors", "dark_backgrounds", "geometric_angles", "asian_typography", "rain_reflections", "grid_patterns"],
+        "colors": ["red", "blue", "magenta", "cyan"]
+      },
+      "psychological_effect": "Dystopian high-tech; 'high tech, low life'",
+      "training_weight": 1.0,
+      "period": "1980s-present"
+    },
+    {
+      "id": "vaporwave",
+      "category": "contemporary_aesthetic",
+      "name": "Vaporwave",
+      "detection": {
+        "keywords": ["vaporwave", "80s aesthetic", "retro futuristic", "glitch", "nostalgic"],
+        "elements": ["pastel_colors", "greek_statues", "early_cgi", "glitch_effects", "japanese_text", "geometric_grids"],
+        "colors": ["pink", "cyan", "purple"]
+      },
+      "psychological_effect": "Ironic nostalgia for 1980s-90s consumer culture",
+      "training_weight": 1.0,
+      "period": "2010s"
+    },
+    {
+      "id": "y2k",
+      "category": "contemporary_aesthetic",
+      "name": "Y2K",
+      "detection": {
+        "keywords": ["Y2K", "early 2000s", "chrome", "futuristic 2000s", "bubbly"],
+        "elements": ["neon_colors", "metallic_colors", "glossy_plastic", "chrome", "holographic", "pixelated_graphics", "bubble_fonts", "organic_shapes"]
+      },
+      "psychological_effect": "Optimistic retro-futurism; millennium excitement",
+      "training_weight": 1.0,
+      "period": "late 1990s-early 2000s"
+    },
+    {
+      "id": "corporate_memphis",
+      "category": "contemporary_aesthetic",
+      "name": "Corporate Memphis / Alegria",
+      "detection": {
+        "keywords": ["corporate art", "flat illustration", "diverse characters"],
+        "elements": ["flat_vector_illustrations", "bold_solid_colors", "geometric_rounded_shapes", "disproportionate_limbs", "minimal_facial_features"]
+      },
+      "psychological_effect": "Friendly, inclusive, non-threatening corporate design",
+      "training_weight": 0.7,
+      "sentiment": "criticized_as_soulless",
+      "period": "2017-present"
+    }
+  ],
+
+  "element_principles": [
+    {
+      "id": "warm_colors",
+      "category": "color",
+      "name": "Warm Colors",
+      "detection": {
+        "colors": ["#FF0000", "#FF6B00", "#FFD700", "#FF7F50"],
+        "hsl_range": {"hue_min": 0, "hue_max": 60}
+      },
+      "psychological_effect": "Energetic, passionate, friendly, attention-grabbing",
+      "style_associations": ["pop_art", "psychedelic", "maximalism", "playful"]
+    },
+    {
+      "id": "cool_colors",
+      "category": "color",
+      "name": "Cool Colors",
+      "detection": {
+        "colors": ["#0066FF", "#000080", "#00FFFF", "#9966CC", "#00AA00"],
+        "hsl_range": {"hue_min": 180, "hue_max": 300}
+      },
+      "psychological_effect": "Calm, professional, trustworthy, serene",
+      "style_associations": ["corporate", "minimalism", "swiss_style"]
+    },
+    {
+      "id": "neon_colors",
+      "category": "color",
+      "name": "Neon Colors",
+      "detection": {
+        "colors": ["#FF10F0", "#00D4FF", "#00FF00", "#FF69B4"],
+        "saturation_min": 90
+      },
+      "psychological_effect": "Bold, energetic, attention-grabbing, modern",
+      "style_associations": ["cyberpunk", "y2k", "vaporwave", "80s_retro"]
+    },
+    {
+      "id": "pastel_colors",
+      "category": "color",
+      "name": "Pastel Colors",
+      "detection": {
+        "colors": ["#FFB3BA", "#A2D2FF", "#AAF0D1", "#E6B3E8"],
+        "lightness_min": 75, "lightness_max": 90
+      },
+      "psychological_effect": "Soft, gentle, calming, youthful, dreamy",
+      "style_associations": ["vaporwave", "cottagecore", "elegant", "y2k"]
+    },
+    {
+      "id": "earth_tones",
+      "category": "color",
+      "name": "Earth Tones",
+      "detection": {
+        "colors": ["#8B4513", "#E07855", "#808000", "#B7410E", "#C2B280"]
+      },
+      "psychological_effect": "Natural, grounded, organic, rustic, warm",
+      "style_associations": ["rustic", "cottagecore", "70s_retro", "solarpunk"]
+    },
+    {
+      "id": "sans_serif_modern",
+      "category": "typography",
+      "name": "Sans-Serif Modern",
+      "detection": {
+        "fonts": ["Helvetica", "Arial", "Roboto", "Futura", "Univers", "Open Sans", "Inter"]
+      },
+      "psychological_effect": "Clean, modern, readable, professional, neutral",
+      "style_associations": ["modernism", "swiss_style", "minimalism", "corporate", "bauhaus"]
+    },
+    {
+      "id": "serif_classic",
+      "category": "typography",
+      "name": "Serif Classic",
+      "detection": {
+        "fonts": ["Times New Roman", "Garamond", "Georgia", "Baskerville", "Playfair Display"]
+      },
+      "psychological_effect": "Traditional, trustworthy, elegant, established, formal",
+      "style_associations": ["elegant", "dark_academia", "corporate"]
+    },
+    {
+      "id": "rounded_bubbly",
+      "category": "typography",
+      "name": "Rounded/Bubbly",
+      "detection": {
+        "fonts": ["Quicksand", "Varela Round", "Comfortaa", "Fredoka"]
+      },
+      "psychological_effect": "Friendly, approachable, playful, soft, welcoming",
+      "style_associations": ["playful", "y2k", "friendly"]
+    },
+    {
+      "id": "geometric_shapes",
+      "category": "shape",
+      "name": "Geometric Shapes",
+      "detection": {
+        "elements": ["circles", "squares", "triangles", "hexagons", "rectangles"]
+      },
+      "psychological_effect": "Structured, modern, stable, organized, systematic",
+      "style_associations": ["bauhaus", "modernism", "swiss_style", "de_stijl", "material_design"]
+    },
+    {
+      "id": "organic_shapes",
+      "category": "shape",
+      "name": "Organic Shapes",
+      "detection": {
+        "elements": ["blobs", "irregular_curves", "natural_forms", "flowing_shapes"]
+      },
+      "psychological_effect": "Natural, friendly, dynamic, creative, approachable",
+      "style_associations": ["art_nouveau", "organic", "playful", "solarpunk"]
+    },
+    {
+      "id": "rounded_soft",
+      "category": "shape",
+      "name": "Rounded/Soft",
+      "detection": {
+        "css_signals": ["border-radius"],
+        "elements": ["rounded_corners", "pill_shapes", "soft_edges", "circular_elements"]
+      },
+      "psychological_effect": "Friendly, approachable, safe, gentle, welcoming",
+      "style_associations": ["material_design", "playful", "y2k", "friendly"]
+    },
+    {
+      "id": "generous_whitespace",
+      "category": "layout",
+      "name": "Generous Whitespace",
+      "detection": {
+        "metrics": {"whitespace_ratio_min": 0.4}
+      },
+      "psychological_effect": "Calm, sophisticated, focused, minimal, clean",
+      "style_associations": ["minimalism", "elegant", "swiss_style", "calm"]
+    },
+    {
+      "id": "dense_packed",
+      "category": "layout",
+      "name": "Dense/Packed",
+      "detection": {
+        "metrics": {"whitespace_ratio_max": 0.2}
+      },
+      "psychological_effect": "Rich, busy, energetic, overwhelming, abundant",
+      "style_associations": ["maximalism", "psychedelic", "postmodernism"]
+    },
+    {
+      "id": "glass_blur_effects",
+      "category": "texture_effect",
+      "name": "Glass/Blur Effects",
+      "detection": {
+        "css_signals": ["backdrop-filter: blur", "rgba", "transparency"]
+      },
+      "psychological_effect": "Modern, sophisticated, layered, depth",
+      "style_associations": ["glassmorphism", "modern_ui", "y2k"]
+    },
+    {
+      "id": "gradients_linear",
+      "category": "texture_effect",
+      "name": "Gradients - Linear",
+      "detection": {
+        "css_signals": ["linear-gradient"]
+      },
+      "psychological_effect": "Depth, dimension, modern, smooth, dynamic",
+      "style_associations": ["y2k", "vaporwave", "material_design", "modern_ui"]
+    }
+  ],
+
+  "consumer_intent_mappings": [
+    {
+      "id": "make_it_pop",
+      "consumer_phrase": "make it pop",
+      "design_translation": "Increase contrast, use bold colors, add visual hierarchy with size/weight",
+      "specific_elements": ["high_contrast_colors", "bold_typography", "larger_focal_points", "drop_shadows"],
+      "style_associations": ["pop_art", "bold_energetic", "contemporary"],
+      "training_weight": 1.5
+    },
+    {
+      "id": "clean_and_simple",
+      "consumer_phrase": "clean and simple",
+      "design_translation": "Minimal elements, generous whitespace, clear hierarchy, limited color palette",
+      "specific_elements": ["sans_serif_fonts", "grid_layout", "monochrome_or_2_3_colors", "subtle_shadows"],
+      "style_associations": ["minimalism", "swiss_style", "corporate"],
+      "training_weight": 1.5
+    },
+    {
+      "id": "modern",
+      "consumer_phrase": "modern",
+      "design_translation": "Contemporary design trends, clean sans-serif, subtle effects, current aesthetic",
+      "specific_elements": ["geometric_shapes", "modern_fonts", "flat_or_subtle_shadows", "bold_accent_colors"],
+      "style_associations": ["material_design", "flat_design", "contemporary_minimalism"],
+      "training_weight": 1.3
+    },
+    {
+      "id": "professional",
+      "consumer_phrase": "professional",
+      "design_translation": "Conservative colors, clear hierarchy, structured layouts, trustworthy aesthetic",
+      "specific_elements": ["blue_navy_gray_colors", "classic_or_clean_sans_serif", "grid_layouts", "whitespace"],
+      "style_associations": ["corporate", "swiss_style"],
+      "training_weight": 1.3
+    },
+    {
+      "id": "fun_and_playful",
+      "consumer_phrase": "fun and playful",
+      "design_translation": "Bright colors, rounded shapes, quirky elements, dynamic composition",
+      "specific_elements": ["vibrant_color_palette", "rounded_fonts", "illustrations", "organic_shapes"],
+      "style_associations": ["playful", "pop_art", "y2k"],
+      "training_weight": 1.2
+    },
+    {
+      "id": "luxury_premium",
+      "consumer_phrase": "luxury/premium/high-end",
+      "design_translation": "Refined typography, restrained palette, generous space, quality photography",
+      "specific_elements": ["thin_serif_or_minimal_sans", "black_white_gold", "subtle_ornamentation", "high_quality_images"],
+      "style_associations": ["elegant", "art_deco", "minimalism"],
+      "training_weight": 1.4
+    },
+    {
+      "id": "edgy_cool",
+      "consumer_phrase": "edgy/cool",
+      "design_translation": "Bold choices, unconventional layouts, dark colors, modern aesthetics",
+      "specific_elements": ["dark_palette", "bold_typography", "asymmetric_layouts", "grunge_or_modern_textures"],
+      "style_associations": ["brutalism", "grunge", "cyberpunk"],
+      "training_weight": 1.2
+    },
+    {
+      "id": "vintage_retro",
+      "consumer_phrase": "vintage/retro",
+      "design_translation": "Era-specific design elements, aged textures, period typography, nostalgia",
+      "specific_elements": ["period_fonts", "era_colors", "distressed_textures", "vintage_photography"],
+      "style_associations": ["retro_vintage", "art_deco", "y2k", "vaporwave"],
+      "training_weight": 1.2
+    },
+    {
+      "id": "techy_futuristic",
+      "consumer_phrase": "techy/futuristic",
+      "design_translation": "Geometric forms, tech-inspired colors, clean lines, innovative aesthetic",
+      "specific_elements": ["geometric_shapes", "blue_cyan_colors", "sans_serif_fonts", "subtle_tech_effects"],
+      "style_associations": ["innovative", "cyberpunk", "material_design"],
+      "training_weight": 1.3
+    },
+    {
+      "id": "warm_welcoming",
+      "consumer_phrase": "warm and welcoming",
+      "design_translation": "Warm color palette, rounded shapes, friendly typography, approachable feel",
+      "specific_elements": ["warm_colors", "rounded_fonts", "organic_shapes", "comfortable_spacing"],
+      "style_associations": ["friendly", "organic", "cottagecore"],
+      "training_weight": 1.2
+    },
+    {
+      "id": "bold_eye_catching",
+      "consumer_phrase": "bold and eye-catching",
+      "design_translation": "High contrast, saturated colors, large typography, dynamic composition",
+      "specific_elements": ["bright_colors", "large_bold_fonts", "high_contrast", "dynamic_angles"],
+      "style_associations": ["bold_energetic", "pop_art", "constructivism"],
+      "training_weight": 1.3
+    },
+    {
+      "id": "calm_peaceful",
+      "consumer_phrase": "calm and peaceful",
+      "design_translation": "Soft colors, generous space, minimal elements, gentle aesthetic",
+      "specific_elements": ["cool_muted_colors", "whitespace", "minimal_typography", "soft_shadows"],
+      "style_associations": ["calm_serene", "minimalism", "light_academia"],
+      "training_weight": 1.2
+    },
+    {
+      "id": "natural_organic",
+      "consumer_phrase": "natural/organic",
+      "design_translation": "Earth tones, natural textures, organic shapes, handcrafted feel",
+      "specific_elements": ["earth_tones", "natural_textures", "handwritten_fonts", "organic_shapes"],
+      "style_associations": ["organic", "cottagecore", "solarpunk", "art_nouveau"],
+      "training_weight": 1.2
+    },
+    {
+      "id": "minimal",
+      "consumer_phrase": "minimal",
+      "design_translation": "Essential elements only, maximum whitespace, restrained palette, clear purpose",
+      "specific_elements": ["whitespace", "monochrome_colors", "limited_fonts", "grid_layout", "no_decoration"],
+      "style_associations": ["minimalism", "swiss_style", "brutalism"],
+      "training_weight": 1.4
+    },
+    {
+      "id": "colorful_vibrant",
+      "consumer_phrase": "colorful/vibrant",
+      "design_translation": "Saturated color palette, multiple colors, energetic composition",
+      "specific_elements": ["bright_saturated_colors", "color_blocking", "bold_palette"],
+      "style_associations": ["pop_art", "maximalism", "psychedelic", "y2k"],
+      "training_weight": 1.2
+    },
+    {
+      "id": "trustworthy_reliable",
+      "consumer_phrase": "trustworthy/reliable",
+      "design_translation": "Professional aesthetic, clear structure, established patterns, stable composition",
+      "specific_elements": ["blue_tones", "balanced_layouts", "professional_fonts", "clear_hierarchy"],
+      "style_associations": ["trustworthy", "corporate"],
+      "training_weight": 1.3
+    }
+  ],
+
+  "preference_rules": [
+    {
+      "id": "style_consistency",
+      "principle": "Rules that correctly identify style consistency are preferred over style-agnostic rules",
+      "preferred_example": "User applies Bauhaus-inspired geometric composition with primary colors",
+      "rejected_example": "User adds shapes and colors",
+      "training_weight": 1.3
+    },
+    {
+      "id": "consumer_intent_translation",
+      "principle": "Rules that translate consumer language to design decisions are preferred",
+      "preferred_example": "User refines typography for 'premium' feel using thin serif and generous whitespace",
+      "rejected_example": "User changes font and spacing",
+      "training_weight": 1.4
+    },
+    {
+      "id": "element_psychology",
+      "principle": "Rules that capture psychological effect of design choices are preferred",
+      "preferred_example": "User adds warm colors to create welcoming, friendly atmosphere",
+      "rejected_example": "User changes colors to orange and yellow",
+      "training_weight": 1.2
+    },
+    {
+      "id": "historical_context",
+      "principle": "Rules that recognize historical design influences are valuable for style transfer",
+      "preferred_example": "User applies Swiss Style grid-based layout for professional clarity",
+      "rejected_example": "User uses grid layout",
+      "training_weight": 1.1
+    }
+  ],
+
+  "detection_functions": {
+    "style_detection": {
+      "description": "Score how well a design matches a style based on element presence",
+      "algorithm": "weighted_element_match",
+      "threshold": 0.6
+    },
+    "consumer_intent_detection": {
+      "description": "Map user language to design intent",
+      "algorithm": "keyword_fuzzy_match",
+      "threshold": 0.4
+    },
+    "psychological_effect_scoring": {
+      "description": "Score the psychological coherence of design choices",
+      "algorithm": "element_effect_consistency",
+      "threshold": 0.5
+    }
+  }
+}
+
+

@@ -1,0 +1,82 @@
+{
+  "source_id": "interpretation_rules",
+  "source_name": "Intent Interpretation Rules",
+  "version": "1.0.0",
+  "description": "Principles governing how intent is described and abstracted",
+  
+  "principles": [
+    {
+      "id": "descriptive_not_prescriptive",
+      "name": "Descriptive, Not Prescriptive",
+      "category": "interpretation",
+      "description": "Intent rules describe what kind of choice was made, not whether it was good",
+      "constraints": [
+        "No quality judgments (good/bad, optimal/suboptimal)",
+        "No recommendations or prescriptions",
+        "Pure observation of observable patterns",
+        "Preferences are separate from rule generation"
+      ],
+      "training_weight": 1.0,
+      "examples": {
+        "positive": {
+          "rule": "User adjusts text color for emphasis",
+          "why": "Describes observable action without judgment"
+        },
+        "negative": {
+          "rule": "User improves text color to better contrast",
+          "why": "Makes quality judgment ('improves', 'better')"
+        }
+      }
+    },
+    {
+      "id": "observable_grounding",
+      "name": "Observable Grounding",
+      "category": "interpretation",
+      "description": "Every rule claim must be traceable to observable action data",
+      "constraints": [
+        "No hallucinated properties or actions",
+        "No inferred motivations beyond observable patterns",
+        "Confidence reflects observability, not certainty of intent",
+        "Platform semantics constrain valid property/action references"
+      ],
+      "training_weight": 1.3,
+      "examples": {
+        "positive": {
+          "rule": "User changes fill color from #FF0000 to #0000FF",
+          "why": "Directly observable in trace data"
+        },
+        "negative": {
+          "rule": "User wants to convey trust through blue color",
+          "why": "Infers motivation not present in data"
+        }
+      }
+    },
+    {
+      "id": "minimal_assumption",
+      "name": "Minimal Assumption (Occam's Razor)",
+      "category": "interpretation",
+      "description": "Prefer simpler explanations over complex ones",
+      "constraints": [
+        "Single broad intent often better than multiple narrow ones",
+        "Don't over-segment intent when unified explanation suffices",
+        "Avoid inventing hidden structure not evident in trace"
+      ],
+      "training_weight": 1.1
+    },
+    {
+      "id": "abstraction_consistency",
+      "name": "Abstraction Consistency",
+      "category": "interpretation",
+      "description": "Maintain consistent abstraction level within a rule set",
+      "constraints": [
+        "Don't mix hyper-specific and very general rules in same batch",
+        "Match requested abstraction_preference when specified",
+        "Intermediate abstraction usually most useful for training"
+      ],
+      "training_weight": 1.0,
+      "abstraction_levels": ["specific", "intermediate", "general"]
+    }
+  ]
+}
+
+

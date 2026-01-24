@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constitutional Principles - Taste RL</title>
+    <meta name="description" content="Constitutional principles governing intent rule generation in the Taste RL system.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="/design-system.css">
+    <link rel="stylesheet" href="/rl/docs/styles.css">
+    <style>
+        /* Constitution-specific styles */
+        .constitution-header {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            padding: var(--space-12) var(--space-16);
+            margin: calc(-1 * var(--space-12)) calc(-1 * var(--space-16)) var(--space-8) calc(-1 * var(--space-16));
+            border-radius: 0;
+        }
+        
+        .constitution-header h1 {
+            color: var(--text-primary);
+            font-size: var(--size-3xl);
+            margin-bottom: var(--space-3);
+            letter-spacing: -0.04em;
+        }
+        
+        .constitution-header .lead {
+            color: var(--text-secondary);
+            font-size: var(--size-lg);
+            max-width: 700px;
+            line-height: 1.7;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: var(--size-sm);
+            margin-bottom: var(--space-4);
+            transition: color var(--transition-base);
+        }
+        
+        .back-link:hover {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .principle-category {
+            margin: 48px 0;
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid;
+        }
+        
+        .category-header.action { border-color: var(--warning); }
+        .category-header.interpretation { border-color: var(--accent); }
+        .category-header.quality { border-color: var(--success); }
+        .category-header.preference { border-color: var(--info); }
+        
+        .category-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--size-lg);
+            font-weight: var(--weight-bold);
+            color: var(--text-primary);
+            letter-spacing: 0.02em;
+        }
+        
+        .category-icon.action { background: rgba(255, 107, 53, 0.1); }
+        .category-icon.interpretation { background: var(--accent-subtle); }
+        .category-icon.quality { background: rgba(0, 255, 136, 0.1); }
+        .category-icon.preference { background: rgba(77, 171, 247, 0.1); }
+        
+        .category-header h2 {
+            margin: 0;
+            border: none;
+            padding: 0;
+        }
+        
+        .principle-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: var(--space-6);
+            margin-bottom: var(--space-5);
+            transition: all var(--transition-base);
+        }
+        
+        .principle-card:hover {
+            border-color: var(--border);
+            background: var(--bg-tertiary);
+            transform: translateY(-2px);
+        }
+        
+        .principle-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--bg-elevated);
+            color: var(--text-primary);
+            border-radius: 50%;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 12px;
+        }
+        
+        .principle-card h3 {
+            display: inline;
+            margin: 0;
+            font-size: 1.1rem;
+        }
+        
+        .principle-statement {
+            background: var(--bg-tertiary);
+            border-left: 3px solid var(--accent);
+            padding: var(--space-4) var(--space-5);
+            margin: var(--space-4) 0;
+            font-size: var(--size-base);
+            color: var(--text-primary);
+            font-weight: var(--weight-medium);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            line-height: 1.7;
+        }
+        
+        .principle-details {
+            margin-top: var(--space-4);
+        }
+        
+        .principle-details ul {
+            margin: var(--space-3) 0;
+            padding-left: var(--space-5);
+        }
+        
+        .principle-details li {
+            margin-bottom: var(--space-2);
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        .example-box {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: var(--space-4) var(--space-5);
+            margin: var(--space-4) 0;
+            font-family: var(--font-mono);
+            font-size: var(--size-sm);
+        }
+        
+        .example-box .label {
+            color: var(--text-tertiary);
+            font-size: var(--size-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-2);
+            font-weight: var(--weight-bold);
+        }
+        
+        .example-box .example-line {
+            color: var(--text-primary);
+            margin: var(--space-1) 0;
+            line-height: 1.6;
+        }
+        
+        .example-box .interpretation {
+            color: var(--success);
+            margin-top: var(--space-3);
+            padding-top: var(--space-3);
+            border-top: 1px solid var(--border-subtle);
+        }
+        
+        .toc {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: var(--space-6);
+            margin-bottom: var(--space-8);
+        }
+        
+        .toc h3 {
+            margin-top: 0;
+            font-size: var(--size-xs);
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: var(--weight-bold);
+            font-family: var(--font-mono);
+        }
+        
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-4);
+        }
+        
+        .toc-section h4 {
+            margin: 0 0 var(--space-2) 0;
+            font-size: var(--size-sm);
+            color: var(--text-primary);
+        }
+        
+        .toc-section ul {
+            margin: 0;
+            padding-left: var(--space-4);
+            font-size: var(--size-sm);
+        }
+        
+        .toc-section li {
+            margin-bottom: var(--space-1);
+        }
+        
+        .toc-section a {
+            color: var(--text-secondary);
+        }
+        
+        .toc-section a:hover {
+            color: var(--accent);
+        }
+        
+        .usage-section {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-left: 3px solid var(--success);
+            border-radius: var(--radius-lg);
+            padding: var(--space-6);
+            margin-top: var(--space-12);
+        }
+        
+        .usage-section h2 {
+            margin-top: 0;
+            color: var(--text-primary);
+            border-bottom-color: var(--success);
+        }
+        
+        .file-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-3);
+            margin-top: var(--space-4);
+        }
+        
+        .file-item {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: var(--space-3) var(--space-4);
+            font-size: var(--size-sm);
+            transition: all var(--transition-base);
+        }
+        
+        .file-item:hover {
+            border-color: var(--border);
+            background: var(--bg-elevated);
+        }
+        
+        .file-item code {
+            display: block;
+            color: var(--success);
+            font-size: var(--size-xs);
+            margin-bottom: var(--space-1);
+            font-family: var(--font-mono);
+        }
+        
+        .file-item span {
+            color: var(--text-secondary);
+        }
+        
+        /* Sidebar adjustments for constitution page */
+        .sidebar .nav-section-title.constitution {
+            color: var(--accent);
+        }
+        
+        .sidebar .nav-item.constitution-active {
+            border-left-color: var(--accent);
+            background: var(--bg-tertiary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Toggle Button -->
+    <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-title">Taste RL</div>
+            <div class="sidebar-subtitle">Constitutional Principles</div>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-section-title">Navigation</div>
+            <a href="index.html" class="nav-item">Back to Main</a>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-section-title constitution">Action Rules</div>
+            <a href="#iteration" class="nav-item">1. Iteration Signal</a>
+            <a href="#temporal" class="nav-item">2. Temporal Batching</a>
+            <a href="#proximity" class="nav-item">3. Proximity Clustering</a>
+            <a href="#selection" class="nav-item">4. Selection Scope</a>
+            <a href="#undo" class="nav-item">5. Undo/Redo Signal</a>
+            <a href="#correlation" class="nav-item">6. Property Correlation</a>
+            <a href="#hierarchical" class="nav-item">7. Hierarchical Propagation</a>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-section-title">Interpretation</div>
+            <a href="#descriptive" class="nav-item">8. Descriptive, Not Prescriptive</a>
+            <a href="#observable" class="nav-item">9. Observable Grounding</a>
+            <a href="#minimal" class="nav-item">10. Minimal Assumption</a>
+            <a href="#abstraction" class="nav-item">11. Abstraction Consistency</a>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-section-title">Quality</div>
+            <a href="#novelty" class="nav-item">12. Novelty Over Redundancy</a>
+            <a href="#completeness" class="nav-item">13. Completeness Requirement</a>
+            <a href="#confidence" class="nav-item">14. Confidence Calibration</a>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-section-title">Preferences</div>
+            <a href="#iteration-pref" class="nav-item">15. Iteration-Aware</a>
+            <a href="#semantic" class="nav-item">16. Semantic Depth</a>
+            <a href="#platform-grounded" class="nav-item">17. Platform-Grounded</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="constitution-header">
+            <a href="index.html" class="back-link">Back to Taste RL</a>
+            <h1>Constitutional Principles</h1>
+            <p class="lead">
+                These principles govern how intent rules are generated, interpreted, and evaluated throughout the training pipeline. They are "constitutional" in that they represent fundamental truths about design behavior.
+            </p>
+            <p class="lead" style="margin-top: 16px; font-size: 0.95rem;">
+                This approach is inspired by <a href="https://arxiv.org/pdf/2212.08073" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: underline;">Constitutional AI: Harmlessness from AI Feedback</a> (Anthropic, 2022), which demonstrates that AI systems can be guided by explicit principles rather than extensive human labeling.
+            </p>
+        </div>
+
+        <!-- Table of Contents -->
+        <div class="toc">
+            <h3>Quick Reference</h3>
+            <div class="toc-grid">
+                <div class="toc-section">
+                    <h4>Action Rules (1-7)</h4>
+                    <ul>
+                        <li><a href="#iteration">Iteration Signal</a></li>
+                        <li><a href="#temporal">Temporal Batching</a></li>
+                        <li><a href="#proximity">Proximity Clustering</a></li>
+                        <li><a href="#selection">Selection Scope</a></li>
+                        <li><a href="#undo">Undo/Redo Signal</a></li>
+                        <li><a href="#correlation">Property Correlation</a></li>
+                        <li><a href="#hierarchical">Hierarchical Propagation</a></li>
+                    </ul>
+                </div>
+                <div class="toc-section">
+                    <h4>Interpretation Rules (8-11)</h4>
+                    <ul>
+                        <li><a href="#descriptive">Descriptive, Not Prescriptive</a></li>
+                        <li><a href="#observable">Observable Grounding</a></li>
+                        <li><a href="#minimal">Minimal Assumption</a></li>
+                        <li><a href="#abstraction">Abstraction Consistency</a></li>
+                    </ul>
+                </div>
+                <div class="toc-section">
+                    <h4>Quality Signals (12-14)</h4>
+                    <ul>
+                        <li><a href="#novelty">Novelty Over Redundancy</a></li>
+                        <li><a href="#completeness">Completeness Requirement</a></li>
+                        <li><a href="#confidence">Confidence Calibration</a></li>
+                    </ul>
+                </div>
+                <div class="toc-section">
+                    <h4>Preference Rules (15-17)</h4>
+                    <ul>
+                        <li><a href="#iteration-pref">Iteration-Aware Preferences</a></li>
+                        <li><a href="#semantic">Semantic Depth</a></li>
+                        <li><a href="#platform-grounded">Platform-Grounded</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Rules -->
+        <div class="principle-category" id="action-rules">
+            <div class="category-header action">
+                <div class="category-icon action">A</div>
+                <h2>Action Rules</h2>
+            </div>
+            <p>These principles describe how to interpret user actions and action sequences.</p>
+
+            <div class="principle-card" id="iteration">
+                <span class="principle-number">1</span>
+                <h3>Iteration Signal</h3>
+                <div class="principle-statement">
+                    When a component is returned to in a subsequent action, this indicates iterative refinement.
+                </div>
+                <div class="principle-details">
+                    <ul>
+                        <li>Return visits signal dissatisfaction with a prior state</li>
+                        <li>The sequence represents goal-directed iteration, not isolated edits</li>
+                        <li>Rules should recognize and surface iteration patterns explicitly</li>
+                        <li>Higher confidence should be assigned to rules derived from iteration sequences</li>
+                    </ul>
+                    <div class="example-box">
+                        <div class="label">Example</div>
+                        <div class="example-line">User edits text size → adjusts spacing → returns to text size</div>
+                        <div class="interpretation">✓ "User iteratively refines text readability" (not two separate text edits)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="principle-card" id="temporal">
+                <span class="principle-number">2</span>
+                <h3>Temporal Batching</h3>
+                <div class="principle-statement">
+                    Rapid action sequences (within ~2 seconds) typically form a single intent unit.
+                </div>
+                <div class="principle-details">
+                    <ul>
+                        <li>Burst edits are cognitively unified—the user is "in flow"</li>
+                        <li>Gaps in the action timeline indicate intent boundaries</li>
+                        <li>Rules should aggregate burst sequences into unified patterns</li>
+                        <li>Isolated actions separated by significant pauses may indicate distinct intents</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="principle-card" id="proximity">
+                <span class="principle-number">3</span>
+                <h3>Proximity Clustering</h3>
+                <div class="principle-statement">
+                    Actions on spatially adjacent elements often share intent.
+                </div>
+                <div class="principle-details">
+                    <ul>
+                        <li>Users think in visual clusters, not individual nodes</li>
+                        <li>Edits to nearby elements likely serve a common goal</li>
+                        <li>Rules should recognize spatial grouping as an intent signal</li>
+                        <li>Parent-child or sibling relationships strengthen the clustering signal</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="principle-card" id="selection">
+                <span class="principle-number">4</span>
+                <h3>Selection Scope Signal</h3>
+                <div class="principle-statement">
+                    Multi-selection operations indicate batch intent vs. individual refinement.
+                </div>
+                <div class="principle-details">
+                    <ul>
+                        <li>Single selection → focused, specific intent</li>
+                        <li>Multi-selection → batch operation, systematic change</li>
+                        <li>Rules should differentiate between individual and batch intent patterns</li>
+                        <li>Batch intents often indicate style consistency or alignment goals</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="principle-card" id="undo">
+                <span class="principle-number">5</span>
+                <h3>Undo/Redo Signal</h3>
+                <div class="principle-statement">
+                    Undo operations signal dissatisfaction; the post-redo state is the preferred outcome.
+                </div>
+                <div class="principle-details">
+                    <ul>
+                        <li>Undos are negative feedback signals</li>
+                        <li>The action sequence after undo represents the user's revised approach</li>
+                        <li>Rules derived from post-undo sequences have higher validity</li>
+                        <li>Frequent undos on the same property indicate uncertainty or exploration</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="principle-card" id="correlation">
+                <span class="principle-number">6</span>
+                <h3>Property Correlation</h3>
+                <div class="principle-statement">
+                    Simultaneous changes to related properties suggest unified intent.
+                </div>
+                <div class="principle-details">
+                    <ul>
+                        <li>Width + Height → resize intent (not two separate dimension intents)</li>
+                        <li>X + Y → repositioning intent</li>
+                        <li>Font size + Line height → typography tuning intent</li>
+                        <li>Rules should recognize correlated property bundles</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="principle-card" id="hierarchical">
+                <span class="principle-number">7</span>
+                <h3>Hierarchical Propagation</h3>
+                <div class="principle-statement">
+                    Changes to parent elements that affect children indicate structural intent.
+                </div>
+                <div class="principle-details">
+                    <ul>
+                        <li>Auto-layout changes propagate to children</li>
+                        <li>Container resizing is often about content accommodation</li>
+                        <li>Rules should distinguish direct manipulation from inherited effects</li>
+                        <li>Structural changes often carry higher semantic weight</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interpretation Rules -->
+        <div class="principle-category" id="interpretation-rules">
+            <div class="category-header interpretation">
+                <div class="category-icon interpretation">I</div>
+                <h2>Interpretation Rules</h2>
+            </div>
+            <p>These principles govern how intent is described and abstracted.</p>
+
+            <div class="principle-card" id="descriptive">
+                <span class="principle-number">8</span>
+                <h3>Descriptive, Not Prescriptive</h3>
+                <div class="principle-statement">
+                    Intent rules describe what kind of choice was made, not whether it was good.
+                </div>
+                <div class="principle-details">
+                    <ul>
+                        <li>No quality judgments (good/bad, optimal/suboptimal)</li>
+                        <li>No recommendations or prescriptions</li>
+                        <li>Pure observation of observable patterns</li>
+                        <li>Preferences are separate from rule generation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="principle-card" id="observable">
+                <span class="principle-number">9</span>
+                <h3>Observable Grounding</h3>
+                <div class="principle-statement">
+                    Every rule claim must be traceable to observable action data.
+                </div>
+                <div class="principle-details">
+                    <ul>
+                        <li>No hallucinated properties or actions</li>
+                        <li>No inferred motivations beyond observable patterns</li>
+                        <li>Confidence should reflect observability, not certainty of intent</li>
+                        <li>Platform semantics constrain valid property/action references</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="principle-card" id="minimal">
+                <span class="principle-number">10</span>
+                <h3>Minimal Assumption (Occam's Razor)</h3>
+                <div class="principle-statement">
+                    Prefer simpler explanations over complex ones.
+                </div>
+                <div class="principle-details">
+                    <ul>
+                        <li>A single broad intent is often better than multiple narrow ones</li>
+                        <li>Don't over-segment intent when a unified explanation suffices</li>
+                        <li>Avoid inventing hidden structure not evident in the trace</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="principle-card" id="abstraction">
+                <span class="principle-number">11</span>
+                <h3>Abstraction Consistency</h3>
+                <div class="principle-statement">
+                    Maintain consistent abstraction level within a rule set.
+                </div>
+                <div class="principle-details">
+                    <ul>
+                        <li>Don't mix hyper-specific and very general rules in the same batch</li>
+                        <li>Match the requested abstraction_preference when specified</li>
+                        <li>Intermediate abstraction is usually most useful for training</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quality Signals -->
+        <div class="principle-category" id="quality-rules">
+            <div class="category-header quality">
+                <div class="category-icon quality">Q</div>
+                <h2>Quality Signals</h2>
+            </div>
+            <p>These principles define what makes a rule high-quality for training.</p>
+
+            <div class="principle-card" id="novelty">
+                <span class="principle-number">12</span>
+                <h3>Novelty Over Redundancy</h3>
+                <div class="principle-statement">
+                    Novel patterns are more valuable than variations of common patterns.
+                </div>
+                <div class="principle-details">
+                    <ul>
+                        <li>Redundant rules waste training capacity</li>
+                        <li>Novelty score reflects contribution to pattern coverage</li>
+                        <li>Rare but valid patterns are valuable (not noise)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="principle-card" id="completeness">
+                <span class="principle-number">13</span>
+                <h3>Completeness Requirement</h3>
+                <div class="principle-statement">
+                    Rules must have complete platform context for reproducibility.
+                </div>
+                <div class="principle-details">
+                    <ul>
+                        <li>Platform, extraction method, and data source are required</li>
+                        <li>Incomplete context undermines traceability</li>
+                        <li>Rules without context should be deprioritized in training</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="principle-card" id="confidence">
+                <span class="principle-number">14</span>
+                <h3>Confidence Calibration</h3>
+                <div class="principle-statement">
+                    Confidence scores must reflect genuine pattern clarity.
+                </div>
+                <div class="principle-details">
+                    <ul>
+                        <li>High confidence: clear, unambiguous pattern</li>
+                        <li>Medium confidence: plausible pattern with some ambiguity</li>
+                        <li>Low confidence: speculative or weakly supported</li>
+                        <li>Over-confident rules are harmful to training</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Preference Generation Rules -->
+        <div class="principle-category" id="preference-rules">
+            <div class="category-header preference">
+                <div class="category-icon preference">P</div>
+                <h2>Preference Generation Rules</h2>
+            </div>
+            <p>These principles govern how preference pairs are constructed.</p>
+
+            <div class="principle-card" id="iteration-pref">
+                <span class="principle-number">15</span>
+                <h3>Iteration-Aware Preferences</h3>
+                <div class="principle-statement">
+                    Rules that recognize iteration patterns are preferred over rules that treat actions as isolated.
+                </div>
+                <div class="principle-details">
+                    <div class="example-box">
+                        <div class="label">Preference Pair</div>
+                        <div class="example-line" style="color: var(--success);">✓ Prefer: "User iteratively refines component spacing"</div>
+                        <div class="example-line" style="color: var(--warning);">✗ Reject: "User changes padding" (×2 separate rules)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="principle-card" id="semantic">
+                <span class="principle-number">16</span>
+                <h3>Semantic Depth Preference</h3>
+                <div class="principle-statement">
+                    Rules with richer semantic content are preferred over shallow descriptions.
+                </div>
+                <div class="principle-details">
+                    <div class="example-box">
+                        <div class="label">Preference Pair</div>
+                        <div class="example-line" style="color: var(--success);">✓ Prefer: "User adjusts typography for visual hierarchy"</div>
+                        <div class="example-line" style="color: var(--warning);">✗ Reject: "User changes font size"</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="principle-card" id="platform-grounded">
+                <span class="principle-number">17</span>
+                <h3>Platform-Grounded Preference</h3>
+                <div class="principle-statement">
+                    Rules with complete platform context are preferred over decontextualized rules.
+                </div>
+                <div class="principle-details">
+                    <ul>
+                        <li>Traceability enables validation and reproduction</li>
+                        <li>Context-free rules are harder to verify</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Usage Section -->
+        <div class="usage-section">
+            <h2>Implementation</h2>
+            <p>These principles are encoded in the following files:</p>
+            <div class="file-list">
+                <div class="file-item">
+                    <code>data/prompts/generator.json</code>
+                    <span>Guides LLM rule generation</span>
+                </div>
+                <div class="file-item">
+                    <code>core/synthetic_preference_generator.py</code>
+                    <span>Informs preference pair construction</span>
+                </div>
+                <div class="file-item">
+                    <code>evaluation/quality_metrics.py</code>
+                    <span>Operationalizes quality signals</span>
+                </div>
+                <div class="file-item">
+                    <code>CONSTITUTIONAL_PRINCIPLES.md</code>
+                    <span>Master reference document</span>
+                </div>
+            </div>
+            <p style="margin-top: var(--space-4); font-size: var(--size-sm); color: var(--text-secondary);">
+                <strong>Note:</strong> When adding new principles, update all locations to maintain consistency.
+            </p>
+        </div>
+
+        <div style="margin-top: var(--space-12); padding-top: var(--space-6); border-top: 1px solid var(--border-subtle); text-align: center; color: var(--text-tertiary); font-size: var(--size-sm);">
+            Last updated: January 22, 2026 · 17 principles across 4 categories
+        </div>
+    </main>
+
+    <script src="/rl/docs/script.js"></script>
+</body>
+</html>
+

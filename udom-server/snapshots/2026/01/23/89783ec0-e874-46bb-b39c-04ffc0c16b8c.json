@@ -1,0 +1,214 @@
+{
+  "metadata": {
+    "snapshot_id": "89783ec0-e874-46bb-b39c-04ffc0c16b8c",
+    "artifact_id": "figma://file/undefined/node/1:44",
+    "artifact_type": "figma_component",
+    "timestamp": 1769198190016,
+    "content_hash": "content-hash:00qi8784",
+    "schema_version": "1.0.0"
+  },
+  "elements": [
+    {
+      "id": "1:44",
+      "stable_id": "content-hash:00qi8784",
+      "type": "TEXT",
+      "semantic_type": "text",
+      "properties": {
+        "name": "H1",
+        "width": 1200,
+        "height": 48,
+        "fills": [
+          {
+            "type": "SOLID",
+            "visible": true,
+            "opacity": 1,
+            "blendMode": "NORMAL",
+            "color": {
+              "r": 0,
+              "g": 0,
+              "b": 0
+            },
+            "boundVariables": {
+              "color": {
+                "type": "VARIABLE_ALIAS",
+                "id": "VariableID:1:74"
+              }
+            }
+          }
+        ]
+      },
+      "spatial": {
+        "absolute": {
+          "coordinate_system": "canvas",
+          "bounds": {
+            "x": 216,
+            "y": 648,
+            "width": 1200,
+            "height": 48
+          }
+        }
+      },
+      "visual": {
+        "background": {
+          "type": "solid",
+          "color": "#000000"
+        }
+      },
+      "text": {
+        "content": "Slide Dedfdckdsm,n,a fhgkxjgkl ",
+        "font_family": "Inter",
+        "font_size": 36,
+        "font_weight": "Bold",
+        "line_height": 132.00000524520874
+      }
+    }
+  ],
+  "relations": [],
+  "observations": {
+    "provenance": {
+      "user_id": "943301272123231421",
+      "user_name": "Hamidah Oderinwale",
+      "session_id": "session_1769197161965_x2e8bwbbj",
+      "tool": "figma",
+      "tool_version": "latest",
+      "extraction_method": "figma_plugin_api",
+      "extracted_at": 1769198190016,
+      "extractor_version": "figma-adapter-v1.1.0",
+      "extraction_quality": "complete"
+    },
+    "context": {
+      "file_name": "Untitled",
+      "page_name": "Page 1",
+      "workspace_id": "unknown",
+      "viewport": {
+        "zoom": 0.27795863151550293,
+        "center": {
+          "x": 1201.6176968119712,
+          "y": 1135.0610279765779
+        },
+        "bounds": {
+          "x": -618.7971372804165,
+          "y": 183.48054651919324,
+          "width": 3640.8296681847755,
+          "height": 1903.160962914769
+        }
+      },
+      "nearby_elements": [
+        "1:46",
+        "1:45",
+        "30:4"
+      ],
+      "tags": [],
+      "interaction_history": {
+        "recent_selections": [
+          {
+            "node_id": "1:44",
+            "node_name": "H1",
+            "timestamp": 1769198053102,
+            "duration": 38794
+          },
+          {
+            "node_id": "41:5",
+            "node_name": "Shape with text",
+            "timestamp": 1769198091896,
+            "duration": 1158
+          },
+          {
+            "node_id": "1:42",
+            "node_name": "1",
+            "timestamp": 1769198093054,
+            "duration": 14713
+          },
+          {
+            "node_id": "41:8",
+            "node_name": "Frame 4",
+            "timestamp": 1769198107767,
+            "duration": 28708
+          },
+          {
+            "node_id": "41:5",
+            "node_name": "Shape with text",
+            "timestamp": 1769198136475,
+            "duration": 48856
+          },
+          {
+            "node_id": "1:45",
+            "node_name": "H1",
+            "timestamp": 1769198185331,
+            "duration": 946
+          },
+          {
+            "node_id": "1:44",
+            "node_name": "H1",
+            "timestamp": 1769198186277,
+            "duration": 501
+          },
+          {
+            "node_id": "1:45",
+            "node_name": "H1",
+            "timestamp": 1769198186778,
+            "duration": 2219
+          },
+          {
+            "node_id": "1:42",
+            "node_name": "1",
+            "timestamp": 1769198188997,
+            "duration": 511
+          },
+          {
+            "node_id": "1:44",
+            "node_name": "H1",
+            "timestamp": 1769198189508
+          }
+        ],
+        "selection_frequency": {
+          "1:44": 13,
+          "1:45": 3,
+          "41:5": 2,
+          "1:42": 2,
+          "41:8": 1
+        },
+        "average_time_between_selections": 51277,
+        "total_selections": 21,
+        "viewport_changes": 0,
+        "capture_count": 16,
+        "most_frequent_nodes": [
+          {
+            "node_id": "1:44",
+            "count": 13
+          },
+          {
+            "node_id": "1:45",
+            "count": 3
+          },
+          {
+            "node_id": "41:5",
+            "count": 2
+          },
+          {
+            "node_id": "1:42",
+            "count": 2
+          },
+          {
+            "node_id": "41:8",
+            "count": 1
+          }
+        ],
+        "session_stats": {
+          "duration": 1026035,
+          "total_interactions": 37,
+          "captures_per_minute": 0.935640597055656
+        }
+      }
+    },
+    "intent": {
+      "source": "figma_plugin",
+      "change_type": "capture",
+      "scope": "component",
+      "motivation": "automated_tracking",
+      "trigger": "auto_capture",
+      "capture_number": 16,
+      "previous_snapshot_id": "3a061e6c-cc27-4cb3-b200-31def143011e"
+    }
+  }
+}

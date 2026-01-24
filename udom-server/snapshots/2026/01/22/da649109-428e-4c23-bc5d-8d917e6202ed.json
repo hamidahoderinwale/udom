@@ -1,0 +1,188 @@
+{
+  "metadata": {
+    "snapshot_id": "da649109-428e-4c23-bc5d-8d917e6202ed",
+    "artifact_id": "figma://file/undefined/node/30:3",
+    "artifact_type": "figma_component",
+    "timestamp": 1769142833351,
+    "content_hash": "content-hash:00dnquft",
+    "schema_version": "1.0.0"
+  },
+  "elements": [
+    {
+      "id": "30:3",
+      "stable_id": "content-hash:00dnquft",
+      "type": "FRAME",
+      "semantic_type": "container",
+      "properties": {
+        "name": "Frame 2",
+        "width": 100,
+        "height": 100,
+        "cornerRadius": 0,
+        "fills": []
+      },
+      "spatial": {
+        "absolute": {
+          "coordinate_system": "canvas",
+          "bounds": {
+            "x": 554,
+            "y": 147,
+            "width": 100,
+            "height": 100
+          }
+        }
+      },
+      "visual": {
+        "border_radius": {
+          "tl": 0,
+          "tr": 0,
+          "br": 0,
+          "bl": 0
+        }
+      }
+    }
+  ],
+  "relations": [],
+  "observations": {
+    "provenance": {
+      "user_id": "943301272123231421",
+      "user_name": "Hamidah Oderinwale",
+      "session_id": "session_1769142720723_d8pw1763s",
+      "tool": "figma",
+      "tool_version": "latest",
+      "extraction_method": "figma_plugin_api",
+      "extracted_at": 1769142833352,
+      "extractor_version": "figma-adapter-v1.1.0",
+      "extraction_quality": "complete"
+    },
+    "context": {
+      "file_name": "Untitled",
+      "page_name": "Page 1",
+      "workspace_id": "unknown",
+      "viewport": {
+        "zoom": 0.5104166865348816,
+        "center": {
+          "x": 1199.0204081632653,
+          "y": 725.8775510204082
+        },
+        "bounds": {
+          "x": 207.67346938775512,
+          "y": 207.67346938775512,
+          "width": 1982.6938775510205,
+          "height": 1036.4081632653063
+        }
+      },
+      "nearby_elements": [
+        "1:46",
+        "1:44",
+        "30:2"
+      ],
+      "tags": [
+        "frame"
+      ],
+      "interaction_history": {
+        "recent_selections": [
+          {
+            "node_id": "1:44",
+            "node_name": "H1",
+            "timestamp": 1769142720967,
+            "duration": 2747
+          },
+          {
+            "node_id": "1:44",
+            "node_name": "H1",
+            "timestamp": 1769142723714,
+            "duration": 432
+          },
+          {
+            "node_id": "1:44",
+            "node_name": "H1",
+            "timestamp": 1769142724146,
+            "duration": 103
+          },
+          {
+            "node_id": "1:44",
+            "node_name": "H1",
+            "timestamp": 1769142724249,
+            "duration": 117
+          },
+          {
+            "node_id": "1:44",
+            "node_name": "H1",
+            "timestamp": 1769142724366,
+            "duration": 706
+          },
+          {
+            "node_id": "1:44",
+            "node_name": "H1",
+            "timestamp": 1769142725072,
+            "duration": 327
+          },
+          {
+            "node_id": "1:45",
+            "node_name": "H1",
+            "timestamp": 1769142725399,
+            "duration": 104703
+          },
+          {
+            "node_id": "1:44",
+            "node_name": "H1",
+            "timestamp": 1769142830102,
+            "duration": 1642
+          },
+          {
+            "node_id": "30:2",
+            "node_name": "Frame 1",
+            "timestamp": 1769142831744,
+            "duration": 1103
+          },
+          {
+            "node_id": "30:3",
+            "node_name": "Frame 2",
+            "timestamp": 1769142832847
+          }
+        ],
+        "selection_frequency": {
+          "1:44": 7,
+          "1:45": 1,
+          "30:2": 1,
+          "30:3": 1
+        },
+        "average_time_between_selections": 12431,
+        "total_selections": 10,
+        "viewport_changes": 0,
+        "capture_count": 6,
+        "most_frequent_nodes": [
+          {
+            "node_id": "1:44",
+            "count": 7
+          },
+          {
+            "node_id": "1:45",
+            "count": 1
+          },
+          {
+            "node_id": "30:2",
+            "count": 1
+          },
+          {
+            "node_id": "30:3",
+            "count": 1
+          }
+        ],
+        "session_stats": {
+          "duration": 112381,
+          "total_interactions": 16,
+          "captures_per_minute": 3.2033884731404774
+        }
+      }
+    },
+    "intent": {
+      "source": "figma_plugin",
+      "change_type": "capture",
+      "scope": "component",
+      "motivation": "explicit_capture",
+      "trigger": "manual_capture",
+      "capture_number": 6
+    }
+  }
+}
