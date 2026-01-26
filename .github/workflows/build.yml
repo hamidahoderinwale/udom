@@ -12,21 +12,17 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
-      
-      - name: Build HTML
-        run: python3 build.py
-      
-      - name: Check for changes
+      - name: Verify HTML files exist
         run: |
-          if [ -n "$(git status --porcelain)" ]; then
-            echo "Build produced changes. Please commit the updated index.html"
-            git diff
+          if [ ! -f "index.html" ]; then
+            echo "Error: index.html not found"
             exit 1
           fi
+          if [ ! -f "rl/docs/index.html" ]; then
+            echo "Error: rl/docs/index.html not found"
+            exit 1
+          fi
+          echo "✓ All HTML files present"
 
 
 

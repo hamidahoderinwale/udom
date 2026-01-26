@@ -252,9 +252,7 @@ User feedback (accept/reject) improves suggestion quality through preference-bas
 ## Development
 
 ### Building Documentation
-```bash
-python3 build.py
-```
+Documentation files are static HTML and don't require building. Simply open `index.html` in your browser.
 
 ### Project Structure
 ```
