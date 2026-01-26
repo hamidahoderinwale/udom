@@ -132,7 +132,7 @@ async function enhanceWithOpenRouter(diff, apiKey, model) {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${apiKey}`,
-        'HTTP-Referer': 'https://github.com/hamidahoderinwale/udom',
+        'HTTP-Referer': 'https://github.com/Taste-AI/hamidah-project',
         'X-Title': 'Taste Intent Inference',
       },
       body: JSON.stringify({

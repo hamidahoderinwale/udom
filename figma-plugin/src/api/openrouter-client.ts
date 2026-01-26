@@ -42,7 +42,7 @@ export class OpenRouterClient {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${this.config.apiKey}`,
-        'HTTP-Referer': 'https://github.com/hamidahoderinwale/udom',
+        'HTTP-Referer': 'https://github.com/Taste-AI/hamidah-project',
         'X-Title': 'Taste Intent Rule System',
       },
       body: JSON.stringify({

@@ -245,7 +245,7 @@ Analyze the provided trace and artifacts, then return matching intent rules in J
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${this.apiKey}`,
-        'HTTP-Referer': 'https://github.com/hamidahoderinwale/udom',
+        'HTTP-Referer': 'https://github.com/Taste-AI/hamidah-project',
         'X-Title': 'Taste Intent Rule System',
       },
       body: JSON.stringify({

@@ -66,3 +66,4 @@ function createRecommendationRoutes(jsonStorage, recommendationService) {
 
 module.exports = createRecommendationRoutes;
 
+

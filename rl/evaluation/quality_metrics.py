@@ -170,3 +170,4 @@ class QualityMetrics:
             print(f"    {bin_name}: {count}")
 
 
+

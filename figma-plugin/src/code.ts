@@ -878,7 +878,7 @@ function handleUIMessage(msg: {
       break;
       
     case 'open-docs':
-      figma.openExternal('https://github.com/hamidahoderinwale/udom#readme');
+      figma.openExternal('https://github.com/Taste-AI/hamidah-project#readme');
       break;
 
       case 'request-suggestions':

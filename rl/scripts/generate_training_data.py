@@ -156,7 +156,7 @@ class TrainingDataGenerator:
         headers = {
             'Authorization': f'Bearer {self.openrouter_key}',
             'Content-Type': 'application/json',
-            'HTTP-Referer': 'https://github.com/hamidahoderinwale/udom',
+            'HTTP-Referer': 'https://github.com/Taste-AI/hamidah-project',
             'X-Title': 'Taste Intent Rule Generator'
         }
         
